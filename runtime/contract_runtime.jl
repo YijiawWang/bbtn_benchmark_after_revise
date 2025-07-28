@@ -44,7 +44,7 @@ end
 function contract_runtime()
     n = 70
     # ids = [3, 2, 4, 5, 7, 9, 10]
-    ids = [7, 9, 10]
+    ids = [10]
     dir = @__DIR__
 
     graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/kernelized_tn_ksg_n$(n).dot"))
