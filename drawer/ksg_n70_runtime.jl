@@ -44,7 +44,7 @@ begin
     tnbb_contract_time = [df_contract[df_contract.name .== name, :tnbb_runtime][1] for name in ns]
 
     fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 350), fontsize = 20)
-    ax = Axis(fig[1, 1], xlabel = L"\text{log}_2(\text{sc})", ylabel = L"\text{Runtime (s)}", xticks = (1:5, ["32", "33", "34", "35", "36"]))
+    ax = Axis(fig[1, 1], xlabel = L"\text{log}_2(\text{sc})", ylabel = L"\text{Runtime (s)}", xticks = (1:5, [L"32", L"33", L"34", L"35", L"36"]))
 
     cat = [(i - 1) % 4 + 1 for i in 1:20]
     heights = []
@@ -70,8 +70,8 @@ end
 
 # different targets
 begin
-    fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 350), fontsize = 20)
-    ax = Axis(fig[1, 1], xlabel = L"\text{log}_2(\text{sc})", ylabel = L"\text{Runtime (s)}", xticks = (1:5, ["31", "30", "29", "28", "27"]), yticks = (0:2:12, [L"2^0", L"2^2", L"2^4", L"2^6", L"2^8", L"2^{10}", L"2^{12}"]))
+    fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 380), fontsize = 20)
+    ax = Axis(fig[2, 1], xlabel = L"\text{log}_2(\text{sc})", ylabel = L"\text{Runtime (s)}", xticks = (1:5, [L"31", L"30", L"29", L"28", L"27"]), yticks = (0:2:12, [L"2^0", L"2^2", L"2^4", L"2^6", L"2^8", L"2^{10}", L"2^{12}"]))
 
     df_tnbb = CSV.read("../data/runtime/ksg_n70_dt_tnbb_branch.csv", DataFrame)
     df_tnbb_contract = CSV.read("../data/runtime/ksg_n70_dt_tnbb_contract.csv", DataFrame)
@@ -93,24 +93,41 @@ begin
         tnbb_total_i = log2(tnbb_total[i])
         ds_total_i = log2(ds_total[i])
 
-        push!(heights, tnbb_total_i * tnbb_branch_time[i] / tnbb_total[i])
-        push!(heights, tnbb_total_i * tnbb_contract_time[i] / tnbb_total[i])
+        # push!(heights, tnbb_total_i * tnbb_branch_time[i] / tnbb_total[i])
+        # push!(heights, tnbb_total_i * tnbb_contract_time[i] / tnbb_total[i])
         
-        push!(heights, ds_total_i * ds_branch_time[i] / ds_total[i])
-        push!(heights, ds_total_i * ds_contract_time[i] / ds_total[i])
+        # push!(heights, ds_total_i * ds_branch_time[i] / ds_total[i])
+        # push!(heights, ds_total_i * ds_contract_time[i] / ds_total[i])
+
+        # push!(heights, log2(tnbb_branch_time[i]))
+        # push!(heights, log2(tnbb_total[i]) - log2(tnbb_branch_time[i]))
+        # push!(heights, log2(ds_branch_time[i]))
+        # push!(heights, log2(ds_total[i]) - log2(ds_branch_time[i]))
+
+        push!(heights, log2(tnbb_branch_time[i]))
+        push!(heights, log2(tnbb_contract_time[i]))
+        # push!(heights, log2(tnbb_total[i]))
     end
     
-    x_groups = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5]
-    bar_groups = [1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2]
-    y_groups = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
-    color_groups = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
+    # x_groups = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5]
+    # bar_groups = [1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2]
+    # y_groups = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
+    # color_groups = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
+
+    x_groups = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5]
+    bar_groups = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
 
     barplot!(ax, x_groups, heights,
        dodge = bar_groups,
-       stack = y_groups,
-       color = colors[color_groups])
+       color = colors[bar_groups])
 
-    ylims!(ax, (0, 12))
+    ylims!(ax, (0, 10))
+
+    # legend
+    labels = ["branching", "contraction"]
+    elements = [PolyElement(polycolor = colors[i]) for i in 1:length(labels)]
+
+    Legend(fig[1, :], elements, labels, orientation = :horizontal, nbanks = 1, labelsize = 12)
 
     save("../figs/ksg_n70_runtime_dt.pdf", fig)
 
