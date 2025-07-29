@@ -36,9 +36,83 @@ begin
     df_ds = CSV.read("../data/runtime/ksg_n70_sc31_ds_branch.csv", DataFrame)
     df_tnbb = CSV.read("../data/runtime/ksg_n70_sc31_tnbb_branch.csv", DataFrame)
 
-    ns = df_contract.name
+    ns = df_contract.name[1:5]
     scs = [df_ds[df_ds.name .== name, :original_sc][1] for name in ns]
     ds_branch_time = [df_ds[df_ds.name .== name, :runtime][1] for name in ns]
     tnbb_branch_time = [df_tnbb[df_tnbb.name .== name, :runtime][1] for name in ns]
-    ds_contract_
+    ds_contract_time = [df_contract[df_contract.name .== name, :ds_runtime][1] for name in ns]
+    tnbb_contract_time = [df_contract[df_contract.name .== name, :tnbb_runtime][1] for name in ns]
+
+    fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 350), fontsize = 20)
+    ax = Axis(fig[1, 1], xlabel = L"\text{log}_2(\text{sc})", ylabel = L"\text{Runtime (s)}", xticks = (1:5, ["32", "33", "34", "35", "36"]))
+
+    cat = [(i - 1) % 4 + 1 for i in 1:20]
+    heights = []
+    for i in sortperm(scs)
+        push!(heights, tnbb_branch_time[i])
+        push!(heights, tnbb_contract_time[i])
+        push!(heights, ds_branch_time[i])
+        push!(heights, ds_contract_time[i])
+    end
+    grp = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5]
+    grp_1 = [1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2]
+    grp_2 = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
+
+    grp_3 = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
+
+    barplot!(ax, grp, heights,
+       dodge = grp_1,
+       stack = grp_2,
+       color = colors[grp_3],)
+
+    fig
+end
+
+# different targets
+begin
+    fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 350), fontsize = 20)
+    ax = Axis(fig[1, 1], xlabel = L"\text{log}_2(\text{sc})", ylabel = L"\text{Runtime (s)}", xticks = (1:5, ["31", "30", "29", "28", "27"]), yticks = (0:2:12, [L"2^0", L"2^2", L"2^4", L"2^6", L"2^8", L"2^{10}", L"2^{12}"]))
+
+    df_tnbb = CSV.read("../data/runtime/ksg_n70_dt_tnbb_branch.csv", DataFrame)
+    df_tnbb_contract = CSV.read("../data/runtime/ksg_n70_dt_tnbb_contract.csv", DataFrame)
+
+    df_ds = CSV.read("../data/runtime/ksg_n70_dt_ds_branch.csv", DataFrame)
+    df_ds_contract = CSV.read("../data/runtime/ksg_n70_dt_ds_contract.csv", DataFrame)
+
+    tnbb_branch_time = df_tnbb.runtime
+    ds_branch_time = df_ds.runtime
+    
+    tnbb_contract_time = df_tnbb_contract.runtime
+    ds_contract_time = df_ds_contract.runtime
+    
+    tnbb_total = tnbb_branch_time + tnbb_contract_time
+    ds_total = ds_branch_time + ds_contract_time
+
+    heights = []
+    for i in 1:5
+        tnbb_total_i = log2(tnbb_total[i])
+        ds_total_i = log2(ds_total[i])
+
+        push!(heights, tnbb_total_i * tnbb_branch_time[i] / tnbb_total[i])
+        push!(heights, tnbb_total_i * tnbb_contract_time[i] / tnbb_total[i])
+        
+        push!(heights, ds_total_i * ds_branch_time[i] / ds_total[i])
+        push!(heights, ds_total_i * ds_contract_time[i] / ds_total[i])
+    end
+    
+    x_groups = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5]
+    bar_groups = [1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2]
+    y_groups = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
+    color_groups = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
+
+    barplot!(ax, x_groups, heights,
+       dodge = bar_groups,
+       stack = y_groups,
+       color = colors[color_groups])
+
+    ylims!(ax, (0, 12))
+
+    save("../figs/ksg_n70_runtime_dt.pdf", fig)
+
+    fig
 end

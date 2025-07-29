@@ -47,13 +47,13 @@ function different_target_slice_runtime()
 
     dir = @__DIR__
     df = "../data/runtime/different_target_slice_runtime_ksg_n$(n).csv"
-    CSV.write(df, DataFrame(name = String[], ds = Int[], runtime = Float64[]))
+    # CSV.write(df, DataFrame(name = String[], ds = Int[], runtime = Float64[]))
 
     graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/kernelized_tn_ksg_n$(n).dot"))
     g = graphs["$i"]
 
-    for ds in 1:5
-        target = 31 - ds
+    for ds in [1]
+        target = 32 - ds
         code = readjson(joinpath(dir, "../graphs/random_ksg/order/slice_$(target)_tn_ksg_n$(n)_s$(i)_treesa.json"))
         net = GenericTensorNetwork(IndependentSet(g), code, Dict{Int, Int}())
         t = @belapsed solve_net($net)
@@ -67,30 +67,19 @@ end
 function contract_runtime()
     n = 70
     # ids = [3, 2, 4, 5, 7, 9, 10]
-    ids = [10]
+    ids = [5]
     dir = @__DIR__
 
     graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/kernelized_tn_ksg_n$(n).dot"))
 
-    df = joinpath(dir, "../data/runtime/contract_runtime_n$(n).csv")
-    # CSV.write(df, DataFrame(name = String[], tnbb_runtime = Float64[], ds_runtime = Float64[]))
+    df = joinpath(dir, "../data/runtime/contract_runtime_a800_n$(n).csv")
+    CSV.write(df, DataFrame(name = String[], tnbb_runtime = Float64[], ds_runtime = Float64[]))
 
     for id in ids
-        dir = "/Einstein/xzgao/tnbb_jlds/random_ksg/$(n)_$(id)_sc31/"
-        branch_df = CSV.read(joinpath(dir, "slices.csv"), DataFrame)
-        nets = []
-        for id in branch_df.id
-            g = loadgraph(joinpath(dir, "graph_$(id).dot"))
-            code = readjson(joinpath(dir, "eincode_$(id).json"))
-            net = GenericTensorNetwork(IndependentSet(g), code, Dict{Int, Int}())
-            push!(nets, net)
-        end
-        tnbb_runtime = @belapsed solve_nets($nets)
-        @show id, tnbb_runtime
-
         sliced_code = readjson(joinpath(@__DIR__, "../graphs/random_ksg/order/slice31_tn_ksg_n$(n)_s$(id)_treesa.json"))
         slice_net = GenericTensorNetwork(IndependentSet(graphs["$id"]), sliced_code, Dict{Int, Int}())
-        ds_runtime = @belapsed solve_net($(slice_net))
+
+	ds_runtime = @elapsed solve_net(slice_net)
         @show id, ds_runtime
 
         CSV.write(df, DataFrame(name = id, tnbb_runtime = tnbb_runtime, ds_runtime = ds_runtime), append = true)
