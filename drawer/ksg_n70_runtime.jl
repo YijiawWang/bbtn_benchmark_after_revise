@@ -30,12 +30,12 @@ include("settings.jl")
 #     fig
 # end
 
-# time to solve ksg 70x70, sc = 31
+# time to solve ksg 70x70, sc = 31, kernlized
 begin
     df_contract = CSV.read("../data/runtime/ksg_n70_sc31_contract.csv", DataFrame)
-    df_ds = CSV.read("../data/runtime/ksg_n70_sc31_ds_branch.csv", DataFrame)
+    df_ds = CSV.read("../data/runtime/ksg_n70_kernelized_sc31_ds_branch.csv", DataFrame)
     df_tnbb = CSV.read("../data/runtime/ksg_n70_sc31_tnbb_branch.csv", DataFrame)
-    df_scip = CSV.read("../data/runtime/ksg_n70_scip.csv", DataFrame)
+    df_scip = CSV.read("../data/runtime/ksg_n70_kernelized_scip.csv", DataFrame)
 
     ns = df_contract.name
     scs = [df_ds[df_ds.name .== name, :original_sc][1] for name in ns]
@@ -59,15 +59,14 @@ begin
 
         push!(heights, log2(tnbb_total) * tnbb_branch_time[i] / tnbb_total)
         push!(heights, log2(tnbb_total) * tnbb_contract_time[i] / tnbb_total)
-        push!(heights, log2(ds_total) * ds_branch_time[i] / ds_total)
-        push!(heights, log2(ds_total) * ds_contract_time[i] / ds_total)
+        push!(heights, log2(ds_total))
         push!(heights, log2(scip_time[i]))
     end
 
-    cat = [(i - 1) % 5 + 1 for i in 1:30]
-    x_group = vcat([[i for _ in 1:5] for i in 1:6]...)
-    dodge_group = vcat([[1, 1, 2, 2, 3] for i in 1:6]...)
-    stack_group = vcat([[1, 2, 1, 2, 1] for i in 1:6]...)
+    cat = [(i - 1) % 4 + 1 for i in 1:24]
+    x_group = vcat([[i for _ in 1:4] for i in 1:6]...)
+    dodge_group = vcat([[1, 1, 2, 3] for i in 1:6]...)
+    stack_group = vcat([[1, 2, 1, 1] for i in 1:6]...)
 
     barplot!(ax, x_group, heights,
        dodge = dodge_group,
@@ -76,7 +75,58 @@ begin
 
     ylims!(ax, (0, 13))
 
-    Legend(fig[1, :], [PolyElement(polycolor = colors[i]) for i in 1:5], ["tnbb branching", "tnbb contraction", "ds slicing", "ds contraction", "scip"], orientation = :horizontal, nbanks = 2, labelsize = 12)
+    Legend(fig[1, :], [PolyElement(polycolor = colors[i]) for i in 1:4], ["tnbb branching", "tnbb contraction", "tn", "ip"], orientation = :horizontal, nbanks = 1, labelsize = 12)
+
+    save("../figs/ksg_n70_sc31_kernelized_runtime.pdf", fig)
+
+    fig
+end
+
+# unkernelized ksg 70x70, sc = 31
+begin
+    df_tnbb_contract = CSV.read("../data/runtime/ksg_n70_sc31_contract.csv", DataFrame)
+    df_ds_contract = CSV.read("../data/runtime/ksg_n70_sc31_ds_contract.csv", DataFrame)
+
+    df_ds_branch = CSV.read("../data/runtime/ksg_n70_sc31_ds_branch.csv", DataFrame)
+    df_tnbb_branch = CSV.read("../data/runtime/ksg_n70_sc31_tnbb_branch.csv", DataFrame)
+    # df_scip = CSV.read("../data/runtime/ksg_n70_kernelized_scip.csv", DataFrame)
+
+    ns = df_tnbb_contract.name
+    tnbb_contract_time = [df_tnbb_contract[df_tnbb_contract.name .== name, :tnbb_runtime][1] for name in ns]
+    ds_contract_time = [df_ds_contract[df_ds_contract.name .== name, :runtime][1] for name in ns]
+
+    tnbb_branch_time = [df_tnbb_branch[df_tnbb_branch.name .== name, :runtime][1] for name in ns]
+    ds_branch_time = [df_ds_branch[df_ds_branch.name .== name, :runtime][1] for name in ns]
+
+    fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 400), fontsize = 20)
+
+    ax = Axis(fig[2, 1], xlabel = L"\text{log}_2(\text{tc}_{tnbb})", ylabel = L"\text{Runtime (s)}", xticks = (1:6, [latexstring(round(x, digits=1)) for x in sort(tnbb_tc)]))
+
+    # yticks = (0:2:12, [L"2^0", L"2^2", L"2^4", L"2^6", L"2^8", L"2^{10}", L"2^{12}"])
+
+    heights = []
+    for i in 1:length(ns)
+        tnbb_total_i = tnbb_branch_time[i] + tnbb_contract_time[i]
+        ds_total_i = ds_branch_time[i] + ds_contract_time[i]
+
+        push!(heights, log2(tnbb_total_i) * tnbb_branch_time[i] / tnbb_total_i)
+        push!(heights, log2(tnbb_total_i) * tnbb_contract_time[i] / tnbb_total_i)
+        push!(heights, log2(ds_total_i))
+    end
+
+    cat = [(i - 1) % 3 + 1 for i in 1:18]
+    x_group = vcat([[i for _ in 1:3] for i in 1:6]...)
+    dodge_group = vcat([[1, 1, 2] for i in 1:6]...)
+    stack_group = vcat([[1, 2, 1] for i in 1:6]...)
+
+    barplot!(ax, x_group, heights,
+       dodge = dodge_group,
+       stack = stack_group,
+       color = colors[cat],)
+
+    # ylims!(ax, (0, 50))
+
+    Legend(fig[1, :], [PolyElement(polycolor = colors[i]) for i in 1:3], ["tnbb branching", "tnbb contraction", "tn"], orientation = :horizontal, nbanks = 1, labelsize = 12)
 
     save("../figs/ksg_n70_sc31_runtime.pdf", fig)
 
