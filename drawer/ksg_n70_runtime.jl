@@ -74,6 +74,8 @@ begin
        stack = stack_group,
        color = colors[cat],)
 
+    ylims!(ax, (0, 13))
+
     Legend(fig[1, :], [PolyElement(polycolor = colors[i]) for i in 1:5], ["tnbb branching", "tnbb contraction", "ds slicing", "ds contraction", "scip"], orientation = :horizontal, nbanks = 2, labelsize = 12)
 
     save("../figs/ksg_n70_sc31_runtime.pdf", fig)
