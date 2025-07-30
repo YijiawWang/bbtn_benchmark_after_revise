@@ -7,30 +7,28 @@ using BenchmarkTools
 
 include("run_slice.jl")
 
-n = 70
-i = 7
-
-dir = @__DIR__
-
 function solve_net(net)
     solve(net, SizeMax(), T = Float32, usecuda = true)
     return nothing
 end
 
-function main()
-    graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/kernelized_tn_ksg_n$(n).dot"))
-    g = graphs["$i"]
+function estimate_slice_runtime(n, ids)
 
-    for ds in [1]
-        target = 32 - ds
-        code = readjson(joinpath(dir, "../graphs/random_ksg/order/slice_$(target)_tn_ksg_n$(n)_s$(i)_treesa.json"))
+    dir = @__DIR__
+    graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/ksg_n$(n).dot"))
+    df = joinpath(dir, "../data/runtime/ksg_n$(n)_slice31_ds_contract.csv")
+    CSV.write(df, DataFrame(name = String[], runtime = Float64[]))
+
+    for i in ids
+        g = graphs["$i"]
+        code = readjson(joinpath(dir, "../graphs/random_ksg/order/slice31_original_ksg_n$(n)_s$(i)_treesa.json"))
         net = GenericTensorNetwork(IndependentSet(g), code, Dict{Int, Int}())
-        # t = @belapsed solve_net($net)
-        # @show i, ds, t
-
-        t = @elapsed solve_net(net)
-        @show i, ds, t
+        t = @belapsed solve_net($net)
+        @show i, t, length(code.slicing)
+        CSV.write(df, DataFrame(name = i, runtime = t * 2^length(code.slicing)), append = true)
     end
+
+    return nothing
 end
 
-main()
+estimate_slice_runtime(70, [2, 3, 4, 5, 7, 9, 10])

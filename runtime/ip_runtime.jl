@@ -16,14 +16,29 @@ function ip_mis(g::AbstractGraph; optimizer=SCIP.Optimizer, verbose::Bool=false)
     return Int(round(sum(value.(x))))
 end
 
-function scip_runtime(n)
+function scip_kernelized_runtime(n)
     dir = @__DIR__
-    df = joinpath(dir, "../data/runtime/ksg_n70_scip.csv") # try the kernelized graphs first
+    df = joinpath(dir, "../data/runtime/ksg_n70_kernelized_scip.csv") # try the kernelized graphs first
     CSV.write(df, DataFrame(name = String[], runtime = Float64[]))
 
     graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/kernelized_tn_ksg_n$(n).dot"))
 
     for i in 1:10
+        g = graphs["$i"]
+        t = @elapsed ip_mis(g, verbose = true)
+        @show i, t
+        CSV.write(df, DataFrame(name = i, runtime = t), append = true)
+    end
+end
+
+function scip_runtime(n)
+    dir = @__DIR__
+    df = joinpath(dir, "../data/runtime/ksg_n70_scip.csv") # unkernelized graphs
+    CSV.write(df, DataFrame(name = String[], runtime = Float64[]))
+
+    graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/ksg_n$(n).dot"))
+
+    for i in [2, 3, 4, 5, 7, 9, 10]
         g = graphs["$i"]
         t = @elapsed ip_mis(g, verbose = true)
         @show i, t
