@@ -99,7 +99,7 @@ begin
     tnbb_branch_time = [df_tnbb_branch[df_tnbb_branch.name .== name, :runtime][1] for name in ns]
     ds_branch_time = [df_ds_branch[df_ds_branch.name .== name, :runtime][1] for name in ns]
     
-    scip_time = [df_scip.runtime..., NaN, NaN, NaN]
+    scip_time = [df_scip.runtime..., NaN]
 
     fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 400), fontsize = 20)
 
@@ -108,7 +108,7 @@ begin
     # yticks = (0:2:12, [L"2^0", L"2^2", L"2^4", L"2^6", L"2^8", L"2^{10}", L"2^{12}"])
 
     heights = []
-    for i in 1:length(ns)
+    for i in sortperm(tnbb_tc)
         tnbb_total_i = tnbb_branch_time[i] + tnbb_contract_time[i]
         ds_total_i = ds_branch_time[i] + ds_contract_time[i]
 
