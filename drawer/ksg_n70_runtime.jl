@@ -49,7 +49,8 @@ begin
 
     fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 400), fontsize = 20)
     # ax = Axis(fig[1, 1], xlabel = L"\text{log}_2(\text{sc})", ylabel = L"\text{Runtime (s)}", xticks = (1:5, [L"32", L"33", L"34", L"35", L"36"]))
-    ax = Axis(fig[2, 1], xlabel = L"\text{log}_2(\text{tc}_{tnbb})", ylabel = L"\text{Runtime (s)}", xticks = (1:6, [latexstring(round(x, digits=1)) for x in sort(tnbb_tc)]), yticks = (0:2:12, [L"2^0", L"2^2", L"2^4", L"2^6", L"2^8", L"2^{10}", L"2^{12}"]))
+    ax = Axis(fig[2, 1], xlabel = L"\text{log}_2(\text{tc}_{tnbb})", ylabel = L"\text{log}_2(\text{T}) \text{ (s)}", xticks = (1:6, [string(round(x, digits=1)) for x in sort(tnbb_tc)]), yticks = (0:2:12, [string(i) for i in 0:2:12]))
+    # yticks = (0:2:12, [L"2^0", L"2^2", L"2^4", L"2^6", L"2^8", L"2^{10}", L"2^{12}"])
 
     heights = []
     for i in sortperm(tnbb_tc)
@@ -89,7 +90,7 @@ begin
 
     df_ds_branch = CSV.read("../data/runtime/ksg_n70_sc31_ds_branch.csv", DataFrame)
     df_tnbb_branch = CSV.read("../data/runtime/ksg_n70_sc31_tnbb_branch.csv", DataFrame)
-    # df_scip = CSV.read("../data/runtime/ksg_n70_kernelized_scip.csv", DataFrame)
+    df_scip = CSV.read("../data/runtime/ksg_n70_scip.csv", DataFrame)
 
     ns = df_tnbb_contract.name
     tnbb_contract_time = [df_tnbb_contract[df_tnbb_contract.name .== name, :tnbb_runtime][1] for name in ns]
@@ -97,10 +98,12 @@ begin
 
     tnbb_branch_time = [df_tnbb_branch[df_tnbb_branch.name .== name, :runtime][1] for name in ns]
     ds_branch_time = [df_ds_branch[df_ds_branch.name .== name, :runtime][1] for name in ns]
+    
+    scip_time = [df_scip.runtime..., NaN, NaN, NaN, NaN]
 
     fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 400), fontsize = 20)
 
-    ax = Axis(fig[2, 1], xlabel = L"\text{log}_2(\text{tc}_{tnbb})", ylabel = L"\text{Runtime (s)}", xticks = (1:6, [latexstring(round(x, digits=1)) for x in sort(tnbb_tc)]))
+    ax = Axis(fig[2, 1], xlabel = L"\text{log}_2(\text{tc}_{tnbb})", ylabel = L"\text{log}_2(\text{T}) \text{ (s)}", xticks = (1:6, [string(round(x, digits=1)) for x in sort(tnbb_tc)]), yticks = (0:5:40, [string(i) for i in 0:5:40]))
 
     # yticks = (0:2:12, [L"2^0", L"2^2", L"2^4", L"2^6", L"2^8", L"2^{10}", L"2^{12}"])
 
@@ -112,21 +115,22 @@ begin
         push!(heights, log2(tnbb_total_i) * tnbb_branch_time[i] / tnbb_total_i)
         push!(heights, log2(tnbb_total_i) * tnbb_contract_time[i] / tnbb_total_i)
         push!(heights, log2(ds_total_i))
+        push!(heights, log2(scip_time[i]))
     end
 
-    cat = [(i - 1) % 3 + 1 for i in 1:18]
-    x_group = vcat([[i for _ in 1:3] for i in 1:6]...)
-    dodge_group = vcat([[1, 1, 2] for i in 1:6]...)
-    stack_group = vcat([[1, 2, 1] for i in 1:6]...)
+    cat = [(i - 1) % 4 + 1 for i in 1:24]
+    x_group = vcat([[i for _ in 1:4] for i in 1:6]...)
+    dodge_group = vcat([[1, 1, 2, 3] for i in 1:6]...)
+    stack_group = vcat([[1, 2, 1, 1] for i in 1:6]...)
 
     barplot!(ax, x_group, heights,
        dodge = dodge_group,
        stack = stack_group,
        color = colors[cat],)
 
-    # ylims!(ax, (0, 50))
+    ylims!(ax, (0, 35))
 
-    Legend(fig[1, :], [PolyElement(polycolor = colors[i]) for i in 1:3], ["tnbb branching", "tnbb contraction", "tn"], orientation = :horizontal, nbanks = 1, labelsize = 12)
+    Legend(fig[1, :], [PolyElement(polycolor = colors[i]) for i in 1:4], ["tnbb branching", "tnbb contraction", "tn", "ip"], orientation = :horizontal, nbanks = 1, labelsize = 12)
 
     save("../figs/ksg_n70_sc31_runtime.pdf", fig)
 
@@ -136,7 +140,7 @@ end
 # different targets
 begin
     fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 380), fontsize = 20)
-    ax = Axis(fig[2, 1], xlabel = L"\text{log}_2(\text{sc})", ylabel = L"\text{Runtime (s)}", xticks = (1:5, [L"31", L"30", L"29", L"28", L"27"]), yticks = (0:2:12, [L"2^0", L"2^2", L"2^4", L"2^6", L"2^8", L"2^{10}", L"2^{12}"]))
+    ax = Axis(fig[2, 1], xlabel = L"\text{log}_2(\text{sc})", ylabel = L"\text{log}_2(\text{T}) \text{ (s)}", xticks = (1:5, [string(i) for i in 31:-1:27]), yticks = (0:2:12, [string(i) for i in 0:2:12]))
 
     df_tnbb = CSV.read("../data/runtime/ksg_n70_dt_tnbb_branch.csv", DataFrame)
     df_tnbb_contract = CSV.read("../data/runtime/ksg_n70_dt_tnbb_contract.csv", DataFrame)

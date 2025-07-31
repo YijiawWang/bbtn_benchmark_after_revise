@@ -29,3 +29,5 @@ JuliaLocalPreferences.toml
 
 .DS_Store
 bb/edges/
+
+benchmark_kernelize/
