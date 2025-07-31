@@ -99,7 +99,7 @@ begin
     tnbb_branch_time = [df_tnbb_branch[df_tnbb_branch.name .== name, :runtime][1] for name in ns]
     ds_branch_time = [df_ds_branch[df_ds_branch.name .== name, :runtime][1] for name in ns]
     
-    scip_time = [df_scip.runtime..., NaN, NaN, NaN, NaN]
+    scip_time = [df_scip.runtime..., NaN, NaN, NaN]
 
     fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 400), fontsize = 20)
 
