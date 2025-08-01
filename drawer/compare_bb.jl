@@ -45,7 +45,7 @@ begin
     xlims!(ax1_2, n_start, n_end)
     ylims!(ax1_2, 0, 30)
 
-    Legend(fig[1, :], [sc_bb, sc_tn, sc_ktn], ["Branch&Bound", "Tropical TN", "Kernelize + TN"], orientation = :horizontal, nbanks = 1, labelsize = 15)
+    Legend(fig[1, :], [sc_bb, sc_tn, sc_ktn], ["Branch&Bound", "Tropical TN", "Kernelize + TN"], orientation = :horizontal, nbanks = 1, labelsize = 12)
 
     save("../figs/compare_bb.pdf", fig)
 end
