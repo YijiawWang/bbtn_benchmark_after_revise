@@ -13,8 +13,8 @@ begin
     n_ktn = [50:10:100...]
 
     df_bbs = [CSV.read("../data/count_vc/ksg_n$(n)_count_vc.csv", DataFrame) for n in n_bb]
-    df_tns = [CSV.read("../data/complexity/original_ksg_n$(n).csv", DataFrame) for n in n_tn]
-    df_ktns = [CSV.read("../data/complexity/treesa_tn_ksg_n$(n).csv", DataFrame) for n in n_ktn]
+    df_tns = [CSV.read("../data/complexity/random_ksg/original_ksg_n$(n).csv", DataFrame) for n in n_tn]
+    df_ktns = [CSV.read("../data/complexity/random_ksg/treesa_tn_ksg_n$(n).csv", DataFrame) for n in n_ktn]
 
     count_bbs = log2.([maximum(df_bbs[i].count_lp) for i in 1:length(n_bb)])
     tc_tns = [geometric_mean(df_tns[i].tc) for i in 1:length(n_tn)]

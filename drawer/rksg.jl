@@ -18,8 +18,8 @@ begin
     n_ktn = [40:10:100...]
 
     df_bbs = [CSV.read("../data/count_vc/ksg_n$(n)_count_vc.csv", DataFrame) for n in n_bb]
-    df_tns = [CSV.read("../data/complexity/original_ksg_n$(n).csv", DataFrame) for n in n_tn]
-    df_ktns = [CSV.read("../data/complexity/treesa_tn_ksg_n$(n).csv", DataFrame) for n in n_ktn]
+    df_tns = [CSV.read("../data/complexity/random_ksg/original_ksg_n$(n).csv", DataFrame) for n in n_tn]
+    df_ktns = [CSV.read("../data/complexity/random_ksg/treesa_tn_ksg_n$(n).csv", DataFrame) for n in n_ktn]
 
     count_bbs = log2.([maximum(df_bbs[i].count_lp) for i in 1:length(n_bb)])
     sc_tns = [maximum(df_tns[i].tc) for i in 1:length(n_tn)]
@@ -46,9 +46,9 @@ begin
 
 
     ## ax2, compare dynamic slicing and tnbb on different graphs
-    df_tn = [CSV.read("../data/complexity/treesa_tn_ksg_n$(n).csv", DataFrame) for n in 70:10:100]
-    df_ds = [CSV.read("../data/complexity/slice32_tn_ksg_n$(n).csv", DataFrame) for n in 70:10:100]
-    df_tnbb = [CSV.read("../data/complexity/tnbb_ksg_n$(n).csv", DataFrame) for n in 70:10:90]
+    df_tn = [CSV.read("../data/complexity/random_ksg/treesa_tn_ksg_n$(n).csv", DataFrame) for n in 70:10:100]
+    df_ds = [CSV.read("../data/complexity/random_ksg/slice32_tn_ksg_n$(n).csv", DataFrame) for n in 70:10:100]
+    df_tnbb = [CSV.read("../data/complexity/random_ksg/tnbb_ksg_n$(n).csv", DataFrame) for n in 70:10:90]
 
     scs = []
     tcs_tn = []
@@ -56,8 +56,8 @@ begin
     tcs_tnbb = []
 
     for n in 70:10:100
-        df_tnbb = CSV.read("../data/complexity/tnbb_ksg_n$(n).csv", DataFrame)
-        df_ds = CSV.read("../data/complexity/slice32_tn_ksg_n$(n).csv", DataFrame)
+        df_tnbb = CSV.read("../data/complexity/random_ksg/tnbb_ksg_n$(n).csv", DataFrame)
+        df_ds = CSV.read("../data/complexity/random_ksg/slice32_tn_ksg_n$(n).csv", DataFrame)
 
         for name_i in df_tnbb.name
             tc_tnbb = df_tnbb[df_tnbb.name .== name_i, :total_tc][1]
@@ -87,8 +87,8 @@ begin
 
 
     ## ax3, compare ds and tnbb on the same graph with different sc_target
-    df_ds = CSV.read("../data/complexity/treesa_different_target_n80.csv", DataFrame)
-    df_tnbb = CSV.read("../data/complexity/tnbb_different_target_n80.csv", DataFrame)
+    df_ds = CSV.read("../data/complexity/random_ksg/treesa_different_target_n80.csv", DataFrame)
+    df_tnbb = CSV.read("../data/complexity/random_ksg/tnbb_different_target_n80.csv", DataFrame)
 
     delta_sc = collect(1:14)
 
