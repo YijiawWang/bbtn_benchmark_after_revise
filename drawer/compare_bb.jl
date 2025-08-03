@@ -10,7 +10,11 @@ begin
 
     n_bb = [30, 35, 40, 45, 50]
     n_bb_randn = [30, 35, 40, 45, 50, 55, 60, 65, 70]
-    n_tn = [30:5:70...]
+    n_tn = [30:5:50...]
+
+    n_tn_large = [55:5:70...]
+    df_tns_large = [CSV.read("../data/complexity/random_ksg/original_ksg_n$(n).csv", DataFrame) for n in n_tn_large]
+    tc_tns_large = [geometric_mean(df_tns_large[i].tc) for i in 1:length(n_tn_large)]
 
     df_bbs = [CSV.read("../data/count_vc/ksg_n$(n)_count_vc.csv", DataFrame) for n in n_bb]
     df_bbs_randn = [CSV.read("../data/count_vc/ksg_n$(n)_count_add_xiao2021.csv", DataFrame) for n in n_bb_randn]
@@ -33,6 +37,8 @@ begin
     sc_bb = scatter!(ax1_2, n_bb, count_bbs, markersize = markersize, marker = markerstyle[1], color = colors[1], strokewidth = strokewidth, strokecolor = :black, label = "B&B (unit weight)")
     sc_bb_randn = scatter!(ax1_2, n_bb_randn, count_bbs_randn, markersize = markersize, marker = markerstyle[3], color = colors[3], strokewidth = strokewidth, strokecolor = :black, label = "B&B (Gaussian weight)")
     sc_tn = scatter!(ax1, n_tn, tc_tns, markersize = markersize, marker = markerstyle[2], color = colors[2], strokewidth = strokewidth, strokecolor = :black, label = "Tropical TN")
+
+    scatter!(ax1, n_tn_large, tc_tns_large, markersize = markersize, marker = markerstyle[2], color = :white, strokewidth = 2, strokecolor = colors[2])
 
     xs = range(25, 85, length = 100)
 
