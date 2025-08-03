@@ -2,8 +2,8 @@ include("settings.jl")
 
 begin
     fig = Figure(size = (500, 370), fontsize = 20)
-    ax1 = Axis(fig[2, 1], xlabel = L"N", ylabel = L"\text{log}_2(\text{tc})", yticklabelcolor = :blue)
-    ax1_2 = Axis(fig[2, 1], yticklabelcolor = :red, yaxisposition = :right, ylabel = L"\text{log}_2(N_{bb})", ygridvisible = false)
+    ax1 = Axis(fig[2, 1], xlabel = L"N", ylabel = L"\text{log}_2(\text{tc})")
+    ax1_2 = Axis(fig[2, 1], yaxisposition = :right, ylabel = L"\text{log}_2(N_{bb})", ygridvisible = false)
 
     hidespines!(ax1_2)
     hidexdecorations!(ax1_2)
@@ -59,7 +59,7 @@ begin
     ylims!(ax1_2, 0, 13.661416871102356 * 1.3)
 
     # Legend(fig[1, :], [sc_bb, sc_bb_randn, sc_tn], ["Branch&Bound", "Branch&Bound (randn)", "Tropical TN"], orientation = :horizontal, nbanks = 1, labelsize = 12)
-    Legend(fig[1, :], [sc_bb, sc_bb_randn, sc_tn], ["B&B (unit weight)", "B&B (Gaussian weight)", "Tropical TN"], position = :lt, labelsize = 12, orientation = :horizontal, nbanks = 1)
+    Legend(fig[1, :], [sc_tn, sc_bb, sc_bb_randn], ["Tropical TN", "B&B (unit weight)", "B&B (Gaussian weight)"], position = :lt, labelsize = 12, orientation = :horizontal, nbanks = 1)
 
     text!(ax1, 30, t, text = "~1 hour", color = :black, fontsize = 16)
 
