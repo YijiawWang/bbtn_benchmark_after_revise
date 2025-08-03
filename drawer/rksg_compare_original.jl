@@ -84,6 +84,64 @@ begin
     text!(ax2, 0, 1, text = "(b)", align = (:left, :top), fontsize = 25, font = :bold, space = :relative, offset = (4, -2))
 
     save("../figs/random_ksg_compare_original.pdf", fig)
+
+    fig
 end
 
-fig
+begin
+    fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 700), fontsize = 20)
+
+    ax1 = Axis(fig[3, 1], xlabel = L"N", ylabel = L"\text{log}_2(\text{tc})")
+    ax2 = Axis(fig[2, 1], xlabel = L"\text{sc}", ylabel = L"\text{log}_2(\text{tc})")
+
+    text!(ax2, 0, 1, text = "(a)", align = (:left, :top), fontsize = 25, font = :bold, space = :relative, offset = (4, -2))
+
+    ## ax1, compare tropical tensor network and pure branch&bound
+    n_tn = [50:10:100...]
+    n_ds = [50:10:100...]
+    n_tnbb = [50:10:100...]
+
+    df_tn = [CSV.read("../data/complexity/random_ksg/original_ksg_n$(n).csv", DataFrame) for n in n_tn]
+    df_ds = [CSV.read("../data/complexity/random_ksg/slice32_rksg_n$(n).csv", DataFrame) for n in n_ds]
+    df_tnbb = [CSV.read("../data/complexity/random_ksg/tnbb_ksg_n$(n).csv", DataFrame) for n in n_tnbb]
+    
+    tc_tn = [geometric_mean(df_tn[i].tc) for i in 1:length(n_tn)]
+    tc_ds = [geometric_mean(df_ds[i].sliced_tc) for i in 1:length(n_ds)]
+    tc_tnbb = [geometric_mean(df_tnbb[i].total_tc) for i in 1:length(n_tnbb)]
+
+    @. model_tn(x, p) = p[1] * x^p[2] + p[3]
+    fit_tn = curve_fit(model_tn, n_tn, tc_tn, [1.0, 1.0, 1.0])
+    @. model_ds(x, p) = p[1] * x^p[2] + p[3]
+    fit_ds = curve_fit(model_ds, n_ds, tc_ds, [1.0, 1.0, 1.0])
+    @. model_tnbb(x, p) = p[1] * x^p[2] + p[3]
+    fit_tnbb = curve_fit(model_tnbb, n_tnbb, tc_tnbb, [1.0, 1.0, 1.0])
+
+
+    xs = range(45, 105, length = 100)
+
+    lines!(ax1, xs, model_tn(xs, fit_tn.param), color = colors[2], linestyle = :dash)
+    lines!(ax1, xs, model_ds(xs, fit_ds.param), color = colors[4], linestyle = :dash)
+    lines!(ax1, xs, model_tnbb(xs, fit_tnbb.param), color = colors[3], linestyle = :dash)
+
+    sc_tn = scatter!(ax1, n_tn, tc_tn, markersize = t, marker = markerstyle[2], color = :white, strokewidth = 2, strokecolor = colors[2], label = "Tropical TN")
+    sc_ds = scatter!(ax1, n_ds, tc_ds, markersize = t, marker = markerstyle[4], color = colors[4], strokewidth = strokewidth, strokecolor = :black, label = "Dynamic Slicing")
+    sc_tnbb = scatter!(ax1, n_tnbb, tc_tnbb, markersize = t, marker = markerstyle[3], color = colors[3], strokewidth = strokewidth, strokecolor = :black, label = "TNBB")
+
+    xlims!(ax1, 45, 105)
+    ylims!(ax1, 20, 100)
+
+    Legend(fig[1, :], [sc_tn, sc_ds, sc_tnbb], ["Tropical TN", "Dynamic Slicing", "TNBB"], orientation = :horizontal, nbanks = 1, labelsize = 12)
+    text!(ax1, 0, 1, text = "(b)", align = (:left, :top), fontsize = 25, font = :bold, space = :relative, offset = (4, -2))
+
+    
+    # hlines!(ax1, [tc_min], color = :black, linestyle = :dash)
+    hlines!(ax1, [tc_hour], color = :black, linestyle = hstyle, linewidth = hwidth)
+    text!(ax1, 46, tc_hour, text = L" \textbf{1 hour}", color = :black, fontsize = 16)
+    hlines!(ax1, [tc_month], color = :black, linestyle = hstyle, linewidth = hwidth)
+    text!(ax1, 46, tc_month, text = L" \textbf{1 month}", color = :black, fontsize = 16)
+    hlines!(ax1, [tc_100_years], color = :black, linestyle = hstyle, linewidth = hwidth)
+    text!(ax1, 46, tc_100_years, text = L" \textbf{100 years}", color = :black, fontsize = 16)
+
+
+    fig
+end

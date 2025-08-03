@@ -51,7 +51,7 @@ begin
 
     t = 52.72703455212527
 
-    hlines!(ax1, [t], color = :black, linestyle = :dash)
+    hlines!(ax1, [t], color = :black, linestyle = hstyle, linewidth = hwidth)
 
     xlims!(ax1, n_start, n_end)
     ylims!(ax1, 0, t * 1.3)
@@ -61,7 +61,7 @@ begin
     # Legend(fig[1, :], [sc_bb, sc_bb_randn, sc_tn], ["Branch&Bound", "Branch&Bound (randn)", "Tropical TN"], orientation = :horizontal, nbanks = 1, labelsize = 12)
     Legend(fig[1, :], [sc_tn, sc_bb, sc_bb_randn], ["Tropical TN", "B&B (unit weight)", "B&B (Gaussian weight)"], position = :lt, labelsize = 12, orientation = :horizontal, nbanks = 1)
 
-    text!(ax1, 30, t, text = "~1 hour", color = :black, fontsize = 16)
+    text!(ax1, 30, t, text = L"\textbf{1 hour}", color = :black, fontsize = 16)
 
     save("../figs/compare_bb.pdf", fig)
     fig
