@@ -18,20 +18,25 @@ end
 function count_all(n)
     csv_file = joinpath(dirname(@__DIR__), "data/count_vc", "ksg_n$(n)_count_vc.csv")
     @info "Writing to $csv_file"
-    CSV.write(csv_file, DataFrame(id = Int[], count_pack = Int[], count_lp = Int[]))
-    for i in 1:10
+    # CSV.write(csv_file, DataFrame(id = Int[], count = Int[], time = Float64[]))
+    counts = zeros(Int, 10)
+    times = zeros(Float64, 10)
+    Threads.@threads for i in 1:10
         # count_pack = count_vc(n, i, 3)
         # @info "ksg_n$(n)_$(i), count_pack = $count_pack"
+        start_time = time()
         count_lp = count_vc(n, i, 4)
-        @info "ksg_n$(n)_$(i), count_lp = $count_lp"
-        CSV.write(csv_file, DataFrame(id = i, count_pack = 0, count_lp = count_lp), append = true)
+        times[i] = time() - start_time
+        @info "ksg_n$(n)_$(i), count_lp = $count_lp, time = $(times[i])"
+        counts[i] = count_lp
     end
+    CSV.write(csv_file, DataFrame(id = 1:10, count = counts, time = times))
     @info "Done"
 end
 
 
 function main()
-    for n in [35, 45]
+    for n in [30, 35, 40, 45, 50]
         count_all(n)
     end
 end
