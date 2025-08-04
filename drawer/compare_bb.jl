@@ -1,7 +1,7 @@
 include("settings.jl")
 
 begin
-    fig = Figure(size = (500, 400), fontsize = 20)
+    fig = Figure(size = (500, 350), fontsize = 20)
     ax1 = Axis(fig[2, 1], xlabel = L"N", ylabel = L"t.c. \text{ (Flops)}", xticks = (30:10:70, [L"30", L"40", L"50", L"60", L"70"]), yticks = (0:15:60, [L"2^0", L"2^{15}", L"2^{30}", L"2^{45}", L"2^{60}"]))
     ax1_2 = Axis(fig[2, 1], yaxisposition = :right, ylabel = L"N_{BB}", ygridvisible = false, yticks = ([0, 5, 10, 15], [L"2^0", L"2^5", L"2^{10}", L"2^{15}"]))
 
