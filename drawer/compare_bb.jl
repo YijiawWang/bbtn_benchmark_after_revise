@@ -61,7 +61,7 @@ begin
     # Legend(fig[1, :], [sc_bb, sc_bb_randn, sc_tn], ["Branch&Bound", "Branch&Bound (randn)", "Tropical TN"], orientation = :horizontal, nbanks = 1, labelsize = 12)
     Legend(fig[1, :], [sc_tn, sc_bb, sc_bb_randn], ["TTN", "B&B (unit weight)", "B&B (Gaussian weight)"], position = :lt, labelsize = 15, orientation = :horizontal, nbanks = 1)
 
-    text!(ax1, 30, t, text = L"$\sim 1$ hour", color = :black, fontsize = 18)
+    text!(ax1, n_start + 1, t, text = L"$\sim 1$ hour", color = :black, fontsize = 18)
 
     save("../figs/compare_bb.pdf", fig)
     fig

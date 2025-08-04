@@ -37,7 +37,7 @@ begin
 
     Legend(fig[1, :], [PolyElement(polycolor = colors[i]) for i in 1:3], ["BBTN", "TTN & DS", "SCIP"], orientation = :horizontal, nbanks = 1, labelsize = 15)
 
-    xlims!(ax, 0.3, 4.5)
+    xlims!(ax, 0.3, 4.7)
     hlines!(ax, [log10(max_time)], color = :black, linestyle = :dot)
     text!(ax, 0.4, 5, text = L"Time limit ($72$h)", fontsize = 18)
 

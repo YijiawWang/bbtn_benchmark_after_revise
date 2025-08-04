@@ -92,9 +92,9 @@ begin
     fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 700), fontsize = 20)
 
     ax1 = Axis(fig[3, 1], xlabel = L"N", ylabel = L"t.c. \text{ (Flops)}", xticks = (50:10:100, [L"50", L"60", L"70", L"80", L"90", L"100"]), yticks = (20:20:100, [L"2^{20}", L"2^{40}", L"2^{60}", L"2^{80}", L"2^{100}"]))
-    ax2 = Axis(fig[2, 1], xlabel = L"s.c.", ylabel = L"t.c. \text{ (Flops)}", xreversed = true, xticks = ([33, 31, 29, 27, 25, 23, 21, 19, 17], [L"33", L"31", L"29", L"27", L"25", L"23", L"21", L"19", L"17"]), yticks = (40:10:80, [L"2^{40}", L"2^{50}", L"2^{60}", L"2^{70}", L"2^{80}"]))
+    ax2 = Axis(fig[2, 1], xlabel = L"s.c.", ylabel = L"t.c. \text{ (Flops)}", xreversed = true, xticks = ([32, 30, 28, 26, 24, 22, 20, 18], [L"32", L"30", L"28", L"26", L"24", L"22", L"20", L"18"]), yticks = (40:10:80, [L"2^{40}", L"2^{50}", L"2^{60}", L"2^{70}", L"2^{80}"]))
 
-    text!(ax2, 0, 1, text = L"\textbf{(a)}", align = (:left, :top), fontsize = 25, space = :relative, offset = (4, -2), font = :bold)
+    text!(ax2, 0, 1, text = L"\textbf{(a)}", align = (:left, :top), fontsize = 25, space = :relative, offset = (4, -4), font = :bold)
 
     df_tnbb_vsc = CSV.read("../data/complexity/random_ksg/tnbb_different_target_freoptimize_n80.csv", DataFrame)
     df_ds_vsc = CSV.read("../data/complexity/random_ksg/treesa_different_target_n80.csv", DataFrame)
@@ -110,10 +110,10 @@ begin
 
     scatter!(ax2, sc_ds, tc_ds, markersize = t, marker = markerstyle[4], color = colors[4], strokewidth = strokewidth, strokecolor = :black)
     scatter!(ax2, sc_tnbb, tc_tnbb, markersize = t, marker = markerstyle[3], color = colors[3], strokewidth = strokewidth, strokecolor = :black)
-    scatter!(ax2, orignal_sc, orignal_tc, markersize = t, marker = markerstyle[2], color = :white, strokewidth = 2, strokecolor = colors[2])
+    # scatter!(ax2, orignal_sc, orignal_tc, markersize = t, marker = markerstyle[2], color = :white, strokewidth = 2, strokecolor = colors[2])
     hlines!(ax2, [orignal_tc], color = :blue, linestyle = :dash)
     
-    xlims!(ax2, 34, 18)
+    xlims!(ax2, 33, 19)
     ylims!(ax2, 39, 81)
 
     ## ax1, compare tropical tensor network and pure branch&bound
@@ -151,7 +151,7 @@ begin
     ylims!(ax1, 20, 100)
 
     Legend(fig[1, :], [sc_tn, sc_ds, sc_tnbb], ["TTN", "TTN & DS", "BBTN"], orientation = :horizontal, nbanks = 1, labelsize = 18)
-    text!(ax1, 0, 1, text = L"\textbf{(b)}", align = (:left, :top), fontsize = 25, space = :relative, offset = (4, -2), font = :bold)
+    text!(ax1, 0, 1, text = L"\textbf{(b)}", align = (:left, :top), fontsize = 25, space = :relative, offset = (4, -4), font = :bold)
 
     
     # hlines!(ax1, [tc_min], color = :black, linestyle = :dash)
