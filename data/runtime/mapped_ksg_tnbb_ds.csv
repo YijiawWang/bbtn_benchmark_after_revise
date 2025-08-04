@@ -1,4 +1,4 @@
-name,tnbb_branching_time,tnbb_contract_time,dynamic_slicing_time
-factorization,6343.779844045639,12764.470798795006,45656.63597
-arbitrary mis,806,394.35,926196
-qubo,5453,10954.023883396005,116427.32395
+name,tnbb_branching_time,tnbb_contract_time,dynamic_slicing_time,scip_time
+factorization,6343.779844045639,12764.470798795006,45656.63597,180000
+mis,806,394.35,926196,Inf
+qubo,5453,10954.023883396005,116427.32395,Inf

@@ -91,10 +91,10 @@ end
 begin
     fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 700), fontsize = 20)
 
-    ax1 = Axis(fig[3, 1], xlabel = L"N", ylabel = L"\text{log}_2(\text{tc})")
-    ax2 = Axis(fig[2, 1], xlabel = L"\text{sc}", ylabel = L"\text{log}_2(\text{tc})", xreversed = true, xticks = [33, 31, 29, 27, 25, 23, 21, 19, 17])
+    ax1 = Axis(fig[3, 1], xlabel = L"N", ylabel = L"t.c. \text{ (Flops)}", xticks = (50:10:100, [L"50", L"60", L"70", L"80", L"90", L"100"]), yticks = (20:20:100, [L"2^{20}", L"2^{40}", L"2^{60}", L"2^{80}", L"2^{100}"]))
+    ax2 = Axis(fig[2, 1], xlabel = L"s.c.", ylabel = L"t.c. \text{ (Flops)}", xreversed = true, xticks = ([33, 31, 29, 27, 25, 23, 21, 19, 17], [L"33", L"31", L"29", L"27", L"25", L"23", L"21", L"19", L"17"]), yticks = (40:10:80, [L"2^{40}", L"2^{50}", L"2^{60}", L"2^{70}", L"2^{80}"]))
 
-    text!(ax2, 0, 1, text = "(a)", align = (:left, :top), fontsize = 25, font = :bold, space = :relative, offset = (4, -2))
+    text!(ax2, 0, 1, text = L"\textbf{(a)}", align = (:left, :top), fontsize = 25, space = :relative, offset = (4, -2), font = :bold)
 
     df_tnbb_vsc = CSV.read("../data/complexity/random_ksg/tnbb_different_target_freoptimize_n80.csv", DataFrame)
     df_ds_vsc = CSV.read("../data/complexity/random_ksg/treesa_different_target_n80.csv", DataFrame)
@@ -150,17 +150,17 @@ begin
     xlims!(ax1, 45, 105)
     ylims!(ax1, 20, 100)
 
-    Legend(fig[1, :], [sc_tn, sc_ds, sc_tnbb], ["Tropical TN", "Dynamic Slicing", "BBTN"], orientation = :horizontal, nbanks = 1, labelsize = 12)
-    text!(ax1, 0, 1, text = "(b)", align = (:left, :top), fontsize = 25, font = :bold, space = :relative, offset = (4, -2))
+    Legend(fig[1, :], [sc_tn, sc_ds, sc_tnbb], ["TTN", "TTN & DS", "BBTN"], orientation = :horizontal, nbanks = 1, labelsize = 18)
+    text!(ax1, 0, 1, text = L"\textbf{(b)}", align = (:left, :top), fontsize = 25, space = :relative, offset = (4, -2), font = :bold)
 
     
     # hlines!(ax1, [tc_min], color = :black, linestyle = :dash)
     hlines!(ax1, [tc_hour], color = :black, linestyle = hstyle, linewidth = hwidth)
-    text!(ax1, 46, tc_hour, text = L" \textbf{1 hour}", color = :black, fontsize = 16)
+    text!(ax1, 46, tc_hour, text = L"$1$ hour", color = :black, fontsize = 18)
     hlines!(ax1, [tc_month], color = :black, linestyle = hstyle, linewidth = hwidth)
-    text!(ax1, 46, tc_month, text = L" \textbf{1 month}", color = :black, fontsize = 16)
-    hlines!(ax1, [tc_100_years], color = :black, linestyle = hstyle, linewidth = hwidth)
-    text!(ax1, 46, tc_100_years, text = L" \textbf{100 years}", color = :black, fontsize = 16)
+    text!(ax1, 46, tc_month, text = L"$1$ month", color = :black, fontsize = 18)
+    # hlines!(ax1, [tc_100_years], color = :black, linestyle = hstyle, linewidth = hwidth)
+    # text!(ax1, 46, tc_100_years, text = L"$100$ years", color = :black, fontsize = 18)
 
     save("../figs/tnbb_random_ksg.pdf", fig)
 

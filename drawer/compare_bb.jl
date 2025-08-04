@@ -1,9 +1,9 @@
 include("settings.jl")
 
 begin
-    fig = Figure(size = (500, 370), fontsize = 20)
-    ax1 = Axis(fig[2, 1], xlabel = L"N", ylabel = L"\text{log}_2(\text{tc})")
-    ax1_2 = Axis(fig[2, 1], yaxisposition = :right, ylabel = L"\text{log}_2(N_{bb})", ygridvisible = false)
+    fig = Figure(size = (500, 400), fontsize = 20)
+    ax1 = Axis(fig[2, 1], xlabel = L"N", ylabel = L"t.c. \text{ (Flops)}", xticks = (30:10:70, [L"30", L"40", L"50", L"60", L"70"]), yticks = (0:15:60, [L"2^0", L"2^{15}", L"2^{30}", L"2^{45}", L"2^{60}"]))
+    ax1_2 = Axis(fig[2, 1], yaxisposition = :right, ylabel = L"N_{BB}", ygridvisible = false, yticks = ([0, 5, 10, 15], [L"2^0", L"2^5", L"2^{10}", L"2^{15}"]))
 
     hidespines!(ax1_2)
     hidexdecorations!(ax1_2)
@@ -59,9 +59,9 @@ begin
     ylims!(ax1_2, 0, 13.661416871102356 * 1.3)
 
     # Legend(fig[1, :], [sc_bb, sc_bb_randn, sc_tn], ["Branch&Bound", "Branch&Bound (randn)", "Tropical TN"], orientation = :horizontal, nbanks = 1, labelsize = 12)
-    Legend(fig[1, :], [sc_tn, sc_bb, sc_bb_randn], ["Tropical TN", "B&B (unit weight)", "B&B (Gaussian weight)"], position = :lt, labelsize = 12, orientation = :horizontal, nbanks = 1)
+    Legend(fig[1, :], [sc_tn, sc_bb, sc_bb_randn], ["TTN", "B&B (unit weight)", "B&B (Gaussian weight)"], position = :lt, labelsize = 15, orientation = :horizontal, nbanks = 1)
 
-    text!(ax1, 30, t, text = L"\textbf{1 hour}", color = :black, fontsize = 16)
+    text!(ax1, 30, t, text = L"$\sim 1$ hour", color = :black, fontsize = 18)
 
     save("../figs/compare_bb.pdf", fig)
     fig
@@ -85,7 +85,7 @@ begin
     sc_tns = scatter!(ax1, ns, time_tns, markersize = markersize, marker = markerstyle[2], color = colors[2], strokewidth = strokewidth, strokecolor = :black, label = "Tropical TN")
     sc_bbs_randn = scatter!(ax1, ns, time_bbs_randn, markersize = markersize, marker = markerstyle[3], color = colors[3], strokewidth = strokewidth, strokecolor = :black, label = "Branch&Bound (randn)")
 
-    axislegend(ax1, [sc_bbs, sc_tns, sc_bbs_randn], ["Branch&Bound", "Tropical TN", "Branch&Bound (randn)"], position = :lt, labelsize = 12)
+    # axislegend(ax1, [sc_bbs, sc_tns, sc_bbs_randn], ["Branch&Bound", "Tropical TN", "Branch&Bound (randn)"], position = :lt, labelsize = 15)
     ylims!(ax1, 10^(-1.5), 10^4.5)
 
     save("../figs/compare_bb_runtime.pdf", fig)
