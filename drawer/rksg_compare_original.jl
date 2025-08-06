@@ -89,7 +89,7 @@ begin
 end
 
 begin
-    fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 280), fontsize = 15)
+    fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 280), fontsize = 20)
 
     ax1 = Axis(fig[2, 2], xlabel = L"N", ylabel = L"t.c. \text{ (Flops)}", xticks = (50:10:100, [L"50", L"60", L"70", L"80", L"90", L"100"]), yticks = (20:20:100, [L"2^{20}", L"2^{40}", L"2^{60}", L"2^{80}", L"2^{100}"]))
     ax2 = Axis(fig[2, 1], xlabel = L"\log_2(s.c.)", ylabel = L"t.c. \text{ (Flops)}", xreversed = true, xticks = ([32, 30, 28, 26, 24, 22, 20, 18], [L"32", L"30", L"28", L"26", L"24", L"22", L"20", L"18"]), yticks = (40:10:80, [L"2^{40}", L"2^{50}", L"2^{60}", L"2^{70}", L"2^{80}"]))
@@ -155,10 +155,10 @@ begin
 
     
     # hlines!(ax1, [tc_min], color = :black, linestyle = :dash)
-    hlines!(ax1, [tc_hour], color = :black, linestyle = hstyle, linewidth = hwidth)
-    text!(ax1, 46, tc_hour, text = L"$1$ hour", color = :black, fontsize = 12)
+    # hlines!(ax1, [tc_hour], color = :black, linestyle = hstyle, linewidth = hwidth)
+    # text!(ax1, 46, tc_hour, text = L"$1$ hour", color = :black, fontsize = 15)
     hlines!(ax1, [tc_month], color = :black, linestyle = hstyle, linewidth = hwidth)
-    text!(ax1, 46, tc_month, text = L"$1$ month", color = :black, fontsize = 12)
+    text!(ax1, 46, tc_month, text = L"$1$ month", color = :black, fontsize = 16)
     # hlines!(ax1, [tc_100_years], color = :black, linestyle = hstyle, linewidth = hwidth)
     # text!(ax1, 46, tc_100_years, text = L"$100$ years", color = :black, fontsize = 18)
 
