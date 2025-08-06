@@ -92,7 +92,7 @@ begin
     fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 280), fontsize = 20)
 
     ax1 = Axis(fig[2, 2], xlabel = L"N", ylabel = L"t.c. \text{ (Flops)}", xticks = (50:10:100, [L"50", L"60", L"70", L"80", L"90", L"100"]), yticks = (20:20:100, [L"2^{20}", L"2^{40}", L"2^{60}", L"2^{80}", L"2^{100}"]))
-    ax2 = Axis(fig[2, 1], xlabel = L"\log_2(s.c.)", ylabel = L"t.c. \text{ (Flops)}", xreversed = true, xticks = ([32, 30, 28, 26, 24, 22, 20, 18], [L"32", L"30", L"28", L"26", L"24", L"22", L"20", L"18"]), yticks = (40:10:80, [L"2^{40}", L"2^{50}", L"2^{60}", L"2^{70}", L"2^{80}"]))
+    ax2 = Axis(fig[2, 1], xlabel = L"\log_2(s.c.)", ylabel = L"t.c. \text{ (Flops)}", xreversed = true, xticks = ([32, 30, 28, 26, 24, 22, 20, 18], [L"32", L"30", L"28", L"26", L"24", L"22", L"20", L"18"]), yticks = (45:5:75, [L"2^{45}", L"2^{50}", L"2^{55}", L"2^{60}", L"2^{65}", L"2^{70}", L"2^{75}"]))
 
     text!(ax2, 0, 1, text = L"\textbf{(a)}", align = (:left, :top), fontsize = 20, space = :relative, offset = (4, -4), font = :bold)
 
@@ -114,7 +114,7 @@ begin
     hlines!(ax2, [orignal_tc], color = :blue, linestyle = :solid)
     
     xlims!(ax2, 33, 21)
-    ylims!(ax2, 39, 71)
+    ylims!(ax2, 44, 71)
 
     ## ax1, compare tropical tensor network and pure branch&bound
     n_tn = [50:10:100...]
