@@ -89,12 +89,12 @@ begin
 end
 
 begin
-    fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 700), fontsize = 20)
+    fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 280), fontsize = 15)
 
-    ax1 = Axis(fig[3, 1], xlabel = L"N", ylabel = L"t.c. \text{ (Flops)}", xticks = (50:10:100, [L"50", L"60", L"70", L"80", L"90", L"100"]), yticks = (20:20:100, [L"2^{20}", L"2^{40}", L"2^{60}", L"2^{80}", L"2^{100}"]))
-    ax2 = Axis(fig[2, 1], xlabel = L"s.c.", ylabel = L"t.c. \text{ (Flops)}", xreversed = true, xticks = ([32, 30, 28, 26, 24, 22, 20, 18], [L"32", L"30", L"28", L"26", L"24", L"22", L"20", L"18"]), yticks = (40:10:80, [L"2^{40}", L"2^{50}", L"2^{60}", L"2^{70}", L"2^{80}"]))
+    ax1 = Axis(fig[2, 2], xlabel = L"N", ylabel = L"t.c. \text{ (Flops)}", xticks = (50:10:100, [L"50", L"60", L"70", L"80", L"90", L"100"]), yticks = (20:20:100, [L"2^{20}", L"2^{40}", L"2^{60}", L"2^{80}", L"2^{100}"]))
+    ax2 = Axis(fig[2, 1], xlabel = L"\log_2(s.c.)", ylabel = L"t.c. \text{ (Flops)}", xreversed = true, xticks = ([32, 30, 28, 26, 24, 22, 20, 18], [L"32", L"30", L"28", L"26", L"24", L"22", L"20", L"18"]), yticks = (40:10:80, [L"2^{40}", L"2^{50}", L"2^{60}", L"2^{70}", L"2^{80}"]))
 
-    text!(ax2, 0, 1, text = L"\textbf{(a)}", align = (:left, :top), fontsize = 25, space = :relative, offset = (4, -4), font = :bold)
+    text!(ax2, 0, 1, text = L"\textbf{(a)}", align = (:left, :top), fontsize = 20, space = :relative, offset = (4, -4), font = :bold)
 
     df_tnbb_vsc = CSV.read("../data/complexity/random_ksg/tnbb_different_target_freoptimize_n80.csv", DataFrame)
     df_ds_vsc = CSV.read("../data/complexity/random_ksg/treesa_different_target_n80.csv", DataFrame)
@@ -111,10 +111,10 @@ begin
     scatter!(ax2, sc_ds, tc_ds, markersize = t, marker = markerstyle[4], color = colors[4], strokewidth = strokewidth, strokecolor = :black)
     scatter!(ax2, sc_tnbb, tc_tnbb, markersize = t, marker = markerstyle[3], color = colors[3], strokewidth = strokewidth, strokecolor = :black)
     # scatter!(ax2, orignal_sc, orignal_tc, markersize = t, marker = markerstyle[2], color = :white, strokewidth = 2, strokecolor = colors[2])
-    hlines!(ax2, [orignal_tc], color = :blue, linestyle = :dash)
+    hlines!(ax2, [orignal_tc], color = :blue, linestyle = :solid)
     
-    xlims!(ax2, 33, 19)
-    ylims!(ax2, 39, 81)
+    xlims!(ax2, 33, 21)
+    ylims!(ax2, 39, 71)
 
     ## ax1, compare tropical tensor network and pure branch&bound
     n_tn = [50:10:100...]
@@ -150,15 +150,15 @@ begin
     xlims!(ax1, 45, 105)
     ylims!(ax1, 20, 100)
 
-    Legend(fig[1, :], [sc_tn, sc_ds, sc_tnbb], ["TTN", "TTN & DS", "BBTN"], orientation = :horizontal, nbanks = 1, labelsize = 18)
-    text!(ax1, 0, 1, text = L"\textbf{(b)}", align = (:left, :top), fontsize = 25, space = :relative, offset = (4, -4), font = :bold)
+    Legend(fig[1, :], [sc_tn, sc_ds, sc_tnbb], ["TTN", "TTN & DS", "BBTN"], orientation = :horizontal, nbanks = 1, labelsize = 15)
+    text!(ax1, 0, 1, text = L"\textbf{(b)}", align = (:left, :top), fontsize = 20, space = :relative, offset = (4, -4), font = :bold)
 
     
     # hlines!(ax1, [tc_min], color = :black, linestyle = :dash)
     hlines!(ax1, [tc_hour], color = :black, linestyle = hstyle, linewidth = hwidth)
-    text!(ax1, 46, tc_hour, text = L"$1$ hour", color = :black, fontsize = 18)
+    text!(ax1, 46, tc_hour, text = L"$1$ hour", color = :black, fontsize = 12)
     hlines!(ax1, [tc_month], color = :black, linestyle = hstyle, linewidth = hwidth)
-    text!(ax1, 46, tc_month, text = L"$1$ month", color = :black, fontsize = 18)
+    text!(ax1, 46, tc_month, text = L"$1$ month", color = :black, fontsize = 12)
     # hlines!(ax1, [tc_100_years], color = :black, linestyle = hstyle, linewidth = hwidth)
     # text!(ax1, 46, tc_100_years, text = L"$100$ years", color = :black, fontsize = 18)
 
