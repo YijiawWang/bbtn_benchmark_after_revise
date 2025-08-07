@@ -23,7 +23,7 @@ begin
     cat = [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
     bar_grp = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]
 
-    runtime_colors = [:green, :orange, :red]
+    runtime_colors = [:green, :orange, :purple]
     fig = Figure(size = (500, 400), fontsize = 20)
     ax = Axis(fig[2, 1], 
         # xlabel = "Problem Type", 
