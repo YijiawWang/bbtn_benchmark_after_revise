@@ -23,6 +23,7 @@ begin
     cat = [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
     bar_grp = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]
 
+    runtime_colors = [:green, :orange, :red]
     fig = Figure(size = (500, 400), fontsize = 20)
     ax = Axis(fig[2, 1], 
         # xlabel = "Problem Type", 
@@ -32,14 +33,14 @@ begin
         xgridvisible = false,
         ygridvisible = true
     )
-    barplot!(ax, cat, log10.(times), dodge = bar_grp, color = colors[bar_grp])
-    ylims!(ax, 0, 5.6)
+    barplot!(ax, cat, log10.(times), dodge = bar_grp, color = runtime_colors[bar_grp])
+    ylims!(ax, 0, 6)
 
-    Legend(fig[1, :], [PolyElement(polycolor = colors[i]) for i in 1:3], ["BBTN", "TTN & DS", "SCIP"], orientation = :horizontal, nbanks = 1, labelsize = 15)
+    Legend(fig[1, :], [PolyElement(polycolor = runtime_colors[i]) for i in 1:3], ["BBTN", "TTN & DS", "SCIP"], orientation = :horizontal, nbanks = 1, labelsize = 15)
 
     xlims!(ax, 0.3, 4.7)
     hlines!(ax, [log10(max_time)], color = :black, linestyle = :dot)
-    text!(ax, 0.4, 5, text = L"Time limit ($72$h)", fontsize = 18)
+    text!(ax, 0.4, log10(max_time), text = L"Time limit ($72$h)", fontsize = 18)
 
     save("../figs/runtime.pdf", fig)
     fig
