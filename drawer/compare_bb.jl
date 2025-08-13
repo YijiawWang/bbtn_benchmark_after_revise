@@ -10,9 +10,9 @@ begin
 
     n_bb = [30, 35, 40, 45, 50]
     n_bb_randn = [30, 35, 40, 45, 50, 55, 60, 65, 70]
-    n_tn = [30:5:50...]
+    n_tn = [30:5:45...]
 
-    n_tn_large = [55:5:70...]
+    n_tn_large = [50:5:70...]
     df_tns_large = [CSV.read("../data/complexity/random_ksg/original_ksg_n$(n).csv", DataFrame) for n in n_tn_large]
     tc_tns_large = [geometric_mean(df_tns_large[i].tc) for i in 1:length(n_tn_large)]
 
@@ -59,7 +59,7 @@ begin
     ylims!(ax1_2, 0, 13.661416871102356 * 1.3)
 
     # Legend(fig[1, :], [sc_bb, sc_bb_randn, sc_tn], ["Branch&Bound", "Branch&Bound (randn)", "Tropical TN"], orientation = :horizontal, nbanks = 1, labelsize = 12)
-    Legend(fig[1, :], [sc_tn, sc_bb, sc_bb_randn], ["TTN", "B&B (unit weight)", "B&B (Gaussian weight)"], position = :lt, labelsize = 15, orientation = :horizontal, nbanks = 1)
+    Legend(fig[1, :], [sc_tn, sc_bb, sc_bb_randn], ["tropical-TN", "B&B (unit weight)", "B&B (Gaussian weight)"], position = :lt, labelsize = 15, orientation = :horizontal, nbanks = 1)
 
     text!(ax1, n_start + 1, t, text = L"$\sim 1$ hour", color = :black, fontsize = 18)
 
