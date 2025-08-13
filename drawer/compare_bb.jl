@@ -59,7 +59,7 @@ begin
     ylims!(ax1_2, 0, 13.661416871102356 * 1.3)
 
     # Legend(fig[1, :], [sc_bb, sc_bb_randn, sc_tn], ["Branch&Bound", "Branch&Bound (randn)", "Tropical TN"], orientation = :horizontal, nbanks = 1, labelsize = 12)
-    Legend(fig[1, :], [sc_tn, sc_bb, sc_bb_randn], ["tropical-TN", "B&B (unit weight)", "B&B (Gaussian weight)"], position = :lt, labelsize = 15, orientation = :horizontal, nbanks = 1)
+    Legend(fig[1, :], [sc_tn, sc_bb, sc_bb_randn], ["Tropical-TN", "B&B (unit weight)", "B&B (Gaussian weight)"], position = :lt, labelsize = 15, orientation = :horizontal, nbanks = 1)
 
     text!(ax1, n_start + 1, t, text = L"$\sim 1$ hour", color = :black, fontsize = 18)
 
