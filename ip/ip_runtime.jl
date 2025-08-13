@@ -13,7 +13,8 @@ function ip_mis(g::AbstractGraph; optimizer=SCIP.Optimizer, verbose::Bool=false)
     end
     optimize!(model)
     @assert is_solved_and_feasible(model)
-    return Int(round(sum(value.(x))))
+    node_count = MOI.get(model, MOI.NodeCount())
+    return Int(round(sum(value.(x)))), node_count
 end
 
 function scip_kernelized_runtime(n)
@@ -46,8 +47,26 @@ function scip_runtime(n)
     end
 end
 
+function scip_nodes(n)
+    dir = @__DIR__
+    df = joinpath(dir, "../data/runtime/ksg_n$(n)_scip_nodes.csv") # unkernelized graphs
+    CSV.write(df, DataFrame(name = String[], nodes = Int[]))
+
+    graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/additional_ksg_n$(n).dot"))
+
+    nodes = zeros(Int, 50)
+
+    Threads.@threads for i in 1:50
+        g = graphs["$i"]
+        size, nodes_ = ip_mis(g, verbose = false)
+        nodes[i] = nodes_
+        @show i, nodes_
+    end
+    CSV.write(df, DataFrame(name = 1:50, nodes = nodes), append = true)
+end
+
 # scip_runtime(70)
 
-for n in 30:5:50
-    scip_runtime(n)
+for n in 30:5:60
+    scip_nodes(n)
 end

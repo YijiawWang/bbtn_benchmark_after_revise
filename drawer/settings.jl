@@ -15,6 +15,12 @@ function geometric_mean(x)
     return prod(Float64.(x))^(1/length(x))
 end
 
+function max_n(x, n)
+    # get the n largest elements in x
+    xs = sort(x)
+    return xs[end-n+1:end]
+end
+
 tc_min = log2(60 * (18.3 * 10^12)) - 1
 tc_hour = log2(3600 * (18.3 * 10^12)) - 1
 tc_day = log2(24 * 3600 * (18.3 * 10^12)) - 1

@@ -1,13 +1,15 @@
-using CUDA, CuTropicalGEMM
+# using CUDA, CuTropicalGEMM
+using TropicalGEMM
 using Graphs, GraphIO
 using CSV, DataFrames
 using OMEinsum, GenericTensorNetworks, ProblemReductions
 using BenchmarkTools
 
-CUDA.device!(1)
+# CUDA.device!(1)
 
 function solve_net(net)
-    solve(net, SizeMax(), T = Float32, usecuda = true)
+    # solve(net, SizeMax(), T = Float32, usecuda = true)
+    solve(net, SizeMax(), T = Float32, usecuda = false)
     return nothing
 end
 

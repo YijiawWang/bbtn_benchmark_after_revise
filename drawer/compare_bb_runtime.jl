@@ -17,7 +17,7 @@ begin
     df_ips_randn = [CSV.read("../data/runtime/ksg_n$(n)_weighted_scip.csv", DataFrame) for n in ns3]
 
     time_bbs = [geometric_mean(df_bbs[i].time) for i in 1:length(ns_bb)]
-    time_tns = [geometric_mean(df_tns[i].runtime) for i in 1:length(ns)]
+    time_tns = [mean(df_tns[i].runtime) for i in 1:length(ns)]
     time_bbs_randn = [geometric_mean(df_bbs_randn[i].time) for i in 1:length(ns_bb_randn)]
 
     time_ips = [geometric_mean(df_ips[i].runtime) for i in 1:length(ns2)]
