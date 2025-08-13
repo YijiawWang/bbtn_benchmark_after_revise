@@ -33,12 +33,12 @@ end
 
 function scip_runtime(n)
     dir = @__DIR__
-    df = joinpath(dir, "../data/runtime/ksg_n70_scip.csv") # unkernelized graphs
+    df = joinpath(dir, "../data/runtime/ksg_n$(n)_scip.csv") # unkernelized graphs
     CSV.write(df, DataFrame(name = String[], runtime = Float64[]))
 
     graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/ksg_n$(n).dot"))
 
-    for i in [2, 3, 4, 5, 7, 9, 10]
+    for i in 1:10
         g = graphs["$i"]
         t = @elapsed ip_mis(g, verbose = true)
         @show i, t
@@ -46,4 +46,8 @@ function scip_runtime(n)
     end
 end
 
-scip_runtime(70)
+# scip_runtime(70)
+
+for n in 30:5:50
+    scip_runtime(n)
+end

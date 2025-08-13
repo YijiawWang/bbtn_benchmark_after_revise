@@ -1,13 +1,14 @@
 using Graphs, GraphIO
 using JuMP, SCIP
 using CSV, DataFrames
+using Random
 
-function ip_mis(g::AbstractGraph; optimizer=SCIP.Optimizer, verbose::Bool=false)
+function ip_mis(g::AbstractGraph, weights::Vector{Float64}; optimizer=SCIP.Optimizer, verbose::Bool=false)
     model = Model(optimizer)
     !verbose && set_silent(model)
     n = nv(g)
     @variable(model, 0 <= x[i = 1:n] <= 1, Int)
-    @objective(model, Max, sum(x))
+    @objective(model, Max, sum(weights .* x))
     for e in edges(g)
         @constraint(model, x[src(e)] + x[dst(e)] <= 1)
     end
@@ -16,31 +17,18 @@ function ip_mis(g::AbstractGraph; optimizer=SCIP.Optimizer, verbose::Bool=false)
     return Int(round(sum(value.(x))))
 end
 
-function scip_kernelized_runtime(n)
-    dir = @__DIR__
-    df = joinpath(dir, "../data/runtime/ksg_n70_kernelized_scip.csv") # try the kernelized graphs first
-    CSV.write(df, DataFrame(name = String[], runtime = Float64[]))
-
-    graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/kernelized_tn_ksg_n$(n).dot"))
-
-    for i in 1:10
-        g = graphs["$i"]
-        t = @elapsed ip_mis(g, verbose = true)
-        @show i, t
-        CSV.write(df, DataFrame(name = i, runtime = t), append = true)
-    end
-end
-
 function scip_runtime(n)
     dir = @__DIR__
-    df = joinpath(dir, "../data/runtime/ksg_n$(n)_scip.csv") # unkernelized graphs
+    df = joinpath(dir, "../data/runtime/ksg_n$(n)_weighted_scip.csv") # unkernelized graphs
     CSV.write(df, DataFrame(name = String[], runtime = Float64[]))
 
     graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/ksg_n$(n).dot"))
 
     for i in 1:10
         g = graphs["$i"]
-        t = @elapsed ip_mis(g, verbose = true)
+        Random.seed!(i)
+        weights = [abs(randn()) for _ in 1:nv(g)]
+        t = @elapsed ip_mis(g, weights, verbose = true)
         @show i, t
         CSV.write(df, DataFrame(name = i, runtime = t), append = true)
     end
