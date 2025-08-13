@@ -6,6 +6,11 @@ using BenchmarkTools
 
 CUDA.device!(1)
 
+function solve_net(net)
+    solve(net, SizeMax(), T = Float32, usecuda = true)
+    return nothing
+end
+
 function tn_runtime(n)
     dir = @__DIR__
     df = joinpath(dir, "../data/runtime/ksg_n$(n)_tn_a800.csv")
@@ -22,7 +27,7 @@ function tn_runtime(n)
         cc = contraction_complexity(code, uniformsize(code, 2))
 
         if cc.sc <= 31 
-            t = @belapsed solve_net(net)
+            t = @belapsed solve_net($net)
             @show i, t
             CSV.write(df, DataFrame(name = i, runtime = t), append = true)
         end
