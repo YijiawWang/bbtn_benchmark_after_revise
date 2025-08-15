@@ -78,7 +78,7 @@ begin
     
 
     ax0 = Axis(fig[1, 1], ylabel = L"t.c._{TN}", yticks = (0:10:60, [L"2^0", L"2^{10}", L"2^{20}", L"2^{30}", L"2^{40}", L"2^{50}", L"2^{60}"]), xticks = (30:10:50, [L"30", L"40", L"50"]))
-    ax1 = Axis(fig[1, 2], ylabel = L"N_{BB}", yticks = ([0, 5, 10, 15], [L"2^0", L"2^5", L"2^{10}", L"2^{15}"]), xticks = (30:10:50, [L"30", L"40", L"50"]))
+    ax1 = Axis(fig[1, 2], ylabel = L"N_{BB}", yticks = ([0, 5, 10, 15, 20], [L"2^0", L"2^5", L"2^{10}", L"2^{15}", L"2^{20}"]), xticks = (30:10:50, [L"30", L"40", L"50"]))
     ax1_2 = Axis(fig[1, 3], ylabel = L"N_{IP}", yticks = ([0, 5, 10, 15], [L"2^0", L"2^5", L"2^{10}", L"2^{15}"]), xticks = (30:10:50, [L"30", L"40", L"50"]))
 
     n_tn = [30:5:50...]
@@ -86,20 +86,20 @@ begin
     n_ip = [30, 35, 40, 45, 50]
 
     df_tns = [CSV.read("../data/complexity/random_ksg/original_ksg_n$(n).csv", DataFrame) for n in n_tn]
-    df_bbs = [CSV.read("../data/count_vc/ksg_n$(n)_count_vc.csv", DataFrame) for n in n_bb]
+    df_bbs = [CSV.read("../data/count_vc/additional_ksg_n$(n)_count_vc.csv", DataFrame) for n in n_bb]
     df_ips = [CSV.read("../data/runtime/ksg_n$(n)_scip_nodes.csv", DataFrame) for n in n_ip]
 
-    count_bbs = log2.([geometric_mean(max_n(df_bbs[i].count, 10)) for i in 1:length(n_bb)])
-    count_ips = log2.([geometric_mean(max_n(df_ips[i].nodes, 50)) for i in 1:length(n_ip)])
+    count_bbs = log2.([geometric_mean(df_bbs[i].count) for i in 1:length(n_bb)])
+    count_ips = log2.([geometric_mean(df_ips[i].nodes) for i in 1:length(n_ip)])
     tc_tns = [geometric_mean(df_tns[i].tc) for i in 1:length(n_tn)]
 
     sc_tn = scatter!(ax0, n_tn, tc_tns, markersize = markersize, marker = markerstyle[2], color = colors[2], strokewidth = strokewidth, strokecolor = :black, label = "Tropical TN")
     sc_bb = scatter!(ax1, n_bb, count_bbs, markersize = markersize, marker = markerstyle[1], color = colors[1], strokewidth = strokewidth, strokecolor = :black, label = "B&B")
     sc_ip = scatter!(ax1_2, n_ip, count_ips, markersize = markersize, marker = markerstyle[3], color = colors[3], strokewidth = strokewidth, strokecolor = :black, label = "IP")
 
-    @. model_bb(x, p) = p[1] * x^p[2] + p[3]
+    @. model_bb(x, p) = p[1] *(x)^p[2] + p[3]
     fit_bb = curve_fit(model_bb, n_bb, count_bbs, [1.0, 1.0, 1.0])
-    @. model_ip(x, p) = p[1] * x^p[2] + p[3]
+    @. model_ip(x, p) = p[1] * (x)^p[2] + p[3]
     fit_ip = curve_fit(model_ip, n_ip, count_ips, [1.0, 1.0, 1.0])
 
     @. model_tn(x, p) = p[1] * x + p[2]
@@ -115,8 +115,8 @@ begin
     xlims!(ax1_2, x_start, x_end)
 
     ylims!(ax0, 20, 50)
-    ylims!(ax1, 0, 16.5)
-    ylims!(ax1_2, 0, 11)
+    ylims!(ax1, 0, 20)
+    ylims!(ax1_2, 0, 10)
 
     lines!(ax0, xs, model_tn(xs, fit_tn.param), color = colors[2], linestyle = :dash)
     lines!(ax1, xs, model_bb(xs, fit_bb.param), color = colors[1], linestyle = :dash)

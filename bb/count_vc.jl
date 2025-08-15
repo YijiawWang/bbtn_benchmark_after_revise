@@ -3,7 +3,8 @@ using CSV, DataFrames
 # 0: deg1+dominance+fold2, 2:unconfined+twin+funnel+desk, 3:packing, 4:LP
 function count_vc(n, i, reduction_label::Int)
 
-    problem_path = joinpath(dirname(@__DIR__), "bb/edges", "ksg_n$(n)_$(i).txt")
+    # problem_path = joinpath(dirname(@__DIR__), "bb/edges", "ksg_n$(n)_$(i).txt")
+    problem_path = joinpath(dirname(@__DIR__), "bb/edges", "additional_ksg_n$(n)_$(i).txt")
 
     vc_binary = joinpath(homedir(), "repos", "vertex_cover", "bin")
     temp_dir = joinpath(homedir(), "temp/vc/"); 
@@ -16,12 +17,12 @@ function count_vc(n, i, reduction_label::Int)
 end
 
 function count_all(n)
-    csv_file = joinpath(dirname(@__DIR__), "data/count_vc", "ksg_n$(n)_count_vc.csv")
+    csv_file = joinpath(dirname(@__DIR__), "data/count_vc", "additional_ksg_n$(n)_count_vc.csv")
     @info "Writing to $csv_file"
     # CSV.write(csv_file, DataFrame(id = Int[], count = Int[], time = Float64[]))
-    counts = zeros(Int, 10)
-    times = zeros(Float64, 10)
-    Threads.@threads for i in 1:10
+    counts = zeros(Int, 50)
+    times = zeros(Float64, 50)
+    Threads.@threads for i in 1:50
         # count_pack = count_vc(n, i, 3)
         # @info "ksg_n$(n)_$(i), count_pack = $count_pack"
         start_time = time()
@@ -30,7 +31,7 @@ function count_all(n)
         @info "ksg_n$(n)_$(i), count_lp = $count_lp, time = $(times[i])"
         counts[i] = count_lp
     end
-    CSV.write(csv_file, DataFrame(id = 1:10, count = counts, time = times))
+    CSV.write(csv_file, DataFrame(id = 1:50, count = counts, time = times))
     @info "Done"
 end
 
