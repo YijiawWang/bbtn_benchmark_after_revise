@@ -4,7 +4,7 @@ using Statistics
 using LsqFit
 
 # colors = [:red, :blue, :green, :orange, :purple, :brown, :pink, :gray, :black]
-colors = ["#4477AA", "#EE6677", "#228833", "#CCBB44", "#66CCEE", "#AA3377"]
+colors = ["#4477AA", "#E36D44", "#228833", "#CCBB44", "#66CCEE", "#AA3377"]
 markersize = 12
 linestyle = [:solid, :dash, :dot, :dashdot, :dashdotdot]
 linewidth = 2
