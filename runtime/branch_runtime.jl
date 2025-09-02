@@ -53,27 +53,37 @@ function tnbb_krksg(n)
 
     data = CSV.read(joinpath(dir, "../data/kernelize/tn_ksg_n$(n).csv"), DataFrame)
 
-    df = "data/complexity/tnbb_sc31_runtime_n$(n).csv"
+    df = "data/complexity/random_ksg/tnbb_sc31_runtime_n$(n).csv"
     CSV.write(df, DataFrame(name = String[], original_sc = Int[], total_tc = Int[], num_branch = Int[], runtime = Float64[]))
 
     for i in 1:10
         g = graphs["$i"]
         r = data[data.name .== i, :r][1]
+
         @show i, nv(g), ne(g), r
         code = readjson(joinpath(dir, "../graphs/random_ksg/order/treesa_tn_ksg_n$(n)_s$(i)_treesa.json"))
         original_cc = mis_complexity(code)
+        @show i, original_cc.sc
 
-        original_cc.sc <= 31 && continue
+        # original_cc.sc <= 31 && continue
+
+        dirname = "/home/xuanzhaogao/work/tnbb_data/$(n)_$(i)_sc31"
+
+        if original_cc.sc < 31
+
+            !isdir(dirname) && mkdir(dirname)
+
+            TensorBranching.save_finished(dirname, SlicedBranch(g, UnitWeight(nv(g)), code, r), 1)
+            CSV.write(joinpath(dirname, "slices.csv"), DataFrame(id = 1, sc = original_cc.sc, tc = original_cc.tc, r = r))
+
+            continue
+        end
 
         target = 31
         slicer = ContractionTreeSlicer(sc_target = target)
-        # reducer = TensorNetworkReducer(sub_reducer = XiaoReducer())
+
         reducer = XiaoReducer()
         branch = SlicedBranch(g, UnitWeight(nv(g)), code, r)
-        
-        slice_bfs_rw(branch, slicer, reducer, "/Einstein/xzgao/tnbb_jlds/random_ksg/$(n)_$(i)_sc31_temp/", 1)
-
-        dirname = "/Einstein/xzgao/tnbb_jlds/random_ksg/$(n)_$(i)_sc31/"
         t = @elapsed slice_bfs_rw(branch, slicer, reducer, dirname, 1)
 
         branch_df = CSV.read(joinpath(dirname, "slices.csv"), DataFrame)

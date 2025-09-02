@@ -5,6 +5,9 @@ using GenericTensorNetworks, ProblemReductions
 using CUDA, CuTropicalGEMM
 using BenchmarkTools
 
+CUDA.device!(4)
+CUDA.allowscalar(false)
+
 include("run_slice.jl")
 
 function solve_net(net)
@@ -31,4 +34,4 @@ function estimate_slice_runtime(n, ids)
     return nothing
 end
 
-estimate_slice_runtime(70, [2, 3, 4, 5, 7, 9, 10])
+estimate_slice_runtime(70, [1:10...])

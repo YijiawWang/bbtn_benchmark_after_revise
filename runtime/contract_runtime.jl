@@ -5,6 +5,9 @@ using GenericTensorNetworks, ProblemReductions
 using CUDA, CuTropicalGEMM
 using BenchmarkTools
 
+CUDA.device!(4)
+CUDA.allowscalar(false)
+
 function solve_nets(nets)
     for net in nets
         solve(net, SizeMax(), T = Float32, usecuda = true)
@@ -64,28 +67,35 @@ function different_target_slice_runtime()
     nothing
 end
 
-function contract_runtime()
-    n = 70
-    # ids = [3, 2, 4, 5, 7, 9, 10]
-    ids = [5]
+function contract_runtime(n)
+    ids = [1:10...]
     dir = @__DIR__
 
     graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/kernelized_tn_ksg_n$(n).dot"))
 
-    df = joinpath(dir, "../data/runtime/contract_runtime_a800_n$(n).csv")
-    CSV.write(df, DataFrame(name = String[], tnbb_runtime = Float64[], ds_runtime = Float64[]))
+    # df = joinpath(dir, "../data/runtime/contract_runtime_a800_n$(n).csv")
+    df = joinpath(dir, "../data/runtime/ksg_n$(n)_sc31_tnbb_contract.csv")
+    CSV.write(df, DataFrame(name = String[], tnbb_runtime = Float64[]))
 
     for id in ids
-        sliced_code = readjson(joinpath(@__DIR__, "../graphs/random_ksg/order/slice31_tn_ksg_n$(n)_s$(id)_treesa.json"))
-        slice_net = GenericTensorNetwork(IndependentSet(graphs["$id"]), sliced_code, Dict{Int, Int}())
+        dirname = "/home/xuanzhaogao/work/tnbb_data/$(n)_$(id)_sc31"
+        df_tnbb = CSV.read(joinpath(dirname, "slices.csv"), DataFrame)
 
-	ds_runtime = @elapsed solve_net(slice_net)
-        @show id, ds_runtime
-
-        CSV.write(df, DataFrame(name = id, tnbb_runtime = tnbb_runtime, ds_runtime = ds_runtime), append = true)
+        nets = []
+        
+        for id in df_tnbb.id
+            g = loadgraph(joinpath(dirname, "graph_$(id).dot"))
+            code = readjson(joinpath(dirname, "eincode_$(id).json"))
+            net = GenericTensorNetwork(IndependentSet(g), code, Dict{Int, Int}())
+            push!(nets, net)
+        end
+        t = @belapsed solve_nets($nets)
+        @show id, t
+        CSV.write(df, DataFrame(name = id, tnbb_runtime = t), append = true)
     end
+
     nothing
 end
 
-# contract_runtime()
-different_target_slice_runtime()
+contract_runtime(70)
+# different_target_slice_runtime()

@@ -12,4 +12,4 @@ ProblemReductions = "899c297d-f7d2-4ebf-8815-a35996def416"
 TropicalGEMM = "a4ad3063-64a7-4bad-8738-34ed09bc0236"
 
 [compat]
-CUDA = "5.7"
+CUDA = "5.7.3"

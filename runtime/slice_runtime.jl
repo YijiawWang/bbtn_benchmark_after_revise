@@ -15,7 +15,7 @@ function slice_different_target(n, i)
 
     for ds in 1:5
         target = Int(original_cc.sc - ds)
-        slicer = TreeSASlicer(sc_target = target)
+        slicer = TreeSASlicer(score=ScoreFunction(sc_target=target))
 
         sliced_code = slice_code(code, uniformsize(code, 2), slicer)
         t = @belapsed slice_code($code, uniformsize($code, 2), $slicer)
@@ -37,7 +37,7 @@ function slice_runtime_sc31_kernelized(n, i)
     original_cc = mis_complexity(code)
 
     original_cc.sc <= 31 && return nothing
-    slicer = TreeSASlicer(sc_target = 31)
+    slicer = TreeSASlicer(score=ScoreFunction(sc_target=31))
 
     sliced_code = slice_code(code, uniformsize(code, 2), slicer)
     t = @elapsed slice_code(code, uniformsize(code, 2), slicer)
@@ -58,14 +58,14 @@ function slice_runtime_sc31(n)
     df = joinpath(dir, "../data/runtime/ksg_n70_sc31_ds_branch.csv")
     CSV.write(df, DataFrame(name = String[], original_sc = Int[], total_tc = Int[], nslice = Int[], runtime = Float64[]))
 
-    for i in [2, 3, 4, 5, 7, 9, 10]
+    for i in 1:10
 
         code = readjson(joinpath(dir, "../graphs/random_ksg/order/treesa_original_ksg_n$(n)_s$(i).json"))
         original_cc = mis_complexity(code)
         @show i, original_cc.sc, original_cc.tc
 
         sc_target = 31
-        slicer = TreeSASlicer(sc_target = sc_target)
+        slicer = TreeSASlicer(score=ScoreFunction(sc_target=sc_target))
         sliced_code = slice_code(code, uniformsize(code, 2), slicer)
         t = @elapsed slice_code(code, uniformsize(code, 2), slicer)
 
