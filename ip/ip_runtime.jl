@@ -39,12 +39,16 @@ function scip_runtime(n)
 
     graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/ksg_n$(n).dot"))
 
-    for i in 1:10
+    runtimes = zeros(10)
+
+    Threads.@threads for i in 1:10
         g = graphs["$i"]
-        t = @elapsed ip_mis(g, verbose = true)
+        t = @elapsed ip_mis(g, verbose = false)
         @show i, t
-        CSV.write(df, DataFrame(name = i, runtime = t), append = true)
+        # CSV.write(df, DataFrame(name = i, runtime = t), append = true)
+        runtimes[i] = t
     end
+    CSV.write(df, DataFrame(name = 1:10, runtime = runtimes), append = true)
 end
 
 function scip_nodes(n)
@@ -65,7 +69,7 @@ function scip_nodes(n)
     CSV.write(df, DataFrame(name = 1:50, nodes = nodes), append = true)
 end
 
-scip_runtime(70)
+scip_runtime(80)
 
 # for n in 30:5:60
 #     scip_nodes(n)

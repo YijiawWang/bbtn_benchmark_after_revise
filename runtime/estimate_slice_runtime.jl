@@ -34,4 +34,4 @@ function estimate_slice_runtime(n, ids)
     return nothing
 end
 
-estimate_slice_runtime(70, [1:10...])
+estimate_slice_runtime(80, [1:10...])

@@ -55,7 +55,7 @@ end
 
 function slice_runtime_sc31(n)
     dir = @__DIR__
-    df = joinpath(dir, "../data/runtime/ksg_n70_sc31_ds_branch.csv")
+    df = joinpath(dir, "../data/runtime/ksg_n$(n)_sc31_ds_branch.csv")
     CSV.write(df, DataFrame(name = String[], original_sc = Int[], total_tc = Int[], nslice = Int[], runtime = Float64[]))
 
     for i in 1:10
@@ -65,7 +65,7 @@ function slice_runtime_sc31(n)
         @show i, original_cc.sc, original_cc.tc
 
         sc_target = 31
-        slicer = TreeSASlicer(score=ScoreFunction(sc_target=sc_target))
+        slicer = TreeSASlicer(score=ScoreFunction(sc_target=sc_target), ntrials = 20)
         sliced_code = slice_code(code, uniformsize(code, 2), slicer)
         t = @elapsed slice_code(code, uniformsize(code, 2), slicer)
 
@@ -80,6 +80,6 @@ function slice_runtime_sc31(n)
     return nothing
 end
 
-slice_runtime_sc31(70)
+slice_runtime_sc31(80)
 
 # slice_different_target(70, 7)

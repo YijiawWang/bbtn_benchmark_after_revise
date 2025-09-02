@@ -3,7 +3,8 @@ using CairoMakie, LaTeXStrings
 using Statistics
 using LsqFit
 
-colors = [:red, :blue, :green, :orange, :purple, :brown, :pink, :gray, :black]
+# colors = [:red, :blue, :green, :orange, :purple, :brown, :pink, :gray, :black]
+colors = ["#5790fc", "#f89c20", "#e42536", "#964a8b", "#9c9ca1", "#7a21dd"]
 markersize = 12
 linestyle = [:solid, :dash, :dot, :dashdot, :dashdotdot]
 linewidth = 2

@@ -53,7 +53,7 @@ function tnbb_krksg(n)
 
     data = CSV.read(joinpath(dir, "../data/kernelize/tn_ksg_n$(n).csv"), DataFrame)
 
-    df = "data/complexity/random_ksg/tnbb_sc31_runtime_n$(n).csv"
+    df = "data/runtime/ksg_n$(n)_sc31_tnbb_branch.csv"
     CSV.write(df, DataFrame(name = String[], original_sc = Int[], total_tc = Int[], num_branch = Int[], runtime = Float64[]))
 
     for i in 1:10
@@ -97,4 +97,4 @@ function tnbb_krksg(n)
     return nothing
 end
 
-tnbb_krksg(70)
+tnbb_krksg(80)
