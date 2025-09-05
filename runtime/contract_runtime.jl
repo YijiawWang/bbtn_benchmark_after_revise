@@ -5,11 +5,13 @@ using GenericTensorNetworks, ProblemReductions
 using CUDA, CuTropicalGEMM
 using BenchmarkTools
 
-CUDA.device!(4)
+CUDA.device!(5)
 CUDA.allowscalar(false)
 
 function solve_nets(nets)
-    for net in nets
+    N = length(nets)
+    for (i, net) in enumerate(nets)
+        @info "Solving $i of $N"
         solve(net, SizeMax(), T = Float32, usecuda = true)
     end
     nothing
@@ -68,28 +70,37 @@ function different_target_slice_runtime()
 end
 
 function contract_runtime(n)
-    ids = [1:10...]
+    ids = [1, 2, 3, 4, 6, 7, 8, 9, 10, 5]
     dir = @__DIR__
 
     graphs = loadgraphs(joinpath(dir, "../graphs/random_ksg/kernelized_tn_ksg_n$(n).dot"))
 
     # df = joinpath(dir, "../data/runtime/contract_runtime_a800_n$(n).csv")
     df = joinpath(dir, "../data/runtime/ksg_n$(n)_sc31_tnbb_contract.csv")
-    CSV.write(df, DataFrame(name = String[], tnbb_runtime = Float64[]))
+    CSV.write(df, DataFrame(name = String[], runtime = Float64[]))
 
     for id in ids
         dirname = "/home/xuanzhaogao/work/tnbb_data/$(n)_$(id)_sc31"
         df_tnbb = CSV.read(joinpath(dirname, "slices.csv"), DataFrame)
 
-        nets = []
+        #warmup
+        id0 = df_tnbb.id[1]
+        g0 = loadgraph(joinpath(dirname, "graph_$(id0).dot"))
+        code0 = readjson(joinpath(dirname, "eincode_$(id0).json"))
+        net = GenericTensorNetwork(IndependentSet(g0), code0, Dict{Int, Int}())
+        solve_net(net)
         
-        for id in df_tnbb.id
+        t = 0.0
+        N = length(df_tnbb.id)
+        for (i, id) in enumerate(df_tnbb.id)
             g = loadgraph(joinpath(dirname, "graph_$(id).dot"))
             code = readjson(joinpath(dirname, "eincode_$(id).json"))
             net = GenericTensorNetwork(IndependentSet(g), code, Dict{Int, Int}())
-            push!(nets, net)
+            t_id = @elapsed solve_net(net)
+            @info "solved $i out of $N in $(t_id)s"
+            t += t_id
         end
-        t = @belapsed solve_nets($nets)
+
         @show id, t
         CSV.write(df, DataFrame(name = id, tnbb_runtime = t), append = true)
     end
@@ -97,5 +108,5 @@ function contract_runtime(n)
     nothing
 end
 
-contract_runtime(70)
+contract_runtime(80)
 # different_target_slice_runtime()
