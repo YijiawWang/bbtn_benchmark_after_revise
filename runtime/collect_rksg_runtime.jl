@@ -5,19 +5,25 @@ function collect_rksg_runtime(n)
     df = joinpath(dir, "../data/runtime/ksg_n$(n)_runtime_all.csv")
     CSV.write(df, DataFrame(name = String[], scip_runtime = Float64[], sc = Float64[], ds_nslice = Float64[], ds_tc = Float64[], ds_slice_runtime = Float64[], ds_contract_runtime = Float64[], tnbb_nbranch = Float64[], tnbb_tc = Float64[], tnbb_branch_runtime = Float64[], tnbb_contract_runtime = Float64[]))
 
-    for i in 1:10
-        df_scip = joinpath(dir, "../data/runtime/ksg_n$(n)_scip.csv")
-        df_ds_branch = joinpath(dir, "../data/runtime/ksg_n$(n)_sc31_ds_branch.csv")
-        df_ds_contract = joinpath(dir, "../data/runtime/ksg_n$(n)_slice31_ds_contract.csv")
-        df_tnbb_branch = joinpath(dir, "../data/runtime/ksg_n$(n)_sc31_tnbb_branch.csv")
-        df_tnbb_contract = joinpath(dir, "../data/runtime/ksg_n$(n)_sc31_tnbb_contract.csv")
+    df_scip = joinpath(dir, "../data/runtime/ksg_n$(n)_scip.csv")
+    df_ds_branch = joinpath(dir, "../data/runtime/ksg_n$(n)_sc31_ds_branch.csv")
+    df_ds_contract = joinpath(dir, "../data/runtime/ksg_n$(n)_slice31_ds_contract.csv")
+    df_tnbb_branch = joinpath(dir, "../data/runtime/ksg_n$(n)_sc31_tnbb_branch.csv")
+    df_tnbb_contract = joinpath(dir, "../data/runtime/ksg_n$(n)_sc31_tnbb_contract.csv")
 
-        df_scip = CSV.read(df_scip, DataFrame)
-        df_ds_branch = CSV.read(df_ds_branch, DataFrame)
-        df_ds_contract = CSV.read(df_ds_contract, DataFrame)
-        df_tnbb_branch = CSV.read(df_tnbb_branch, DataFrame)
-        df_tnbb_contract = CSV.read(df_tnbb_contract, DataFrame)
+    df_scip = CSV.read(df_scip, DataFrame)
+    df_ds_branch = CSV.read(df_ds_branch, DataFrame)
+    df_ds_contract = CSV.read(df_ds_contract, DataFrame)
+    df_tnbb_branch = CSV.read(df_tnbb_branch, DataFrame)
+    df_tnbb_contract = CSV.read(df_tnbb_contract, DataFrame)
 
+    n1 = df_scip.name
+    n2 = df_ds_contract.name
+    n3 = df_tnbb_contract.name
+
+    ns = intersect(n1, n2, n3)
+
+    for i in ns
         scip_runtime = df_scip[df_scip.name .== i, :runtime][1]
         sc = df_ds_branch[df_ds_branch.name .== i, :original_sc][1]
         ds_nslice = df_ds_branch[df_ds_branch.name .== i, :nslice][1]
@@ -33,4 +39,4 @@ function collect_rksg_runtime(n)
     end
 end
 
-collect_rksg_runtime(70)
+collect_rksg_runtime(80)

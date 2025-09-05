@@ -124,6 +124,6 @@ begin
     # text!(ax, 0.4, log10(max_time), text = L"Time limit ($72$h)", fontsize = 18)
 
     save("../figs/runtime.pdf", fig)
-    save("../figs/runtime.png", fig)
+    # save("../figs/runtime.png", fig)
     fig
 end
