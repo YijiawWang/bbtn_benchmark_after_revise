@@ -80,6 +80,6 @@ function slice_runtime_sc31(n)
     return nothing
 end
 
-slice_runtime_sc31(80)
+slice_runtime_sc31(60)
 
 # slice_different_target(70, 7)

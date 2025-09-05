@@ -69,7 +69,7 @@ function scip_nodes(n)
     CSV.write(df, DataFrame(name = 1:50, nodes = nodes), append = true)
 end
 
-scip_runtime(80)
+scip_runtime(60)
 
 # for n in 30:5:60
 #     scip_nodes(n)

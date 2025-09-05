@@ -5,7 +5,7 @@ using GenericTensorNetworks, ProblemReductions
 using CUDA, CuTropicalGEMM
 using BenchmarkTools
 
-CUDA.device!(5)
+CUDA.device!(4)
 CUDA.allowscalar(false)
 
 function solve_nets(nets)
@@ -108,5 +108,5 @@ function contract_runtime(n)
     nothing
 end
 
-contract_runtime(80)
+contract_runtime(60)
 # different_target_slice_runtime()

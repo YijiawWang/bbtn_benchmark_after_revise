@@ -69,15 +69,15 @@ function tnbb_krksg(n)
 
         dirname = "/home/xuanzhaogao/work/tnbb_data/$(n)_$(i)_sc31"
 
-        if original_cc.sc < 31
+        # if original_cc.sc < 31
 
-            !isdir(dirname) && mkdir(dirname)
+        #     !isdir(dirname) && mkdir(dirname)
 
-            TensorBranching.save_finished(dirname, SlicedBranch(g, UnitWeight(nv(g)), code, r), 1)
-            CSV.write(joinpath(dirname, "slices.csv"), DataFrame(id = 1, sc = original_cc.sc, tc = original_cc.tc, r = r))
+        #     TensorBranching.save_finished(dirname, SlicedBranch(g, UnitWeight(nv(g)), code, r), 1)
+        #     CSV.write(joinpath(dirname, "slices.csv"), DataFrame(id = 1, sc = original_cc.sc, tc = original_cc.tc, r = r))
 
-            continue
-        end
+        #     continue
+        # end
 
         target = 31
         slicer = ContractionTreeSlicer(sc_target = target)
@@ -97,4 +97,4 @@ function tnbb_krksg(n)
     return nothing
 end
 
-tnbb_krksg(80)
+tnbb_krksg(60)
