@@ -2,6 +2,36 @@ include("settings.jl")
 t = 15
 
 begin
+    fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (500, 400), fontsize = 20)
+
+    ax = Axis(fig[2, 1], xlabel = L"\log_2(s.c.)", ylabel = L"t.c. \text{ (Flops)}", xreversed = true, xticks = ([32, 30, 28, 26, 24, 22, 20, 18], [L"32", L"30", L"28", L"26", L"24", L"22", L"20", L"18"]), yticks = (10:1:22, [L"10^{10}", L"10^{11}", L"10^{12}", L"10^{13}", L"10^{14}", L"10^{15}", L"10^{16}", L"10^{17}", L"10^{18}", L"10^{19}", L"10^{20}", L"10^{21}", L"10^{22}"]))
+
+    df_tnbb_vsc = CSV.read("../data/complexity/random_ksg/tnbb_different_target_freoptimize_n80.csv", DataFrame)
+    df_ds_vsc = CSV.read("../data/complexity/random_ksg/treesa_different_target_n80.csv", DataFrame)
+
+    i = 4
+    sc_tnbb = df_tnbb_vsc.target
+    tc_tnbb = log10.(2 .^df_tnbb_vsc.total_tc)
+    orignal_tc = log10.(2 .^df_ds_vsc[df_ds_vsc.name .== i, :origin_tc][1])
+    orignal_sc = df_ds_vsc[df_ds_vsc.name .== i, :origin_sc][1]
+    sc_ds = df_ds_vsc[df_ds_vsc.name .== i, :sliced_sc][1:2:end]
+    tc_ds = log10.(2 .^df_ds_vsc[df_ds_vsc.name .== i, :sliced_tc][1:2:end])
+
+    scatter_ds = scatter!(ax, sc_ds, tc_ds, markersize = t, marker = markerstyle[3], color = colors[3], strokewidth = strokewidth, strokecolor = :black)
+    scatter_tnbb = scatter!(ax, sc_tnbb, tc_tnbb, markersize = t, marker = markerstyle[2], color = colors[2], strokewidth = strokewidth, strokecolor = :black)
+    hline_ttn = hlines!(ax, [orignal_tc], color = colors[1], linestyle = :solid)
+    
+    xlims!(ax, 33, 21)
+    ylims!(ax, 13.5, 19.5)
+
+    Legend(fig[1, 1], [scatter_tnbb, scatter_ds, hline_ttn], ["BBTN", "Dynamic Slicing", "Tropical TN"], orientation = :horizontal, labelsize = 15)
+
+    save("../figs/tc_different_target.pdf", fig)
+
+    fig
+end
+
+begin
     fig = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (1000, 400), fontsize = 20)
 
     ax1 = Axis(fig[2, 1], xlabel = L"N", ylabel = L"t.c. \text{ (Flops)}", xticks = (30:10:100, [L"30", L"40", L"50", L"60", L"70", L"80", L"90", L"100"]), yticks = (0:5:35, [L"10^0", L"10^{5}", L"10^{10}", L"10^{15}", L"10^{20}", L"10^{25}", L"10^{30}", L"10^{35}"]))
