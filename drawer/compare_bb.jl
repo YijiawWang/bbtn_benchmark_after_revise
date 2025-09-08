@@ -74,12 +74,12 @@ end
 
 begin
     
-    fig = Figure(size = (700, 200), fontsize = 20)
+    fig = Figure(size = (500, 300), fontsize = 20)
     
 
-    ax0 = Axis(fig[1, 1], ylabel = L"t.c._{TN}", yticks = (0:10:60, [L"2^0", L"2^{10}", L"2^{20}", L"2^{30}", L"2^{40}", L"2^{50}", L"2^{60}"]), xticks = (30:10:50, [L"30", L"40", L"50"]))
-    ax1 = Axis(fig[1, 2], ylabel = L"N_{BB}", yticks = ([0, 5, 10, 15, 20], [L"2^0", L"2^5", L"2^{10}", L"2^{15}", L"2^{20}"]), xticks = (30:10:50, [L"30", L"40", L"50"]))
-    ax1_2 = Axis(fig[1, 3], ylabel = L"N_{IP}", yticks = ([0, 5, 10, 15], [L"2^0", L"2^5", L"2^{10}", L"2^{15}"]), xticks = (30:10:50, [L"30", L"40", L"50"]))
+    ax0 = Axis(fig[2, 1], xlabel = L"N", ylabel = L"t.c.", yticks = (0:10:60, [L"2^0", L"2^{10}", L"2^{20}", L"2^{30}", L"2^{40}", L"2^{50}", L"2^{60}"]), xticks = (30:10:50, [L"30", L"40", L"50"]))
+    ax1 = Axis(fig[2, 2], xlabel = L"N", ylabel = L"N_{B}", yticks = ([0, 5, 10, 15, 20], [L"2^0", L"2^5", L"2^{10}", L"2^{15}", L"2^{20}"]), xticks = (30:10:50, [L"30", L"40", L"50"]))
+    # ax1_2 = Axis(fig[2, 3], xlabel = L"N", ylabel = L"N_{B}", yticks = ([0, 5, 10, 15], [L"2^0", L"2^5", L"2^{10}", L"2^{15}"]), xticks = (30:10:50, [L"30", L"40", L"50"]))
 
     n_tn = [30:5:50...]
     n_bb = [30, 35, 40, 45, 50]
@@ -95,7 +95,7 @@ begin
 
     sc_tn = scatter!(ax0, n_tn, tc_tns, markersize = markersize, marker = markerstyle[2], color = colors[2], strokewidth = strokewidth, strokecolor = :black, label = "Tropical TN")
     sc_bb = scatter!(ax1, n_bb, count_bbs, markersize = markersize, marker = markerstyle[1], color = colors[1], strokewidth = strokewidth, strokecolor = :black, label = "B&B")
-    sc_ip = scatter!(ax1_2, n_ip, count_ips, markersize = markersize, marker = markerstyle[3], color = colors[3], strokewidth = strokewidth, strokecolor = :black, label = "IP")
+    sc_ip = scatter!(ax1, n_ip, count_ips, markersize = markersize, marker = markerstyle[3], color = colors[3], strokewidth = strokewidth, strokecolor = :black, label = "IP")
 
     @. model_bb(x, p) = p[1] *(x)^p[2] + p[3]
     fit_bb = curve_fit(model_bb, n_bb, count_bbs, [1.0, 1.0, 1.0])
@@ -120,11 +120,13 @@ begin
 
     lines!(ax0, xs, model_tn(xs, fit_tn.param), color = colors[2], linestyle = :dash)
     lines!(ax1, xs, model_bb(xs, fit_bb.param), color = colors[1], linestyle = :dash)
-    lines!(ax1_2, xs, model_ip(xs, fit_ip.param), color = colors[3], linestyle = :dash)
+    lines!(ax1, xs, model_ip(xs, fit_ip.param), color = colors[3], linestyle = :dash)
 
-    axislegend(ax0, position = :lt, labelsize = 10)
-    axislegend(ax1, position = :lt, labelsize = 10)
-    axislegend(ax1_2, position = :lt, labelsize = 10)
+    # axislegend(ax0, position = :lt, labelsize = 10)
+    # axislegend(ax1, position = :lt, labelsize = 10)
+    # axislegend(ax1_2, position = :lt, labelsize = 10)
+
+    Legend(fig[1, :], [sc_tn, sc_bb, sc_ip], ["Tropical-TN", "B&B", "SCIP"], position = :lt, labelsize = 15, orientation = :horizontal, nbanks = 1)
 
     save("../figs/compare_bb_ip.pdf", fig)
     fig
