@@ -24,7 +24,7 @@ begin
     xlims!(ax, 33, 21)
     ylims!(ax, 13.5, 19.5)
 
-    Legend(fig[1, 1], [scatter_tnbb, scatter_ds, hline_ttn], ["BBTN", "Dynamic Slicing", "Tropical TN"], orientation = :horizontal, labelsize = 15)
+    Legend(fig[1, 1], [scatter_tnbb, scatter_ds, hline_ttn], ["BBTN", "Slicing", "Tropical TN"], orientation = :horizontal, labelsize = 15)
 
     save("../figs/tc_different_target.pdf", fig)
 
@@ -36,9 +36,9 @@ begin
 
     ax1 = Axis(fig[2, 1], xlabel = L"N", ylabel = L"t.c. \text{ (Flops)}", xticks = (30:10:100, [L"30", L"40", L"50", L"60", L"70", L"80", L"90", L"100"]), yticks = (0:5:35, [L"10^0", L"10^{5}", L"10^{10}", L"10^{15}", L"10^{20}", L"10^{25}", L"10^{30}", L"10^{35}"]))
     ax2 = Axis(fig[2, 2], ylabel = L"\text{Runtime (s)}", 
-        xticks = (1:5, ["RKSG\nN=60", "RKSG\nN=70", "RKSG\nN=80", "MKSG\nI", "MKSG\nII"]),
+        xticks = (1:5, ["RKSG\nN=60", "RKSG\nN=70", "RKSG\nN=80", "MKSG\nStructured", "MKSG\nRandom"]),
         yticks = (0:7, [L"10^0", L"10^1", L"10^2", L"10^3", L"10^4", L"10^5", L"10^6", L"10^7"]),
-        xticklabelsize = 16,
+        xticklabelsize = 13,
     )
 
     n_tn = [50:10:100...]
@@ -64,17 +64,17 @@ begin
     xs = range(45, 105, length = 100)
 
     lines!(ax1, xs, model_tn(xs, fit_tn.param), color = colors[1], linestyle = :dash)
-    lines!(ax1, xs, model_ds(xs, fit_ds.param), color = colors[3], linestyle = :dash)
-    lines!(ax1, xs, model_tnbb(xs, fit_tnbb.param), color = colors[2], linestyle = :dash)
+    lines!(ax1, xs, model_ds(xs, fit_ds.param), color = colors[3], linestyle = :solid)
+    lines!(ax1, xs, model_tnbb(xs, fit_tnbb.param), color = colors[2], linestyle = :solid)
 
     alpha = 0.7
 
     sc_tn = scatter!(ax1, n_tn, tc_tn, markersize = t, marker = markerstyle[1], color = :white, strokewidth = 2, strokecolor = colors[1], label = "Tropical-TN")
-    sc_ds = scatter!(ax1, n_ds, tc_ds, markersize = t, marker = markerstyle[3], color = colors[3], strokewidth = strokewidth, strokecolor = :black, label = "Dynamic Slicing")
+    sc_ds = scatter!(ax1, n_ds, tc_ds, markersize = t, marker = markerstyle[3], color = colors[3], strokewidth = strokewidth, strokecolor = :black, label = "Slicing")
     sc_tnbb = scatter!(ax1, n_tnbb[1:4], tc_tnbb[1:4], markersize = t, marker = markerstyle[2], color = colors[2], strokewidth = strokewidth, strokecolor = :black, label = "BBTN")
     scatter!(ax1, n_tnbb[5:end], tc_tnbb[5:end], markersize = t, marker = markerstyle[2], color = (colors[2], alpha))
 
-    Legend(fig[1, 1], [sc_tnbb, sc_ds, sc_tn], ["BBTN", "Dynamic Slicing", "Tropical-TN"], orientation = :horizontal, labelsize = 15)
+    Legend(fig[1, 1], [sc_tnbb, sc_ds, sc_tn], ["BBTN", "Slicing", "Tropical-TN"], orientation = :horizontal, labelsize = 15)
 
     xlims!(ax1, 45, 105)
     ylims!(ax1, 0, 35)
@@ -200,7 +200,7 @@ begin
 
     xlims!(ax2, 0, 6)
 
-    Legend(fig[1, 2], [PolyElement(polycolor = runtime_colors[i]) for i in 1:3], ["BBTN", "Dynamical Slicing", "SCIP"], labelsize = 15, orientation = :horizontal)
+    Legend(fig[1, 2], [PolyElement(polycolor = runtime_colors[i]) for i in 1:3], ["BBTN", "Slicing", "SCIP"], labelsize = 15, orientation = :horizontal)
 
     text!(ax1, 0, 1, text = L"\textbf{(a)}", align = (:left, :top), fontsize = 20, space = :relative, offset = (4, -4), font = :bold)
     text!(ax2, 0, 1, text = L"\textbf{(b)}", align = (:left, :top), fontsize = 20, space = :relative, offset = (4, -4), font = :bold)
