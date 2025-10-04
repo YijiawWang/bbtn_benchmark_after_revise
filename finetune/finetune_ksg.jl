@@ -41,7 +41,7 @@ function main()
     @show mis_complexity(code_new_mapped)
     @show mis_complexity(code_new_flatten)
 
-    for iters in 10:10:100
+    for iters in 10:20:200
         scs = zeros(100)
         tcs = zeros(100)
         rwcs = zeros(100)
@@ -56,7 +56,7 @@ function main()
         @show iters, mean(scs), mean(tcs), mean(rwcs)
     end
 
-    for iters in 100:100:1000
+    for iters in 10:20:200
         scs = zeros(100)
         tcs = zeros(100)
         rwcs = zeros(100)
