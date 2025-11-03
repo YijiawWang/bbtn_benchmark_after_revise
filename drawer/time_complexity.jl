@@ -72,7 +72,7 @@ begin
     sc_tn = scatter!(ax1, n_tn, tc_tn, markersize = t, marker = markerstyle[1], color = :white, strokewidth = 2, strokecolor = colors[1], label = "Tropical-TN")
     sc_ds = scatter!(ax1, n_ds, tc_ds, markersize = t, marker = markerstyle[3], color = colors[3], strokewidth = strokewidth, strokecolor = :black, label = "Slicing")
     sc_tnbb = scatter!(ax1, n_tnbb[1:4], tc_tnbb[1:4], markersize = t, marker = markerstyle[2], color = colors[2], strokewidth = strokewidth, strokecolor = :black, label = "BBTN")
-    scatter!(ax1, n_tnbb[5:end], tc_tnbb[5:end], markersize = t, marker = markerstyle[2], color = (colors[2], alpha))
+    scatter!(ax1, n_tnbb[5:end], tc_tnbb[5:end], markersize = t, marker = markerstyle[2], color = :white, strokewidth = 2, strokecolor = colors[2])
 
     Legend(fig[1, 1], [sc_tnbb, sc_ds, sc_tn], ["BBTN", "Slicing", "Tropical-TN"], orientation = :horizontal, labelsize = 15)
 

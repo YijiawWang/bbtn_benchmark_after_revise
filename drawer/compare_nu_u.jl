@@ -77,16 +77,21 @@ begin
     uniform_line2 = LineElement(color = colors[4], linewidth = 2)
     uniform_scatter2 = MarkerElement(marker = markerstyle[2], color = colors[4], markersize = t, strokewidth = strokewidth, strokecolor = :black)
     
+    # Slicing elements
+    # slicing_line = LineElement(color = colors[1], linewidth = 2)
+    # slicing_scatter = MarkerElement(marker = markerstyle[3], color = colors[1], markersize = t, strokewidth = strokewidth, strokecolor = :black)
+    
     # Create composite elements (line + scatter)
     element1 = [nu_line1, nu_scatter1]
     element2 = [nu_line2, nu_scatter2]
     element3 = [uniform_line1, uniform_scatter1]
     element4 = [uniform_line2, uniform_scatter2]
+    # element5 = [slicing_line, slicing_scatter]
     
     # Shared legend spanning both subplots - FORCE 2 ROWS 2 COLS
     Legend(fig[1, 1:2], [element1, element2, element3, element4], 
-           ["NU slicing: |R|=5", "NU slicing: |R|=20", "Uniform slicing: |R|=5", "Uniform slicing: |R|=20"], 
-           orientation = :horizontal, labelsize = 15, ncol = 2, rowgap = 5, colgap = 20)
+           ["NU: |R|=5", "NU: |R|=20", "Vanilla: |R|=5", "Vanilla: |R|=20"], 
+           orientation = :horizontal, labelsize = 15, ncol = 3, rowgap = 5, colgap = 20)
 
     # Add subplot labels and titles
     text!(ax1, 0, 1, text = L"\textbf{(a) RKSG}", align = (:left, :top), fontsize = 20, space = :relative, offset = (4, -4), font = :bold)
