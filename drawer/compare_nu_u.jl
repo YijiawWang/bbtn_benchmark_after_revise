@@ -90,7 +90,7 @@ begin
     
     # Shared legend spanning both subplots - FORCE 2 ROWS 2 COLS
     Legend(fig[1, 1:2], [element1, element2, element3, element4], 
-           ["NU: |R|=5", "NU: |R|=20", "Vanilla: |R|=5", "Vanilla: |R|=20"], 
+           ["NU: |R|=5", "NU: |R|=20", "Direct: |R|=5", "Direct: |R|=20"], 
            orientation = :horizontal, labelsize = 15, ncol = 3, rowgap = 5, colgap = 20)
 
     # Add subplot labels and titles

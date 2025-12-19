@@ -1,0 +1,5 @@
+model_name,vertices,edges,sc_target,total_tc,slice_num,total_tc_slicing,sc_slicing,slice_num_slicing
+spin_glass_J±1_rrg_n=600_d=3_seed=9.model,600,900,31,48.51143323904491,191,87.7607,31.0,50
+spin_glass_J±1_3Dgrid_n=8_seed=1.model,512,1344,31,45.73770334967213,19,81.22978,31.0,40
+random_ksg_n=60_seed=4.graph,2880,8945,31,52.45289147379096,150.8,61.470516,31.0,16
+random_ksg_weight1to10_n=100_seed=1.graph,8000,25218,31,49.872263906953464,8,155.46854,31.0,108

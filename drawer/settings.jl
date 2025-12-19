@@ -21,14 +21,17 @@ function max_n(x, n)
     xs = sort(x)
     return xs[end-n+1:end]
 end
-
-tc_min = log2(60 * (18.3 * 10^12)) - 1
-tc_hour = log2(3600 * (18.3 * 10^12)) - 1
-tc_day = log2(24 * 3600 * (18.3 * 10^12)) - 1
-tc_week = log2(7 * 24 * 3600 * (18.3 * 10^12)) - 1
-tc_month = log2(30 * 24 * 3600 * (18.3 * 10^12)) - 1
-tc_year = log2(365 * 24 * 3600 * (18.3 * 10^12)) - 1
-tc_100_years = log2(100 * 365 * 24 * 3600 * (18.3 * 10^12)) - 1
-
+# t_30_tn =  12.2944445822*2
+# tc_30_tn = 41.98505
+# tc_tn_one_hour = 2^tc_30_tn / t_30_tn * 3600
+tc_tn_one_hour = 3600 * (19.5 * 10^12)
+tc_min = log10(tc_tn_one_hour/60)
+tc_hour = log10(tc_tn_one_hour)
+tc_day = log10(tc_tn_one_hour*24)
+tc_month = log10(tc_tn_one_hour*24*30)
+tc_year = log10(tc_tn_one_hour*24*30*12)
+tc_100_years = log10(tc_tn_one_hour*24*30*12*100)
+tc_10000_years = log10(tc_tn_one_hour*24*30*12*10000)
+tc_1000000_years = log10(tc_tn_one_hour*24*30*12*1000000)
 hstyle = :dot
 hwidth = 1.5
