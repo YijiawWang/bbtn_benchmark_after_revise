@@ -24,7 +24,7 @@ begin
     xlims!(ax, 33, 21)
     ylims!(ax, 13.5, 19.5)
 
-    Legend(fig[1, 1], [scatter_tnbb, scatter_ds, hline_ttn], ["BBTN", "Slicing", "Tropical TN"], orientation = :horizontal, labelsize = 15)
+    Legend(fig[1, 1], [scatter_tnbb, scatter_ds, hline_ttn], ["BBTN", "TN with Slicing", "TN"], orientation = :horizontal, labelsize = 15)
 
     save("../figs/tc_different_target.pdf", fig)
 

@@ -4,15 +4,15 @@ begin
     t = 15  # 散点大小，与 (b) 图一致
     t_cross = 18  # × 和 + 的长度更长一些
     
-    # ========== 第一幅图：(a) 和 (c) ==========
-    fig1 = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (1000, 400), fontsize = 20)
-    colgap!(fig1.layout, 80)
+    # ========== 第一幅图：(a) 和 (b) ==========
+    fig1 = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (800, 800), fontsize = 20)
+    rowgap!(fig1.layout, 30)
     
     # ========== (a)：spin_glass_counging_lattice.jl ==========
     xtick_positions = collect(5:5:70)
     # 10,20,30,35,40,45,50,55,60,65,70 有标签，其余仅刻度
-    xtick_labels = [x in [10, 20, 30, 35, 40, 45, 50, 55, 60, 65, 70] ? string(x) : "" for x in xtick_positions]
-    ax1_top = Axis(fig1[1, 1], xlabel = L"N", ylabel = L"t.c.\text{(Flops)}", xticks = (xtick_positions, xtick_labels), yticks = (0:5:55, [L"$10^0$", L"$10^5$", L"$10^{10}$", L"$10^{15}$", L"$10^{20}$", L"$10^{25}$", L"$10^{30}$", L"$10^{35}$", L"$10^{40}$", L"$10^{45}$", L"$10^{50}$", L"$10^{55}$"]))
+    xtick_labels = [x in [10, 20, 30, 35, 40, 45, 50, 55, 60, 65, 70] ? LaTeXString("$x") : "" for x in xtick_positions]
+    ax1_top = Axis(fig1[1, 1], xlabel = L"N", ylabel = L"t.c.\text{(Flops)}", xticks = (xtick_positions, xtick_labels), yticks = (0:5:55, [L"$10^0$", L"$10^5$", L"$10^{10}$", L"$10^{15}$", L"$10^{20}$", L"$10^{25}$", L"$10^{30}$", L"$10^{35}$", L"$10^{40}$", L"$10^{45}$", L"$10^{50}$", L"$10^{55}$"]), xlabelsize = 26, ylabelsize = 26, xticklabelsize = 22, yticklabelsize = 22, xticksize = 8, yticksize = 8)
     # 主图不再需要右侧 y 轴（Branch & Bound 在 inset 中）
     # ax1_top_2 = Axis(fig1[1, 1],
     #                  yaxisposition = :right,
@@ -198,15 +198,15 @@ begin
     sc_bb = nothing
     
     # 使用固定像素坐标，让 inset 的左右边界与主图对齐
-    # Figure 大小是 (1000, 400)，主图在左侧，估算其位置
-    main_left = 100   # 主图左边位置（包含标签和边距）
-    main_right = 450  # 主图右边位置（考虑 colgap=80）
-    main_top = 350    # 主图顶部位置
+    # Figure 大小是 (800, 800)，主图在上方，估算其位置
+    main_left = 80   # 主图左边位置（包含标签和边距）
+    main_right = 720  # 主图右边位置（按比例从 520 调整到 720）
+    main_top = 750    # 主图顶部位置（上下布局，主图在上）
     
     # inset 更小，位置更高，往右移动
     inset_width = (main_right - main_left) / 3  # 宽度更小（原来的 1/3）
     inset_height = 80  # 高度更小
-    inset_left = main_left + 80  # 往右移动 80px
+    inset_left = main_left + 200  # 往右移动 200px（从 80 增加到 200）
     inset_right = inset_left + inset_width
     inset_top = main_top - 30  # 位置更高（距离顶部更近）
     inset_bottom = inset_top - inset_height
@@ -323,11 +323,22 @@ begin
     # 绘制 Branch & Bound 交叉线（只显示 n <= 20 的点）
     sc_bb = nothing
     if length(n_bb_inset) > 0
-        # 计算线的长度（基于数据范围）
+        # 计算线的长度（基于数据范围，考虑坐标轴比例使十字架视觉上宽高相等）
         x_range = maximum(n_bb_inset) - minimum(n_bb_inset)
         y_range = maximum(bb_branch_num_inset) - minimum(bb_branch_num_inset)
-        line_length_x = x_range * 0.15  # 水平线长度（更长）
-        line_length_y = y_range * 0.15  # 垂直线长度（更长）
+        # 先设置坐标轴范围（在计算之前需要知道范围）
+        n_start_inset_temp = max(0.1, minimum(all_n_vals_inset) - 2)
+        n_end_inset_temp = 34.5
+        y_max_inset_temp = (bb_branch_num_inset[1]) * 3.25
+        # 计算坐标轴的宽高比（数据单位）
+        x_axis_range = n_end_inset_temp - n_start_inset_temp
+        y_axis_range = y_max_inset_temp - 0
+        # 为了视觉上相等，需要根据轴范围比例调整
+        # 如果y轴范围更大，y轴单位长度更小，所以line_length_y需要更大（数据单位）
+        aspect_ratio = x_axis_range / y_axis_range
+        base_length = min(x_range, y_range) * 0.15
+        line_length_x = base_length*2  # 水平线长度
+        line_length_y = base_length / aspect_ratio * 5.2  # 垂直线长度（根据宽高比调整）
         
         # 为每个数据点绘制交叉线
         for i in 1:length(n_bb_inset)
@@ -342,8 +353,8 @@ begin
         # 创建一个用于图例的完整十字（使用散点的 :+ marker 来显示完整十字）
         x_legend = -1000  # 远离数据范围
         y_legend = -1000
-        # 使用散点的 :+ marker 来显示完整十字，设置合适的参数使其看起来像实际的交叉线
-        legend_markersize = max(line_length_x, line_length_y) * 15  # 调整系数以匹配长度（图例中稍小一些）
+        # 使用散点的 :+ marker 来显示完整十字，增大markersize使图例中更明显
+        legend_markersize = base_length * 50  # 增大系数从15到30，使图例中十字架更大
         sc_bb = scatter!(ax_inset_2, [x_legend], [y_legend], markersize = legend_markersize, marker = :+, color = colors[6], strokewidth = 0, label = "bb_branch_num")
     end
     
@@ -362,12 +373,17 @@ begin
             y_max_tn = maximum(pure_tn_tc_vals) + 1
             hlines!(ax_inset_2, bb_branch_num_inset[1], color = :black, linestyle = hstyle, linewidth = hwidth)
             # text!(ax_inset_2, n_end_inset - 1, log10(branch_num_one_hour), text = L"$1$ hour", color = :black, fontsize = 12, align = (:right, :center), offset = (0, 7.2))
-            ylims!(ax_inset, 0, (pure_tn_tc_inset[5]) * 3.25)
+            y_max_inset = max((pure_tn_tc_inset[5]) * 3.25, 30)  # 确保至少包含 30
+            ylims!(ax_inset, 0, y_max_inset)
             ylims!(ax_inset_2, 0, (bb_branch_num_inset[1]) * 3.25)
             # ylims!(ax_inset, y_min_tn, y_max_tn)
             # 设置 y 轴刻度格式为 10^x
-            y_max_int = Int(ceil(y_max_tn))
+            y_max_int = Int(ceil(y_max_inset))
             y_tick_positions = collect(0:5:y_max_int)
+            # 确保包含 30（10^30）
+            if !(30 in y_tick_positions)
+                y_tick_positions = sort(vcat(y_tick_positions, 30))
+            end
             # 生成标签：根据位置生成对应的 10^x 格式
             y_tick_labels = LaTeXString[]
             for x in y_tick_positions
@@ -445,13 +461,13 @@ begin
     # ylims!(ax1_top_2, 0, log10(branch_num_one_hour) + (tc_hour-log10(2)) * 2.2 - tc_hour-log10(2))
     # 在对应位置画参考线
     hlines!(ax1_top, tc_min-log10(2), color = :black, linestyle = hstyle, linewidth = hwidth)
-    text!(ax1_top, n_start + 1, tc_min-log10(2), text = L"$1$ min", color = :black, fontsize = 18)
+    text!(ax1_top, n_start + 1, tc_min-log10(2), text = L"$1$ min", color = :black, fontsize = 22)
     # hlines!(ax1_top, tc_hour-log10(2), color = :black, linestyle = hstyle, linewidth = hwidth)
     # text!(ax1_top, n_start + 1, tc_hour-log10(2), text = L"$1$ hour", color = "#8B0000", fontsize = 18)
     hlines!(ax1_top, [tc_month-log10(2)], color = :black, linestyle = hstyle, linewidth = hwidth)
-    text!(ax1_top, n_start + 1, tc_month-log10(2), text = L"$1$ month", color = :black, fontsize = 18)
+    text!(ax1_top, n_start + 1, tc_month-log10(2), text = L"$1$ month", color = :black, fontsize = 22)
     hlines!(ax1_top, [tc_1000000_years-log10(2)], color = :black, linestyle = hstyle, linewidth = hwidth)
-    text!(ax1_top, n_start + 1, tc_1000000_years-log10(2), text = L"$10^6$ years", color = :black, fontsize = 18)
+    text!(ax1_top, n_start + 1, tc_1000000_years-log10(2), text = L"$10^6$ years", color = :black, fontsize = 22)
     # txt_bb = text!(ax1_top_2, n_end - 1, log10(branch_num_one_hour) + 0.12,
     #                text = L"$1$ hour",
     #                color = :red,
@@ -459,28 +475,38 @@ begin
     
     # hlines!(ax1_top_2, log10(branch_num_one_hour*24*30*12), color = colors[6], linestyle = :dashdot, linewidth = hwidth)
     # text!(ax1_top_2, n_end - 1, log10(branch_num_one_hour*24*30*12), text = L"$1$ year", color = colors[6], fontsize = 18, align = (:right, :center), offset = (6, 0))
-    # ========== (c)：ground_counting_tc.jl ==========
-    ax2_left = Axis(fig1[1, 2], 
+    # ========== (b)：ground_counting_tc.jl ==========
+    ax2_left = Axis(fig1[3, 1], 
         ylabel = L"t.c.\text{(Flops)}",
         xticks = (1:4, ["Spin Glass\nRRG", "Spin Glass\n3D Grid", "MIS\nRKSG", "MWIS\nRKSG"]),
         yticks = (0:5:35, [L"$10^0$", L"$10^5$", L"$10^{10}$", L"$10^{15}$", L"$10^{20}$", L"$10^{25}$", L"$10^{30}$", L"$10^{35}$"]),
-        xticklabelsize = 13,
+        xlabelsize = 26, ylabelsize = 26, xticklabelsize = 16, yticklabelsize = 22, xticksize = 8, yticksize = 8,
     )
     
     # 读取数据
     df_ground = CSV.read("../data/ground_state_counting/tc_ground_counting.csv", DataFrame)
     
     # 提取数据并转换为 log10
-    total_tc_vals = log10.(2 .^ df_ground.total_tc)
-    total_tc_slicing_vals = log10.(2 .^ df_ground.total_tc_slicing)
+    total_tc_vals = log10.(2 .^ df_ground.total_tc_mean)
+    total_tc_slicing_vals = log10.(2 .^ df_ground.total_tc_slicing_mean)
+    total_tc_max_vals = log10.(2 .^ df_ground.total_tc_max)
+    total_tc_min_vals = log10.(2 .^ df_ground.total_tc_min)
+    total_tc_slicing_max_vals = log10.(2 .^ df_ground.total_tc_slicing_max)
+    total_tc_slicing_min_vals = log10.(2 .^ df_ground.total_tc_slicing_min)
     
     # 准备柱状图数据
     cat = [1, 1, 2, 2, 3, 3, 4, 4]
     bar_grp = [1, 2, 1, 2, 1, 2, 1, 2]
     mean_times = Float64[]
+    min_times = Float64[]
+    max_times = Float64[]
     for i in 1:4
         push!(mean_times, total_tc_vals[i])
         push!(mean_times, total_tc_slicing_vals[i])
+        push!(min_times, total_tc_min_vals[i])
+        push!(min_times, total_tc_slicing_min_vals[i])
+        push!(max_times, total_tc_max_vals[i])
+        push!(max_times, total_tc_slicing_max_vals[i])
     end
     
     # 颜色设置
@@ -488,6 +514,22 @@ begin
     
     # 绘制柱状图
     barplot!(ax2_left, cat, mean_times, dodge = bar_grp, color = bar_colors[bar_grp], strokecolor = :black, strokewidth = 1)
+    
+    # Add error bars
+    dodge_width = 0.8
+    bar_width = dodge_width / 2
+    
+    for i in 1:length(cat)
+        x_pos = cat[i] + (bar_grp[i] - 1.5) * bar_width
+        y_mean = mean_times[i]
+        y_min = min_times[i]
+        y_max = max_times[i]
+        
+        lines!(ax2_left, [x_pos, x_pos], [y_min, y_max], color = :black, linewidth = 1)
+        cap_width = 0.05
+        lines!(ax2_left, [x_pos - cap_width, x_pos + cap_width], [y_min, y_min], color = :black, linewidth = 1)
+        lines!(ax2_left, [x_pos - cap_width, x_pos + cap_width], [y_max, y_max], color = :black, linewidth = 1)
+    end
     
     # 设置 y 轴范围
     ylims!(ax2_left, 0, 35)
@@ -498,43 +540,43 @@ begin
     hlines!(ax2_left, [tc_month-log10(2)], color = :black, linestyle = :dash, linewidth = 1)
     hlines!(ax2_left, [tc_1000000_years-log10(2)], color = :black, linestyle = :dash, linewidth = 1)
     
-    text!(ax2_left, 0.05, tc_min-log10(2), text = L"$1$ min", fontsize = 18, color = :black)
+    text!(ax2_left, 0.05, tc_min-log10(2), text = L"$1$ min", fontsize = 22, color = :black)
     # text!(ax2_left, 0.05, one_day, text = L"$1$ day", fontsize = 15, color = :black)
-    text!(ax2_left, 0.05, tc_month-log10(2), text = L"$1$ month", fontsize = 18, color = :black)
-    text!(ax2_left, 0.05, tc_1000000_years-log10(2), text = L"$10^6$ years", fontsize = 18, color = :black)
+    text!(ax2_left, 0.05, tc_month-log10(2), text = L"$1$ month", fontsize = 22, color = :black)
+    text!(ax2_left, 0.05, tc_1000000_years-log10(2), text = L"$10^6$ years", fontsize = 22, color = :black)
     
     xlims!(ax2_left, 0, 5)
     
     # (a) 的图例
     fig1a_legend_dict = Dict{String, Any}()
     fig1a_legend_dict["BBTN"] = sc_tc
-    fig1a_legend_dict["Slicing"] = sc_tc_slicing
+    fig1a_legend_dict["TN with Slicing"] = sc_tc_slicing
     # Tropical-TN 使用主图中的散点（而不是 inset 中的），Branch & Bound 使用 inset 中的散点
     if sc_pure_tn_main !== nothing
-        fig1a_legend_dict["Tropical-TN"] = sc_pure_tn_main
+        fig1a_legend_dict["TN"] = sc_pure_tn_main
     elseif sc_pure_tn !== nothing
-        fig1a_legend_dict["Tropical-TN"] = sc_pure_tn
+        fig1a_legend_dict["TN"] = sc_pure_tn
     end
     if sc_bb !== nothing
         fig1a_legend_dict["Branch & Bound"] = sc_bb
     end
     # 按顺序构建图例
-    fig1a_labels_order = ["BBTN", "Slicing", "Tropical-TN"]
+    fig1a_labels_order = ["BBTN", "TN with Slicing", "TN"]
     if length(n_bb_vals) > 0
         push!(fig1a_labels_order, "Branch & Bound")
     end
     fig1a_legend_items = [fig1a_legend_dict[label] for label in fig1a_labels_order if haskey(fig1a_legend_dict, label)]
     fig1a_legend_labels = [label for label in fig1a_labels_order if haskey(fig1a_legend_dict, label)]
-    Legend(fig1[0, 1], fig1a_legend_items, fig1a_legend_labels, orientation = :horizontal, labelsize = 20, nbanks = 1, tellwidth = false, halign = :center)
+    Legend(fig1[0, 1], fig1a_legend_items, fig1a_legend_labels, orientation = :horizontal, labelsize = 20, nbanks = 1, tellwidth = true, halign = :center)
     
-    # (b) 的图例
+    # (b) 的图例（放在 (b) 子图上方）
     fig1b_legend_dict = Dict{String, Any}()
     fig1b_legend_dict["BBTN"] = PolyElement(polycolor = bar_colors[1])
-    fig1b_legend_dict["Slicing"] = PolyElement(polycolor = bar_colors[2])
-    fig1b_labels_order = ["BBTN", "Slicing"]
+    fig1b_legend_dict["TN with Slicing"] = PolyElement(polycolor = bar_colors[2])
+    fig1b_labels_order = ["BBTN", "TN with Slicing"]
     fig1b_legend_items = [fig1b_legend_dict[label] for label in fig1b_labels_order if haskey(fig1b_legend_dict, label)]
     fig1b_legend_labels = [label for label in fig1b_labels_order if haskey(fig1b_legend_dict, label)]
-    Legend(fig1[0, 2], fig1b_legend_items, fig1b_legend_labels, orientation = :horizontal, labelsize = 20, nbanks = 1, tellwidth = false, halign = :center)
+    Legend(fig1[2, 1], fig1b_legend_items, fig1b_legend_labels, orientation = :horizontal, labelsize = 20, nbanks = 1, tellwidth = true, halign = :center)
     
     # 添加子图标签
     text!(ax1_top, 0, 1, text = L"\textbf{(a)}", align = (:left, :top), fontsize = 20, space = :relative, offset = (4, -4), font = :bold)
@@ -543,10 +585,11 @@ begin
     save("../figs/grouping_subgraphs_fig1.pdf", fig1)
     
     # ========== 第二幅图：(a) 和 (b) ==========
-    fig2 = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (1000, 400), fontsize = 20)
+    fig2 = Figure(backgroundcolor = RGBf(1.0, 1.0, 1.0), size = (600, 800), fontsize = 20)
+    rowgap!(fig2.layout, 30)
     
     # ========== (b)：time_complexity.jl 的左子图 ==========
-    ax1_right = Axis(fig2[1, 1], xlabel = L"N", ylabel = L"t.c. \text{ (Flops)}", xticks = (30:10:100, [L"30", L"40", L"50", L"60", L"70", L"80", L"90", L"100"]), yticks = (0:5:35, [L"10^0", L"10^{5}", L"10^{10}", L"10^{15}", L"10^{20}", L"10^{25}", L"10^{30}", L"10^{35}"]))
+    ax1_right = Axis(fig2[1, 1], xlabel = L"N", ylabel = L"t.c. \text{ (Flops)}", xticks = (30:10:100, [L"30", L"40", L"50", L"60", L"70", L"80", L"90", L"100"]), yticks = (0:5:35, [L"10^0", L"10^{5}", L"10^{10}", L"10^{15}", L"10^{20}", L"10^{25}", L"10^{30}", L"10^{35}"]), xlabelsize = 26, ylabelsize = 26, xticklabelsize = 22, yticklabelsize = 22, xticksize = 8, yticksize = 8)
     
     n_tn = [50:10:100...]
     n_ds = [50:10:100...]
@@ -573,8 +616,8 @@ begin
     lines!(ax1_right, xs, model_ds(xs, fit_ds.param), color = colors[3], linestyle = :solid)
     lines!(ax1_right, xs, model_tnbb(xs, fit_tnbb.param), color = colors[2], linestyle = :solid)
     
-    sc_tn = scatter!(ax1_right, n_tn, tc_tn, markersize = t * 1.0, marker = :utriangle, color = colors[1], strokewidth = 1.0, strokecolor = :black, label = "Tropical-TN")
-    sc_ds = scatter!(ax1_right, n_ds, tc_ds, markersize = t * 1.0, marker = markerstyle[3], color = colors[3], strokewidth = 1.0, strokecolor = :black, label = "Slicing")
+    sc_tn = scatter!(ax1_right, n_tn, tc_tn, markersize = t * 1.0, marker = :utriangle, color = colors[1], strokewidth = 1.0, strokecolor = :black, label = "TN")
+    sc_ds = scatter!(ax1_right, n_ds, tc_ds, markersize = t * 1.0, marker = markerstyle[3], color = colors[3], strokewidth = 1.0, strokecolor = :black, label = "TN with Slicing")
     sc_tnbb = scatter!(ax1_right, n_tnbb[1:4], tc_tnbb[1:4], markersize = t * 1.0, marker = markerstyle[2], color = colors[2], strokewidth = 1.0, strokecolor = :black, label = "BBTN")
     scatter!(ax1_right, n_tnbb[5:end], tc_tnbb[5:end], markersize = t * 1.0, marker = markerstyle[2], color = :white, strokewidth = 2, strokecolor = colors[2])
     
@@ -582,24 +625,24 @@ begin
     ylims!(ax1_right, 0, 35)
     
     hlines!(ax1_right, [tc_min], color = :black, linestyle = hstyle, linewidth = hwidth)
-    text!(ax1_right, 46, tc_min, text = L"$1$ min", color = :black, fontsize = 18)
+    text!(ax1_right, 46, tc_min, text = L"$1$ min", color = :black, fontsize = 22)
     #hline for one hour
     # hlines!(ax1_right, [tc2_min], color = :black, linestyle = hstyle, linewidth = hwidth)
     # text!(ax1_right, 46, tc2_min, text = L"$1$ minute", color = :black, fontsize = 15)
     hlines!(ax1_right, [tc_month], color = :black, linestyle = hstyle, linewidth = hwidth)
-    text!(ax1_right, 46, tc_month, text = L"$1$ month", color = :black, fontsize = 18)
+    text!(ax1_right, 46, tc_month, text = L"$1$ month", color = :black, fontsize = 22)
     # hlines!(ax1_right, [tc_day], color = :black, linestyle = hstyle, linewidth = hwidth)
     # text!(ax1_right, 46, tc_day, text = L"$1$ day", color = :black, fontsize = 15)
     # hlines!(ax1_right, [tc_month], color = :black, linestyle = hstyle, linewidth = hwidth)
     # text!(ax1_right, 46, tc_month, text = L"$1$ month", color = :black, fontsize = 15)
     hlines!(ax1_right, [tc_1000000_years], color = :black, linestyle = hstyle, linewidth = hwidth)
-    text!(ax1_right, 46, tc_1000000_years, text = L"$10^6$ years", color = :black, fontsize = 18)
+    text!(ax1_right, 46, tc_1000000_years, text = L"$10^6$ years", color = :black, fontsize = 22)
     
-    # ========== (d)：time_complexity.jl 的右子图 ==========
-    ax2_right = Axis(fig2[1, 2], ylabel = L"\text{Runtime (s)}", 
+    # ========== (b)：time_complexity.jl 的下子图 ==========
+    ax2_right = Axis(fig2[3, 1], ylabel = L"\text{Runtime (s)}", 
         xticks = (1:5, ["RKSG\nN=60", "RKSG\nN=70", "RKSG\nN=80", "MKSG\nStructured", "MKSG\nRandom"]),
         yticks = (0:7, [L"10^0", L"10^1", L"10^2", L"10^3", L"10^4", L"10^5", L"10^6", L"10^7"]),
-        xticklabelsize = 13,
+        xlabelsize = 26, ylabelsize = 26, xticklabelsize = 16, yticklabelsize = 22, xticksize = 8, yticksize = 8,
     )
     
     df_ksg_60 = CSV.read("../data/runtime/ksg_n60_runtime_all.csv", DataFrame)
@@ -705,33 +748,33 @@ begin
     hlines!(ax2_right, [one_day], color = :black, linestyle = :dash, linewidth = 1)
     hlines!(ax2_right, [ten_days], color = :black, linestyle = :dash, linewidth = 1)
     
-    text!(ax2_right, 0.05, one_hour, text = L"$1$ hour", fontsize = 18, color = :black)
-    text!(ax2_right, 0.05, one_day, text = L"$1$ day", fontsize = 18, color = :black)
-    text!(ax2_right, 0.05, ten_days, text = L"$1$ week", fontsize = 18, color = :black)
+    text!(ax2_right, 0.05, one_hour, text = L"$1$ hour", fontsize = 22, color = :black)
+    text!(ax2_right, 0.05, one_day, text = L"$1$ day", fontsize = 22, color = :black)
+    text!(ax2_right, 0.05, ten_days, text = L"$1$ week", fontsize = 22, color = :black)
     
     xlims!(ax2_right, 0, 6)
     
     # (a) 的图例
     fig2a_legend_dict = Dict{String, Any}()
     fig2a_legend_dict["BBTN"] = sc_tnbb
-    fig2a_legend_dict["Slicing"] = sc_ds
+    fig2a_legend_dict["TN with Slicing"] = sc_ds
     sc_tn_legend = scatter!(ax1_right, [NaN], [NaN], markersize = t * 1.0, marker = :utriangle, color = colors[1], strokewidth = 1.0, strokecolor = :black, label = "Tropical-TN")
-    fig2a_legend_dict["Tropical-TN"] = sc_tn_legend
+    fig2a_legend_dict["TN"] = sc_tn_legend
     # 按顺序构建图例
-    fig2a_labels_order = ["BBTN", "Slicing", "Tropical-TN"]
+    fig2a_labels_order = ["BBTN", "TN with Slicing", "TN"]
     fig2a_legend_items = [fig2a_legend_dict[label] for label in fig2a_labels_order if haskey(fig2a_legend_dict, label)]
     fig2a_legend_labels = [label for label in fig2a_labels_order if haskey(fig2a_legend_dict, label)]
     Legend(fig2[0, 1], fig2a_legend_items, fig2a_legend_labels, labelsize = 20, orientation = :horizontal, nbanks = 1, tellwidth = false, halign = :center)
     
-    # (b) 的图例
+    # (b) 的图例（放在 (b) 子图上方）
     fig2b_legend_dict = Dict{String, Any}()
     fig2b_legend_dict["BBTN"] = PolyElement(polycolor = runtime_colors[1])
-    fig2b_legend_dict["Slicing"] = PolyElement(polycolor = runtime_colors[2])
+    fig2b_legend_dict["TN with Slicing"] = PolyElement(polycolor = runtime_colors[2])
     fig2b_legend_dict["SCIP"] = PolyElement(polycolor = runtime_colors[3])
-    fig2b_labels_order = ["BBTN", "Slicing", "SCIP"]
+    fig2b_labels_order = ["BBTN", "TN with Slicing", "SCIP"]
     fig2b_legend_items = [fig2b_legend_dict[label] for label in fig2b_labels_order if haskey(fig2b_legend_dict, label)]
     fig2b_legend_labels = [label for label in fig2b_labels_order if haskey(fig2b_legend_dict, label)]
-    Legend(fig2[0, 2], fig2b_legend_items, fig2b_legend_labels, labelsize = 20, orientation = :horizontal, nbanks = 1, tellwidth = false, halign = :center)
+    Legend(fig2[2, 1], fig2b_legend_items, fig2b_legend_labels, labelsize = 20, orientation = :horizontal, nbanks = 1, tellwidth = false, halign = :center)
     
     # 添加子图标签
     text!(ax1_right, 0, 1, text = L"\textbf{(a)}", align = (:left, :top), fontsize = 20, space = :relative, offset = (4, -4), font = :bold)
