@@ -1,0 +1,10 @@
+model_name = spin_glass_J±1_grid_n=60_seed=7_cheating
+graph_type = grid_Jpm1
+model_path = /data/wangyijia/mwis/beyond_mis/hacked_funcs/benchmarks/models/spin_glass_models/nn_pm1/spin_glass_J±1_grid_n=60_seed=7.model
+family = j1pm1
+sc_target = 31
+vertices = 3600
+seed = 7
+h = 0.5
+edges = 7080
+n = 60

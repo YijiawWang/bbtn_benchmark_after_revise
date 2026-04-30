@@ -1,0 +1,3291 @@
+WARNING: method definition for slice_dfs at /data/wangyijia/mwis/beyond_mis/hacked_funcs/src/spin_glass_ground_counting.jl:15 declares type variable RT but does not use it.
+WARNING: method definition for #slice_dfs_lp#1 at /data/wangyijia/mwis/beyond_mis/hacked_funcs/src/spin_glass_ground_counting.jl:54 declares type variable RT but does not use it.
+============================================================
+[slice_spin_glass] model=../../hacked_funcs/benchmarks/models/spin_glass_models/nn_pm1/spin_glass_J±1_grid_n=60_seed=2.model  sc_target=31
+============================================================
+  model_name : spin_glass_J±1_grid_n=60_seed=2_cheating
+  family     : j1pm1
+  graph_type : grid_Jpm1
+  vertices   : 3600
+  edges      : 7080
+  h_default  : 0.5
+  meta       : Dict{String, Any}("model_path" => "/data/wangyijia/mwis/beyond_mis/hacked_funcs/benchmarks/models/spin_glass_models/nn_pm1/spin_glass_J±1_grid_n=60_seed=2.model", "family" => "j1pm1", "sc_target" => 31, "seed" => 2, "h" => 0.5, "n" => 60)
+    code seed=1 -> tc=80.09371783534996, sc=61.0, rw=68.53406005374211
+    code seed=2 -> tc=79.00672651368107, sc=61.0, rw=68.11971796485439
+  best code complexity over seeds [1, 2]: Time complexity: 2^79.00672651368107
+Space complexity: 2^61.0
+Read-write complexity: 2^68.11971796485439
+  branch results root : /data/wangyijia/mwis/beyond_mis/branch_results
+  slice subdir        : grid_Jpm1_n=60_seed=2_cheating
+Set parameter LicenseID to value 2803191
+QIP_gurobi_bound: solver finished in 1.773 s (time_limit=300.0 s, status=OPTIMAL)
+[ Info: initial lp_bound: 5406.0
+[ Info: slicing branch with sc: 61.0
+[ Info: cc.sc: 61.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.261 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5404.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.533 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [60, 59]
+[ Info: lp_scores: [5406.0, 5404.0]
+[ Info: lp_scores: 5404.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 2, finished slices: 0
+                      ┌                                        ┐ 
+   sc, target = 31 59 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 1   
+                   60 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 1   
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 60.0
+[ Info: cc.sc: 60.0
+region size: 10
+QIP_gurobi_bound: solver finished in 5.899 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5402.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 5.642 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5396.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.496 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5397.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.35 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 4, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.322 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 5, lp_score: 5405.0, primal_bound: 0.0
+[ Info: new_scs: [57, 58, 57, 56, 56]
+[ Info: lp_scores: [5406.0, 5405.0, 5402.0, 5397.0, 5396.0]
+[ Info: lp_scores: 5396.0
+[ Info: lp_scores: 5397.0
+[ Info: lp_scores: 5402.0
+[ Info: lp_scores: 5405.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 6, finished slices: 0
+                      ┌                                        ┐ 
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+   sc, target = 31 57 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   58 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 57.0
+[ Info: cc.sc: 57.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.546 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.477 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5390.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.462 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5401.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.44 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 4, lp_score: 5398.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.465 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 5, lp_score: 5393.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.397 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 6, lp_score: 5398.0, primal_bound: 0.0
+[ Info: new_scs: [53, 55, 55, 52, 52, 53]
+[ Info: lp_scores: [5406.0, 5401.0, 5398.0, 5398.0, 5393.0, 5390.0]
+[ Info: lp_scores: 5390.0
+[ Info: lp_scores: 5393.0
+[ Info: lp_scores: 5398.0
+[ Info: lp_scores: 5398.0
+[ Info: lp_scores: 5401.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 11, finished slices: 0
+                      ┌                                        ┐ 
+                   52 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   53 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   54 ┤ 0                                        
+   sc, target = 31 55 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   57 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   58 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 53.0
+[ Info: cc.sc: 53.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.952 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5404.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.463 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.394 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5398.0, primal_bound: 0.0
+[ Info: new_scs: [51, 49, 50]
+[ Info: lp_scores: [5406.0, 5404.0, 5398.0]
+[ Info: lp_scores: 5398.0
+[ Info: lp_scores: 5404.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 13, finished slices: 0
+                      ┌                                        ┐ 
+                   49 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   50 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   51 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   52 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   53 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   57 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   58 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 51.0
+[ Info: cc.sc: 51.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.382 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.395 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5400.0, primal_bound: 0.0
+[ Info: new_scs: [50, 50]
+[ Info: lp_scores: [5406.0, 5400.0]
+[ Info: lp_scores: 5400.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 14, finished slices: 0
+                      ┌                                        ┐ 
+                   49 ┤■■■■■■■■■■■■ 1                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 3   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■■■■■■■ 2               
+                   53 ┤■■■■■■■■■■■■ 1                            
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■■■■■■■ 2               
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■ 2               
+                   57 ┤■■■■■■■■■■■■ 1                            
+                   58 ┤■■■■■■■■■■■■ 1                            
+                   59 ┤■■■■■■■■■■■■ 1                            
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 50.0
+[ Info: cc.sc: 50.0
+region size: 10
+QIP_gurobi_bound: solver finished in 5.123 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.327 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5404.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.879 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5405.0, primal_bound: 0.0
+[ Info: new_scs: [50, 50, 50]
+[ Info: lp_scores: [5406.0, 5405.0, 5404.0]
+[ Info: lp_scores: 5404.0
+[ Info: lp_scores: 5405.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 0
+                      ┌                                        ┐ 
+                   49 ┤■■■■■■■ 1                                 
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 5   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■ 2                         
+                   53 ┤■■■■■■■ 1                                 
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■ 2                         
+                   56 ┤■■■■■■■■■■■■■■■ 2                         
+                   57 ┤■■■■■■■ 1                                 
+                   58 ┤■■■■■■■ 1                                 
+                   59 ┤■■■■■■■ 1                                 
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 50.0
+[ Info: cc.sc: 50.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.395 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.318 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [50, 50]
+[ Info: lp_scores: [5406.0, 5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 17, finished slices: 0
+                      ┌                                        ┐ 
+                   49 ┤■■■■■■ 1                                  
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 50.0
+[ Info: cc.sc: 50.0
+region size: 10
+QIP_gurobi_bound: solver finished in 4.983 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 5.999 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5402.0, primal_bound: 0.0
+[ Info: new_scs: [50, 50]
+[ Info: lp_scores: [5406.0, 5402.0]
+[ Info: lp_scores: 5402.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 18, finished slices: 0
+                      ┌                                        ┐ 
+                   49 ┤■■■■■ 1                                   
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 7   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■ 2                             
+                   53 ┤■■■■■ 1                                   
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■ 2                             
+                   56 ┤■■■■■■■■■■■ 2                             
+                   57 ┤■■■■■ 1                                   
+                   58 ┤■■■■■ 1                                   
+                   59 ┤■■■■■ 1                                   
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 50.0
+[ Info: cc.sc: 50.0
+region size: 10
+QIP_gurobi_bound: solver finished in 3.812 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5400.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.449 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [49, 49]
+[ Info: lp_scores: [5406.0, 5400.0]
+[ Info: lp_scores: 5400.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 19, finished slices: 0
+                      ┌                                        ┐ 
+                   49 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 49.0
+[ Info: cc.sc: 49.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.294 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5404.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.29 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [48, 48]
+[ Info: lp_scores: [5406.0, 5404.0]
+[ Info: lp_scores: 5404.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 20, finished slices: 0
+                      ┌                                        ┐ 
+                   48 ┤■■■■■■■■■■■■ 2                            
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 48.0
+[ Info: cc.sc: 48.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.491 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5400.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.278 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [47, 47]
+[ Info: lp_scores: [5406.0, 5400.0]
+[ Info: lp_scores: 5400.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 21, finished slices: 0
+                      ┌                                        ┐ 
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 47.0
+[ Info: cc.sc: 47.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.438 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5394.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.301 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [46, 44]
+[ Info: lp_scores: [5406.0, 5394.0]
+[ Info: lp_scores: 5394.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 22, finished slices: 0
+                      ┌                                        ┐ 
+                   44 ┤■■■■■■ 1                                  
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■ 1                                  
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+   sc, target = 31 51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 46.0
+[ Info: cc.sc: 46.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.436 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.401 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5400.0, primal_bound: 0.0
+[ Info: new_scs: [45, 46]
+[ Info: lp_scores: [5406.0, 5400.0]
+[ Info: lp_scores: 5400.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 23, finished slices: 0
+                      ┌                                        ┐ 
+                   44 ┤■■■■■■ 1                                  
+                   45 ┤■■■■■■ 1                                  
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■ 1                                  
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+   sc, target = 31 51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 45.0
+[ Info: cc.sc: 45.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.527 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.569 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 0.0
+[ Info: new_scs: [45, 47]
+[ Info: lp_scores: [5406.0, 5405.0]
+[ Info: lp_scores: 5405.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 24, finished slices: 0
+                      ┌                                        ┐ 
+                   44 ┤■■■■■■ 1                                  
+                   45 ┤■■■■■■ 1                                  
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+   sc, target = 31 51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 45.0
+[ Info: cc.sc: 45.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.291 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.335 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.336 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5397.0, primal_bound: 0.0
+[ Info: new_scs: [44, 41, 41]
+[ Info: lp_scores: [5406.0, 5405.0, 5397.0]
+[ Info: lp_scores: 5397.0
+[ Info: lp_scores: 5405.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 26, finished slices: 0
+                      ┌                                        ┐ 
+                   41 ┤■■■■■■■■■■■■ 2                            
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 44.0
+[ Info: cc.sc: 44.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.47 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5403.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.462 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [43, 44]
+[ Info: lp_scores: [5406.0, 5403.0]
+[ Info: lp_scores: 5403.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 27, finished slices: 0
+                      ┌                                        ┐ 
+                   41 ┤■■■■■■■■■■■■ 2                            
+                   42 ┤ 0                                        
+                   43 ┤■■■■■■ 1                                  
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 43.0
+[ Info: cc.sc: 43.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.3 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.301 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 0.0
+[ Info: new_scs: [42, 40]
+[ Info: lp_scores: [5406.0, 5405.0]
+[ Info: lp_scores: 5405.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 28, finished slices: 0
+                      ┌                                        ┐ 
+                   40 ┤■■■■■■ 1                                  
+                   41 ┤■■■■■■■■■■■■ 2                            
+                   42 ┤■■■■■■ 1                                  
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+   sc, target = 31 49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 42.0
+[ Info: cc.sc: 42.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.356 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5404.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.315 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [41, 41]
+[ Info: lp_scores: [5406.0, 5404.0]
+[ Info: lp_scores: 5404.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 29, finished slices: 0
+                      ┌                                        ┐ 
+                   40 ┤■■■■■■ 1                                  
+                   41 ┤■■■■■■■■■■■■■■■■■■■■■■■■■ 4               
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+   sc, target = 31 49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 41.0
+[ Info: cc.sc: 41.0
+region size: 10
+QIP_gurobi_bound: solver finished in 5.718 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5401.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.339 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [41, 40]
+[ Info: lp_scores: [5406.0, 5401.0]
+[ Info: lp_scores: 5401.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 30, finished slices: 0
+                      ┌                                        ┐ 
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■■■■■■■ 4               
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+   sc, target = 31 49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 41.0
+[ Info: cc.sc: 41.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.335 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.372 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 0.0
+[ Info: new_scs: [39, 39]
+[ Info: lp_scores: [5406.0, 5405.0]
+[ Info: lp_scores: 5405.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 31, finished slices: 0
+                      ┌                                        ┐ 
+                   39 ┤■■■■■■■■■■■■ 2                            
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+   sc, target = 31 49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 39.0
+[ Info: cc.sc: 39.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.291 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5397.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.478 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [38, 38]
+[ Info: lp_scores: [5406.0, 5397.0]
+[ Info: lp_scores: 5397.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 32, finished slices: 0
+                      ┌                                        ┐ 
+                   38 ┤■■■■■■■■■■■■ 2                            
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 38.0
+[ Info: cc.sc: 38.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.392 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5403.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.423 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [37, 37]
+[ Info: lp_scores: [5406.0, 5403.0]
+[ Info: lp_scores: 5403.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 33, finished slices: 0
+                      ┌                                        ┐ 
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 37.0
+[ Info: cc.sc: 37.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.433 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5403.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.369 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [37, 37]
+[ Info: lp_scores: [5406.0, 5403.0]
+[ Info: lp_scores: 5403.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 34, finished slices: 0
+                      ┌                                        ┐ 
+                   37 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 37.0
+[ Info: cc.sc: 37.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.328 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.289 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5404.0, primal_bound: 0.0
+[ Info: new_scs: [36, 36]
+[ Info: lp_scores: [5406.0, 5404.0]
+[ Info: lp_scores: 5404.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 35, finished slices: 0
+                      ┌                                        ┐ 
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+   sc, target = 31 47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 36.0
+[ Info: cc.sc: 36.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.344 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.365 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 0.0
+[ Info: new_scs: [35, 36]
+[ Info: lp_scores: [5406.0, 5405.0]
+[ Info: lp_scores: 5405.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 36, finished slices: 0
+                      ┌                                        ┐ 
+                   35 ┤■■■■■■ 1                                  
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+   sc, target = 31 47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 35.0
+[ Info: cc.sc: 35.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.235 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [35]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 36, finished slices: 0
+                      ┌                                        ┐ 
+                   35 ┤■■■■■■ 1                                  
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+   sc, target = 31 47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 35.0
+[ Info: cc.sc: 35.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.315 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.242 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 0.0
+[ Info: new_scs: [34, 34]
+[ Info: lp_scores: [5406.0, 5405.0]
+[ Info: lp_scores: 5405.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 37, finished slices: 0
+                      ┌                                        ┐ 
+                   34 ┤■■■■■■■■■■■■ 2                            
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 34.0
+[ Info: cc.sc: 34.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.301 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.266 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [34, 34]
+[ Info: lp_scores: [5406.0, 5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 38, finished slices: 0
+                      ┌                                        ┐ 
+                   34 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 34.0
+[ Info: cc.sc: 34.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.322 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.371 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5404.0, primal_bound: 0.0
+[ Info: new_scs: [33, 33]
+[ Info: lp_scores: [5406.0, 5404.0]
+[ Info: lp_scores: 5404.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 39, finished slices: 0
+                      ┌                                        ┐ 
+                   33 ┤■■■■■■■■■■■■ 2                            
+                   34 ┤■■■■■■■■■■■■ 2                            
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 33.0
+[ Info: cc.sc: 33.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.425 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.884 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5401.0, primal_bound: 0.0
+[ Info: new_scs: [33, 33]
+[ Info: lp_scores: [5406.0, 5401.0]
+[ Info: lp_scores: 5401.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 40, finished slices: 0
+                      ┌                                        ┐ 
+                   33 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   34 ┤■■■■■■■■■■■■ 2                            
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 33.0
+[ Info: cc.sc: 33.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.319 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5404.0, primal_bound: 0.0
+QIP_gurobi_bound: solver finished in 1.445 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [32, 33]
+[ Info: lp_scores: [5406.0, 5404.0]
+[ Info: lp_scores: 5404.0
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 41, finished slices: 0
+                      ┌                                        ┐ 
+                   32 ┤■■■■■■ 1                                  
+                   33 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   34 ┤■■■■■■■■■■■■ 2                            
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 32.0
+[ Info: cc.sc: 32.0
+region size: 10
+QIP_gurobi_bound: solver finished in 1.318 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 0.0
+[ Info: new_scs: [31]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 41, finished slices: 0
+                      ┌                                        ┐ 
+                   31 ┤■■■■■■ 1                                  
+                   32 ┤ 0                                        
+                   33 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   34 ┤■■■■■■■■■■■■ 2                            
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 31.0
+  [slice produced] sc=31.0 tc=46.2067671211567 nv=3546 ne=6909 r=51.0
+QIP_value_gurobi: solver finished in 1.293 s (time_limit=604800.0 s, status=OPTIMAL)
+[ Info: feasible solution: 5406.0, primal bound: 5406.0
+[ Info: current num of unfinished slices: 40, finished slices: 1
+                      ┌                                        ┐ 
+                   33 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   34 ┤■■■■■■■■■■■■ 2                            
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 33.0
+[ Info: cc.sc: 33.0
+region size: 10
+tbl0_rows:30 filtered_rows:30
+QIP_gurobi_bound: solver finished in 1.413 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5404.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 39, finished slices: 1
+                      ┌                                        ┐ 
+                   33 ┤■■■■■■■■■■■■ 2                            
+                   34 ┤■■■■■■■■■■■■ 2                            
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 33.0
+[ Info: cc.sc: 33.0
+region size: 10
+tbl0_rows:24 filtered_rows:24
+QIP_gurobi_bound: solver finished in 1.24 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5399.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.379 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5401.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 38, finished slices: 1
+                      ┌                                        ┐ 
+                   33 ┤■■■■■■ 1                                  
+                   34 ┤■■■■■■■■■■■■ 2                            
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 33.0
+[ Info: cc.sc: 33.0
+region size: 10
+tbl0_rows:63 filtered_rows:63
+QIP_gurobi_bound: solver finished in 1.247 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5404.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.392 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5403.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 37, finished slices: 1
+                      ┌                                        ┐ 
+                   34 ┤■■■■■■■■■■■■ 2                            
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 34.0
+[ Info: cc.sc: 34.0
+region size: 10
+tbl0_rows:24 filtered_rows:24
+QIP_gurobi_bound: solver finished in 1.35 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5404.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.254 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 5406.0
+[ Info: new_scs: [33]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 37, finished slices: 1
+                      ┌                                        ┐ 
+                   33 ┤■■■■■■ 1                                  
+                   34 ┤■■■■■■ 1                                  
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 33.0
+[ Info: cc.sc: 33.0
+region size: 10
+tbl0_rows:25 filtered_rows:25
+QIP_gurobi_bound: solver finished in 1.214 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5402.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.28 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 5406.0
+[ Info: new_scs: [33]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 37, finished slices: 1
+                      ┌                                        ┐ 
+                   33 ┤■■■■■■ 1                                  
+                   34 ┤■■■■■■ 1                                  
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 33.0
+[ Info: cc.sc: 33.0
+region size: 10
+tbl0_rows:95 filtered_rows:95
+QIP_gurobi_bound: solver finished in 1.307 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5403.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.286 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.339 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5405.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.17 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 4, lp_score: 5406.0, primal_bound: 5406.0
+[ Info: new_scs: [32]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 37, finished slices: 1
+                      ┌                                        ┐ 
+                   32 ┤■■■■■■ 1                                  
+                   33 ┤ 0                                        
+                   34 ┤■■■■■■ 1                                  
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 32.0
+[ Info: cc.sc: 32.0
+region size: 10
+tbl0_rows:35 filtered_rows:35
+QIP_gurobi_bound: solver finished in 1.847 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+[ Info: new_scs: [31]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 37, finished slices: 1
+                      ┌                                        ┐ 
+                   31 ┤■■■■■■ 1                                  
+                   32 ┤ 0                                        
+                   33 ┤ 0                                        
+                   34 ┤■■■■■■ 1                                  
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 31.0
+  [slice produced] sc=31.0 tc=44.15172841754596 nv=3545 ne=6906 r=51.5
+QIP_value_gurobi: solver finished in 1.829 s (time_limit=604800.0 s, status=OPTIMAL)
+[ Info: feasible solution: 5406.0, primal bound: 5406.0
+[ Info: current num of unfinished slices: 36, finished slices: 2
+                      ┌                                        ┐ 
+                   34 ┤■■■■■■ 1                                  
+                   35 ┤ 0                                        
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 34.0
+[ Info: cc.sc: 34.0
+region size: 10
+tbl0_rows:53 filtered_rows:53
+QIP_gurobi_bound: solver finished in 1.249 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5405.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.18 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 35, finished slices: 2
+                      ┌                                        ┐ 
+                   36 ┤■■■■■■■■■■■■ 2                            
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+   sc, target = 31 47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 36.0
+[ Info: cc.sc: 36.0
+region size: 10
+tbl0_rows:26 filtered_rows:26
+QIP_gurobi_bound: solver finished in 1.2 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5404.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.265 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 34, finished slices: 2
+                      ┌                                        ┐ 
+                   36 ┤■■■■■■ 1                                  
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+   sc, target = 31 47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 36.0
+[ Info: cc.sc: 36.0
+region size: 10
+tbl0_rows:46 filtered_rows:46
+QIP_gurobi_bound: solver finished in 1.474 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5400.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.395 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5404.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 33, finished slices: 2
+                      ┌                                        ┐ 
+                   37 ┤■■■■■■■■■■■■ 2                            
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 37.0
+[ Info: cc.sc: 37.0
+region size: 10
+tbl0_rows:68 filtered_rows:68
+QIP_gurobi_bound: solver finished in 1.22 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5403.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.327 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5401.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 32, finished slices: 2
+                      ┌                                        ┐ 
+                   37 ┤■■■■■■ 1                                  
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 37.0
+[ Info: cc.sc: 37.0
+region size: 10
+tbl0_rows:28 filtered_rows:28
+QIP_gurobi_bound: solver finished in 1.419 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5400.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.285 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5403.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 31, finished slices: 2
+                      ┌                                        ┐ 
+                   38 ┤■■■■■■ 1                                  
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 38.0
+[ Info: cc.sc: 38.0
+region size: 10
+tbl0_rows:66 filtered_rows:66
+QIP_gurobi_bound: solver finished in 1.3 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5394.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.356 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5397.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 30, finished slices: 2
+                      ┌                                        ┐ 
+                   39 ┤■■■■■■ 1                                  
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+   sc, target = 31 49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 39.0
+[ Info: cc.sc: 39.0
+region size: 10
+tbl0_rows:63 filtered_rows:63
+QIP_gurobi_bound: solver finished in 1.313 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5402.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.31 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 29, finished slices: 2
+                      ┌                                        ┐ 
+                   40 ┤■■■■■■■■■■■■ 2                            
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+   sc, target = 31 49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 40.0
+[ Info: cc.sc: 40.0
+region size: 10
+tbl0_rows:63 filtered_rows:63
+QIP_gurobi_bound: solver finished in 1.32 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5398.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.294 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5401.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 28, finished slices: 2
+                      ┌                                        ┐ 
+                   40 ┤■■■■■■ 1                                  
+                   41 ┤■■■■■■■■■■■■■■■■■■■ 3                     
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+   sc, target = 31 49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 41.0
+[ Info: cc.sc: 41.0
+region size: 10
+tbl0_rows:35 filtered_rows:35
+QIP_gurobi_bound: solver finished in 1.392 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5404.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.322 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5399.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 27, finished slices: 2
+                      ┌                                        ┐ 
+                   40 ┤■■■■■■ 1                                  
+                   41 ┤■■■■■■■■■■■■ 2                            
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+   sc, target = 31 49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 40.0
+[ Info: cc.sc: 40.0
+region size: 10
+tbl0_rows:66 filtered_rows:66
+QIP_gurobi_bound: solver finished in 1.336 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5402.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.392 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 26, finished slices: 2
+                      ┌                                        ┐ 
+                   41 ┤■■■■■■■■■■■■ 2                            
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■■■■■■■ 2                            
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 44.0
+[ Info: cc.sc: 44.0
+region size: 10
+tbl0_rows:20 filtered_rows:20
+QIP_gurobi_bound: solver finished in 1.47 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5403.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 25, finished slices: 2
+                      ┌                                        ┐ 
+                   41 ┤■■■■■■■■■■■■ 2                            
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■ 1                                  
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 41.0
+[ Info: cc.sc: 41.0
+region size: 10
+tbl0_rows:66 filtered_rows:66
+QIP_gurobi_bound: solver finished in 1.372 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5402.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 4.379 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 24, finished slices: 2
+                      ┌                                        ┐ 
+                   41 ┤■■■■■■ 1                                  
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤■■■■■■ 1                                  
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 41.0
+[ Info: cc.sc: 41.0
+region size: 10
+tbl0_rows:63 filtered_rows:63
+QIP_gurobi_bound: solver finished in 1.45 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5394.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.288 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5397.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 23, finished slices: 2
+                      ┌                                        ┐ 
+                   44 ┤■■■■■■ 1                                  
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■■■■■■■ 2                            
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+   sc, target = 31 51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 47.0
+[ Info: cc.sc: 47.0
+region size: 10
+tbl0_rows:35 filtered_rows:35
+QIP_gurobi_bound: solver finished in 1.46 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5405.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 5.229 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5402.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 22, finished slices: 2
+                      ┌                                        ┐ 
+                   44 ┤■■■■■■ 1                                  
+                   45 ┤ 0                                        
+                   46 ┤■■■■■■ 1                                  
+                   47 ┤■■■■■■ 1                                  
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+   sc, target = 31 51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 46.0
+[ Info: cc.sc: 46.0
+region size: 10
+tbl0_rows:54 filtered_rows:54
+QIP_gurobi_bound: solver finished in 1.476 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5400.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.275 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5399.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 21, finished slices: 2
+                      ┌                                        ┐ 
+                   44 ┤■■■■■■ 1                                  
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤■■■■■■ 1                                  
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+   sc, target = 31 51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 44.0
+[ Info: cc.sc: 44.0
+region size: 10
+tbl0_rows:32 filtered_rows:32
+QIP_gurobi_bound: solver finished in 1.385 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5391.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.426 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5394.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 20, finished slices: 2
+                      ┌                                        ┐ 
+                   47 ┤■■■■■■ 1                                  
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 47.0
+[ Info: cc.sc: 47.0
+region size: 10
+tbl0_rows:53 filtered_rows:53
+QIP_gurobi_bound: solver finished in 1.333 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5400.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.451 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5400.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 19, finished slices: 2
+                      ┌                                        ┐ 
+                   48 ┤■■■■■■ 1                                  
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+   sc, target = 31 53 ┤■■■■■■ 1                                  
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 48.0
+[ Info: cc.sc: 48.0
+region size: 10
+tbl0_rows:59 filtered_rows:59
+QIP_gurobi_bound: solver finished in 1.524 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5404.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.393 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5401.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 18, finished slices: 2
+                      ┌                                        ┐ 
+                   49 ┤■■■■■■■■■■■■ 2                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 49.0
+[ Info: cc.sc: 49.0
+region size: 10
+tbl0_rows:49 filtered_rows:49
+QIP_gurobi_bound: solver finished in 4.489 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5400.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.403 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5396.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 17, finished slices: 2
+                      ┌                                        ┐ 
+                   49 ┤■■■■■■ 1                                  
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 6   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■ 2                            
+                   53 ┤■■■■■■ 1                                  
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■ 2                            
+                   56 ┤■■■■■■■■■■■■ 2                            
+                   57 ┤■■■■■■ 1                                  
+                   58 ┤■■■■■■ 1                                  
+                   59 ┤■■■■■■ 1                                  
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 50.0
+[ Info: cc.sc: 50.0
+region size: 10
+tbl0_rows:55 filtered_rows:55
+QIP_gurobi_bound: solver finished in 1.208 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5396.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 5.6 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5402.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   49 ┤■■■■■■■ 1                                 
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 5   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■ 2                         
+                   53 ┤■■■■■■■ 1                                 
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■ 2                         
+                   56 ┤■■■■■■■■■■■■■■■ 2                         
+                   57 ┤■■■■■■■ 1                                 
+                   58 ┤■■■■■■■ 1                                 
+                   59 ┤■■■■■■■ 1                                 
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 50.0
+[ Info: cc.sc: 50.0
+region size: 10
+tbl0_rows:61 filtered_rows:61
+QIP_gurobi_bound: solver finished in 1.529 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5400.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.488 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 5406.0
+[ Info: new_scs: [50]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   49 ┤■■■■■■■ 1                                 
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 5   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■ 2                         
+                   53 ┤■■■■■■■ 1                                 
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■ 2                         
+                   56 ┤■■■■■■■■■■■■■■■ 2                         
+                   57 ┤■■■■■■■ 1                                 
+                   58 ┤■■■■■■■ 1                                 
+                   59 ┤■■■■■■■ 1                                 
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 50.0
+[ Info: cc.sc: 50.0
+region size: 10
+tbl0_rows:56 filtered_rows:56
+QIP_gurobi_bound: solver finished in 1.359 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.26 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5404.0, primal_bound: 5406.0
+[ Info: new_scs: [48]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   48 ┤■■■■■■■■■ 1                               
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+   sc, target = 31 53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 48.0
+[ Info: cc.sc: 48.0
+region size: 10
+tbl0_rows:65 filtered_rows:65
+QIP_gurobi_bound: solver finished in 1.34 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5400.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.352 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 5406.0
+[ Info: new_scs: [47]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   47 ┤■■■■■■■■■ 1                               
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+   sc, target = 31 53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 47.0
+[ Info: cc.sc: 47.0
+region size: 10
+tbl0_rows:28 filtered_rows:28
+QIP_gurobi_bound: solver finished in 1.29 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.329 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5399.0, primal_bound: 5406.0
+[ Info: new_scs: [46]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   46 ┤■■■■■■■■■ 1                               
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+   sc, target = 31 52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 46.0
+[ Info: cc.sc: 46.0
+region size: 10
+tbl0_rows:41 filtered_rows:41
+QIP_gurobi_bound: solver finished in 4.868 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5399.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.461 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 5406.0
+[ Info: new_scs: [44]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   44 ┤■■■■■■■■■ 1                               
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+   sc, target = 31 51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 44.0
+[ Info: cc.sc: 44.0
+region size: 10
+tbl0_rows:44 filtered_rows:44
+QIP_gurobi_bound: solver finished in 1.777 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5400.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.578 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 5406.0
+[ Info: new_scs: [44]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   44 ┤■■■■■■■■■ 1                               
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+   sc, target = 31 51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 44.0
+[ Info: cc.sc: 44.0
+region size: 10
+tbl0_rows:46 filtered_rows:46
+QIP_gurobi_bound: solver finished in 4.715 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5403.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.346 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 5406.0
+[ Info: new_scs: [42]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   42 ┤■■■■■■■■■ 1                               
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+   sc, target = 31 50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 42.0
+[ Info: cc.sc: 42.0
+region size: 10
+tbl0_rows:73 filtered_rows:73
+QIP_gurobi_bound: solver finished in 1.333 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.501 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5403.0, primal_bound: 5406.0
+[ Info: new_scs: [42]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   42 ┤■■■■■■■■■ 1                               
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+   sc, target = 31 50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 42.0
+[ Info: cc.sc: 42.0
+region size: 10
+tbl0_rows:33 filtered_rows:33
+QIP_gurobi_bound: solver finished in 1.3 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5400.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.364 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 5406.0
+[ Info: new_scs: [42]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   42 ┤■■■■■■■■■ 1                               
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+   sc, target = 31 50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 42.0
+[ Info: cc.sc: 42.0
+region size: 10
+tbl0_rows:61 filtered_rows:61
+QIP_gurobi_bound: solver finished in 1.322 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5404.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.373 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 5406.0
+[ Info: new_scs: [42]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   42 ┤■■■■■■■■■ 1                               
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+   sc, target = 31 50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 42.0
+[ Info: cc.sc: 42.0
+region size: 10
+tbl0_rows:36 filtered_rows:36
+QIP_gurobi_bound: solver finished in 1.504 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.755 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5403.0, primal_bound: 5406.0
+[ Info: new_scs: [39]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   39 ┤■■■■■■■■■ 1                               
+                   40 ┤ 0                                        
+                   41 ┤ 0                                        
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+   sc, target = 31 49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 39.0
+[ Info: cc.sc: 39.0
+region size: 10
+tbl0_rows:57 filtered_rows:57
+QIP_gurobi_bound: solver finished in 1.288 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.376 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 5406.0
+[ Info: new_scs: [39]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   39 ┤■■■■■■■■■ 1                               
+                   40 ┤ 0                                        
+                   41 ┤ 0                                        
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+   sc, target = 31 49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 39.0
+[ Info: cc.sc: 39.0
+region size: 10
+tbl0_rows:22 filtered_rows:22
+QIP_gurobi_bound: solver finished in 1.155 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5405.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.349 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 5406.0
+[ Info: new_scs: [38]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   38 ┤■■■■■■■■■ 1                               
+                   39 ┤ 0                                        
+                   40 ┤ 0                                        
+                   41 ┤ 0                                        
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤ 0                                        
+   sc, target = 31 48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 38.0
+[ Info: cc.sc: 38.0
+region size: 10
+tbl0_rows:44 filtered_rows:44
+QIP_gurobi_bound: solver finished in 1.571 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5403.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.314 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5406.0, primal_bound: 5406.0
+[ Info: new_scs: [38]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   38 ┤■■■■■■■■■ 1                               
+                   39 ┤ 0                                        
+                   40 ┤ 0                                        
+                   41 ┤ 0                                        
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤ 0                                        
+   sc, target = 31 48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 38.0
+[ Info: cc.sc: 38.0
+region size: 10
+tbl0_rows:43 filtered_rows:43
+QIP_gurobi_bound: solver finished in 1.357 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.333 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 5406.0
+[ Info: new_scs: [37]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   37 ┤■■■■■■■■■ 1                               
+                   38 ┤ 0                                        
+                   39 ┤ 0                                        
+                   40 ┤ 0                                        
+                   41 ┤ 0                                        
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤ 0                                        
+   sc, target = 31 48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 37.0
+[ Info: cc.sc: 37.0
+region size: 10
+tbl0_rows:58 filtered_rows:58
+QIP_gurobi_bound: solver finished in 1.254 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.221 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5402.0, primal_bound: 5406.0
+[ Info: new_scs: [36]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   36 ┤■■■■■■■■■ 1                               
+                   37 ┤ 0                                        
+                   38 ┤ 0                                        
+                   39 ┤ 0                                        
+                   40 ┤ 0                                        
+                   41 ┤ 0                                        
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+   sc, target = 31 47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 36.0
+[ Info: cc.sc: 36.0
+region size: 10
+tbl0_rows:74 filtered_rows:74
+QIP_gurobi_bound: solver finished in 1.19 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.285 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5403.0, primal_bound: 5406.0
+[ Info: new_scs: [35]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   35 ┤■■■■■■■■■ 1                               
+                   36 ┤ 0                                        
+                   37 ┤ 0                                        
+                   38 ┤ 0                                        
+                   39 ┤ 0                                        
+                   40 ┤ 0                                        
+                   41 ┤ 0                                        
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+   sc, target = 31 47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 35.0
+[ Info: cc.sc: 35.0
+region size: 10
+tbl0_rows:63 filtered_rows:63
+QIP_gurobi_bound: solver finished in 1.296 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.372 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 5406.0
+[ Info: new_scs: [35]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   35 ┤■■■■■■■■■ 1                               
+                   36 ┤ 0                                        
+                   37 ┤ 0                                        
+                   38 ┤ 0                                        
+                   39 ┤ 0                                        
+                   40 ┤ 0                                        
+                   41 ┤ 0                                        
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+                   46 ┤ 0                                        
+   sc, target = 31 47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 35.0
+[ Info: cc.sc: 35.0
+region size: 10
+tbl0_rows:47 filtered_rows:47
+QIP_gurobi_bound: solver finished in 1.566 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.254 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5403.0, primal_bound: 5406.0
+[ Info: new_scs: [34]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   34 ┤■■■■■■■■■ 1                               
+                   35 ┤ 0                                        
+                   36 ┤ 0                                        
+                   37 ┤ 0                                        
+                   38 ┤ 0                                        
+                   39 ┤ 0                                        
+                   40 ┤ 0                                        
+                   41 ┤ 0                                        
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤ 0                                        
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 34.0
+[ Info: cc.sc: 34.0
+region size: 10
+tbl0_rows:74 filtered_rows:74
+QIP_gurobi_bound: solver finished in 1.372 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.238 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5404.0, primal_bound: 5406.0
+[ Info: new_scs: [33]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   33 ┤■■■■■■■■■ 1                               
+                   34 ┤ 0                                        
+                   35 ┤ 0                                        
+                   36 ┤ 0                                        
+                   37 ┤ 0                                        
+                   38 ┤ 0                                        
+                   39 ┤ 0                                        
+                   40 ┤ 0                                        
+                   41 ┤ 0                                        
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤ 0                                        
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 33.0
+[ Info: cc.sc: 33.0
+region size: 10
+tbl0_rows:25 filtered_rows:25
+QIP_gurobi_bound: solver finished in 1.335 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.283 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5399.0, primal_bound: 5406.0
+[ Info: new_scs: [33]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   33 ┤■■■■■■■■■ 1                               
+                   34 ┤ 0                                        
+                   35 ┤ 0                                        
+                   36 ┤ 0                                        
+                   37 ┤ 0                                        
+                   38 ┤ 0                                        
+                   39 ┤ 0                                        
+                   40 ┤ 0                                        
+                   41 ┤ 0                                        
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+                   45 ┤ 0                                        
+   sc, target = 31 46 ┤ 0                                        
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 33.0
+[ Info: cc.sc: 33.0
+region size: 10
+tbl0_rows:71 filtered_rows:71
+QIP_gurobi_bound: solver finished in 1.185 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5401.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.231 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5403.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.245 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.255 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 4, lp_score: 5403.0, primal_bound: 5406.0
+[ Info: new_scs: [32]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   32 ┤■■■■■■■■■ 1                               
+                   33 ┤ 0                                        
+                   34 ┤ 0                                        
+                   35 ┤ 0                                        
+                   36 ┤ 0                                        
+                   37 ┤ 0                                        
+                   38 ┤ 0                                        
+                   39 ┤ 0                                        
+                   40 ┤ 0                                        
+                   41 ┤ 0                                        
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+   sc, target = 31 45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 32.0
+[ Info: cc.sc: 32.0
+region size: 10
+tbl0_rows:34 filtered_rows:34
+QIP_gurobi_bound: solver finished in 1.177 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5406.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.115 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 5406.0
+[ Info: new_scs: [31]
+[ Info: lp_scores: [5406.0]
+[ Info: lp_scores: 5406.0
+[ Info: current num of unfinished slices: 16, finished slices: 2
+                      ┌                                        ┐ 
+                   31 ┤■■■■■■■■■ 1                               
+                   32 ┤ 0                                        
+                   33 ┤ 0                                        
+                   34 ┤ 0                                        
+                   35 ┤ 0                                        
+                   36 ┤ 0                                        
+                   37 ┤ 0                                        
+                   38 ┤ 0                                        
+                   39 ┤ 0                                        
+                   40 ┤ 0                                        
+                   41 ┤ 0                                        
+                   42 ┤ 0                                        
+                   43 ┤ 0                                        
+                   44 ┤ 0                                        
+   sc, target = 31 45 ┤ 0                                        
+                   46 ┤ 0                                        
+                   47 ┤ 0                                        
+                   48 ┤ 0                                        
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+                   54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 31.0
+  [slice produced] sc=31.0 tc=45.63560105101731 nv=3547 ne=6910 r=52.5
+QIP_value_gurobi: solver finished in 1.218 s (time_limit=604800.0 s, status=OPTIMAL)
+[ Info: feasible solution: 5406.0, primal bound: 5406.0
+[ Info: current num of unfinished slices: 15, finished slices: 3
+                      ┌                                        ┐ 
+                   49 ┤■■■■■■■■■ 1                               
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 4   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   53 ┤■■■■■■■■■ 1                               
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■ 2                     
+                   57 ┤■■■■■■■■■ 1                               
+                   58 ┤■■■■■■■■■ 1                               
+                   59 ┤■■■■■■■■■ 1                               
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 50.0
+[ Info: cc.sc: 50.0
+region size: 10
+tbl0_rows:66 filtered_rows:66
+QIP_gurobi_bound: solver finished in 1.478 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5403.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.403 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5405.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 14, finished slices: 3
+                      ┌                                        ┐ 
+                   49 ┤■■■■■■■■■■■■ 1                            
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 3   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■■■■■■■ 2               
+                   53 ┤■■■■■■■■■■■■ 1                            
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■■■■■■■ 2               
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■ 2               
+                   57 ┤■■■■■■■■■■■■ 1                            
+                   58 ┤■■■■■■■■■■■■ 1                            
+                   59 ┤■■■■■■■■■■■■ 1                            
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 50.0
+[ Info: cc.sc: 50.0
+region size: 10
+tbl0_rows:73 filtered_rows:73
+QIP_gurobi_bound: solver finished in 1.653 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5404.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.358 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5404.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 13, finished slices: 3
+                      ┌                                        ┐ 
+                   49 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   50 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   53 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   57 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   58 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 50.0
+[ Info: cc.sc: 50.0
+region size: 10
+tbl0_rows:63 filtered_rows:63
+QIP_gurobi_bound: solver finished in 4.614 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5400.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.361 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5398.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.323 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5399.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 12, finished slices: 3
+                      ┌                                        ┐ 
+                   49 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   50 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   53 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   57 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   58 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 49.0
+[ Info: cc.sc: 49.0
+region size: 10
+tbl0_rows:63 filtered_rows:63
+QIP_gurobi_bound: solver finished in 1.274 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5393.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.258 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5404.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.429 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5403.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 11, finished slices: 3
+                      ┌                                        ┐ 
+                   50 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   51 ┤ 0                                        
+                   52 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   53 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+   sc, target = 31 54 ┤ 0                                        
+                   55 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   57 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   58 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 50.0
+[ Info: cc.sc: 50.0
+region size: 10
+tbl0_rows:63 filtered_rows:63
+QIP_gurobi_bound: solver finished in 1.367 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5398.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.407 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5397.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 5.94 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5387.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 10, finished slices: 3
+                      ┌                                        ┐ 
+                   52 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   53 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   54 ┤ 0                                        
+   sc, target = 31 55 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   57 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   58 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 55.0
+[ Info: cc.sc: 55.0
+region size: 10
+tbl0_rows:50 filtered_rows:50
+QIP_gurobi_bound: solver finished in 5.987 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5401.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.496 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5385.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.463 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5393.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.331 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 4, lp_score: 5399.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 9, finished slices: 3
+                      ┌                                        ┐ 
+                   52 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   53 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   54 ┤ 0                                        
+   sc, target = 31 55 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   57 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   58 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 55.0
+[ Info: cc.sc: 55.0
+region size: 10
+tbl0_rows:50 filtered_rows:50
+QIP_gurobi_bound: solver finished in 1.433 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5398.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.328 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5396.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 8, finished slices: 3
+                      ┌                                        ┐ 
+                   52 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   53 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   54 ┤ 0                                        
+   sc, target = 31 55 ┤ 0                                        
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   57 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   58 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 52.0
+[ Info: cc.sc: 52.0
+region size: 10
+tbl0_rows:50 filtered_rows:50
+QIP_gurobi_bound: solver finished in 1.376 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5396.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.453 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5398.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.377 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5390.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 7, finished slices: 3
+                      ┌                                        ┐ 
+                   52 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   53 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   54 ┤ 0                                        
+   sc, target = 31 55 ┤ 0                                        
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   57 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   58 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 52.0
+[ Info: cc.sc: 52.0
+region size: 10
+tbl0_rows:50 filtered_rows:50
+QIP_gurobi_bound: solver finished in 1.392 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5391.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.423 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5387.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.321 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5393.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 6, finished slices: 3
+                      ┌                                        ┐ 
+                   53 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   54 ┤ 0                                        
+                   55 ┤ 0                                        
+   sc, target = 31 56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+                   57 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   58 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 53.0
+[ Info: cc.sc: 53.0
+region size: 10
+tbl0_rows:50 filtered_rows:50
+QIP_gurobi_bound: solver finished in 1.432 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5388.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.533 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5390.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.403 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5382.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 5, finished slices: 3
+                      ┌                                        ┐ 
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+   sc, target = 31 57 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   58 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 58.0
+[ Info: cc.sc: 58.0
+region size: 10
+tbl0_rows:54 filtered_rows:54
+QIP_gurobi_bound: solver finished in 1.495 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5405.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.446 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5400.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.407 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5397.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.42 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 4, lp_score: 5389.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 4, finished slices: 3
+                      ┌                                        ┐ 
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+   sc, target = 31 57 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                   58 ┤ 0                                        
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 57.0
+[ Info: cc.sc: 57.0
+region size: 10
+tbl0_rows:54 filtered_rows:54
+QIP_gurobi_bound: solver finished in 1.908 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5402.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.411 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5397.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.28 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5394.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.511 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 4, lp_score: 5387.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 3, finished slices: 3
+                      ┌                                        ┐ 
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 2   
+   sc, target = 31 57 ┤ 0                                        
+                   58 ┤ 0                                        
+                   59 ┤■■■■■■■■■■■■■■■■■■■ 1                     
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 56.0
+[ Info: cc.sc: 56.0
+region size: 10
+tbl0_rows:54 filtered_rows:54
+QIP_gurobi_bound: solver finished in 1.436 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5397.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.419 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5392.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.498 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5389.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.614 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 4, lp_score: 5381.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 2, finished slices: 3
+                      ┌                                        ┐ 
+                   56 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 1   
+   sc, target = 31 57 ┤ 0                                        
+                   58 ┤ 0                                        
+                   59 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 1   
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 56.0
+[ Info: cc.sc: 56.0
+region size: 10
+tbl0_rows:54 filtered_rows:54
+QIP_gurobi_bound: solver finished in 1.257 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5396.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.344 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5391.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 5.834 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5388.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.325 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 4, lp_score: 5381.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+[ Info: current num of unfinished slices: 1, finished slices: 3
+                      ┌                                        ┐ 
+   sc, target = 31 59 ┤■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 1   
+                      └                                        ┘ 
+                                     num of slices               
+[ Info: slicing branch with sc: 59.0
+[ Info: cc.sc: 59.0
+region size: 10
+tbl0_rows:52 filtered_rows:52
+QIP_gurobi_bound: solver finished in 1.479 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 1, lp_score: 5403.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 5.39 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 2, lp_score: 5400.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.528 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 3, lp_score: 5394.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 1.453 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 4, lp_score: 5395.0, primal_bound: 5406.0
+QIP_gurobi_bound: solver finished in 4.615 s (time_limit=100.0 s, status=OPTIMAL)
+[ Info: slice 5, lp_score: 5404.0, primal_bound: 5406.0
+[ Info: new_scs: Int64[]
+[ Info: lp_scores: Float64[]
+  finished 3 slice(s) in 4586.377s; persisting ...
+  saved 3 slice(s) to /data/wangyijia/mwis/beyond_mis/branch_results/grid_Jpm1_n=60_seed=2_cheating
+  branching wall time (s): 4586.376713991165

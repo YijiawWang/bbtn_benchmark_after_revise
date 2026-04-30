@@ -1,0 +1,7 @@
+model_path        = /data/wangyijia/mwis/beyond_mis/hacked_funcs/benchmarks/models/spin_glass_models/nn_pm1/spin_glass_J±1_grid_n=10_seed=2.model
+slicing_time_s    = 3.0973520278930664
+slicing_seed      = 2
+sc_target         = 31
+save_mode         = one
+saved_slice_count = 1
+all_slice_count   = 1

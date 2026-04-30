@@ -1,0 +1,20 @@
+model_name = spin_glass_J±1_grid_n=30_seed=6_cheating
+graph_type = grid_Jpm1
+all_slice_count = 1
+total_tc_slicing = 41.39473907227493
+family = j1pm1
+n = 30
+slicing_seed = 6
+h = 0.5
+model_path = /data/wangyijia/mwis/beyond_mis/hacked_funcs/benchmarks/models/spin_glass_models/nn_pm1/spin_glass_J±1_grid_n=30_seed=6.model
+pure_tree_sa_slicing = true
+sc_target = 31
+save_mode = one
+slicing_time = 30.924014806747437
+sc_slicing = 30.0
+vertices = 900
+seed = 6
+representative_assignment = 0
+edges = 1740
+sliced_labels = 
+saved_slice_count = 1
