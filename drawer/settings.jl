@@ -5,6 +5,16 @@ using LsqFit
 
 # colors = [:red, :blue, :green, :orange, :purple, :brown, :pink, :gray, :black]
 colors = ["#4477AA", "#E36D44", "#228833", "#CCBB44", "#66CCEE", "#AA3377"]
+
+# Shared color map: same method ⇒ same color across all figures.
+method_colors = Dict(
+    "BBTN"             => "#E36D44",  # colors[2] (橙)
+    "TN_with_Slicing"  => "#228833",  # colors[3] (绿)
+    "TN"               => "#9966CC",  # 淡紫（与 CPLEX 对调）
+    "SCIP"             => "#CCBB44",  # colors[4] (黄)
+    "CPLEX"            => "#4477AA",  # 蓝（与 TN 对调）
+    "Branch_and_Bound" => "#AA3377",  # colors[6] (紫)
+)
 markersize = 12
 linestyle = [:solid, :dash, :dot, :dashdot, :dashdotdot]
 linewidth = 2
