@@ -20,7 +20,7 @@ function build_tc_counting_scailing!(parent)
         xticksize = 8, yticksize = 8,
     )
 
-    df_spin = CSV.read("../../data/main/complexity/spin_glass_counting/lattice_J+-1_h_05.csv",
+    df_spin = CSV.read("../data/main/complexity/spin_glass_counting/lattice_J+-1_h_05.csv",
                        DataFrame, missingstring=["-", ""])
 
     n_vals = Int[]
@@ -177,7 +177,7 @@ function build_tc_counting_multi_types!(parent)
         xticksize = 8, yticksize = 8,
     )
 
-    df_ground = CSV.read("../../data/main/complexity/ground_state_counting/tc_ground_counting.csv", DataFrame)
+    df_ground = CSV.read("../data/main/complexity/ground_state_counting/tc_ground_counting.csv", DataFrame)
 
     total_tc_vals             = log10.(2 .^ df_ground.total_tc_mean)
     total_tc_slicing_vals     = log10.(2 .^ df_ground.total_tc_slicing_mean)
@@ -257,9 +257,9 @@ function build_tc_energy_scailing!(parent)
     n_ds   = [50:10:100...]
     n_tnbb = [50:10:100...]
 
-    df_tn   = [CSV.read("../../data/main/complexity/random_ksg/original_ksg_n$(n).csv", DataFrame) for n in n_tn]
-    df_ds   = [CSV.read("../../data/main/complexity/random_ksg/slice32_rksg_n$(n).csv",  DataFrame) for n in n_ds]
-    df_tnbb = [CSV.read("../../data/main/complexity/random_ksg/tnbb_ksg_n$(n).csv",     DataFrame) for n in n_tnbb]
+    df_tn   = [CSV.read("../data/main/complexity/random_ksg/original_ksg_n$(n).csv", DataFrame) for n in n_tn]
+    df_ds   = [CSV.read("../data/main/complexity/random_ksg/slice32_rksg_n$(n).csv",  DataFrame) for n in n_ds]
+    df_tnbb = [CSV.read("../data/main/complexity/random_ksg/tnbb_ksg_n$(n).csv",     DataFrame) for n in n_tnbb]
 
     tc_tn   = log10.(2 .^([geometric_mean(df_tn[i].tc)          for i in 1:length(n_tn)]))
     tc_ds   = log10.(2 .^([geometric_mean(df_ds[i].sliced_tc)   for i in 1:length(n_ds)]))
@@ -309,15 +309,14 @@ end
 function build_runtime_spin_glass!(parent)
     L_values = [10, 20, 30, 40, 50, 60]
 
-    ax = Axis(parent[1, 1],
-        xlabel = L"L", ylabel = L"\text{Runtime (s)}",
-        xticks = (1:length(L_values), [LaTeXString("L=$L") for L in L_values]),
-        yticks = (0:5, [L"10^0", L"10^1", L"10^2", L"10^3", L"10^4", L"10^5"]),
+    ax = Axis(parent[1, 1], ylabel = L"\text{Runtime (s)}",
+        xticks = (1:length(L_values), ["L=$L" for L in L_values]),
+        yticks = (-1:1:7, [L"10^{-1}", L"10^0", L"10^1", L"10^2", L"10^3", L"10^4", L"10^5", L"10^6", L"10^7"]),
         xlabelsize = 26, ylabelsize = 26, xticklabelsize = 18, yticklabelsize = 22,
         xticksize = 8, yticksize = 8,
     )
 
-    df = CSV.read("../../data/main/runtime/spin_glass/all_method_summary.csv", DataFrame)
+    df = CSV.read("../data/main/runtime/spin_glass/all_method_summary.csv", DataFrame)
 
     methods             = ["bbtn", "slicing", "cplex"]
     method_color_keys   = Dict("bbtn" => "BBTN", "slicing" => "TN_with_Slicing", "cplex" => "CPLEX")
@@ -349,7 +348,7 @@ function build_runtime_spin_glass!(parent)
     max_times  = map(x -> x > max_time ? max_time : x, max_times)
 
     barplot!(ax, cat, log10.(mean_times), dodge = bar_grp,
-             color = method_color_list[bar_grp], strokecolor = :black, strokewidth = 1)
+             color = method_color_list[bar_grp], strokecolor = :black, strokewidth = 1, fillto = -1)
 
     dodge_width = 0.8
     bar_width = dodge_width / length(methods)
@@ -364,7 +363,7 @@ function build_runtime_spin_glass!(parent)
         lines!(ax, [x_pos - cap_width, x_pos + cap_width], [y_max, y_max], color = :black, linewidth = 1)
     end
 
-    ylims!(ax, 0, log10(max_time))
+    ylims!(ax, -1, 6)
 
     one_hour = log10(3600)
     one_day  = log10(24 * 3600)
@@ -372,15 +371,17 @@ function build_runtime_spin_glass!(parent)
 
     hlines!(ax, [one_hour], color = :black, linestyle = :dash, linewidth = 1)
     hlines!(ax, [one_day],  color = :black, linestyle = :dash, linewidth = 1)
+    hlines!(ax, [one_week], color = :red, linestyle = :dash, linewidth = 1)
 
-    text!(ax, 0.05, one_hour, text = L"$1$ hour", fontsize = 22, color = :black)
-    text!(ax, 0.05, one_day,  text = L"$1$ day",  fontsize = 22, color = :black)
+    text!(ax, 0.05, one_hour - 0.4, text = L"$1$ hour", fontsize = 22, color = :black)
+    text!(ax, 0.05, one_day - 0.4,  text = L"$1$ day",  fontsize = 22, color = :black)
+    text!(ax, 0.05, one_week - 0.4, text = L"$1$ week", fontsize = 22, color = :red)
 
-    limit_color = "#8B0000"
-    text!(ax, 0.15, one_week,
-          text = L"\text{time limit} = 1\text{ week}",
-          color = limit_color, fontsize = 20, font = :bold,
-          align = (:left, :bottom), offset = (0, 4))
+    # limit_color = "#8B0000"
+    # text!(ax, 0.15, one_week,
+    #       text = L"\text{time limit} = 1\text{ week}",
+    #       color = limit_color, fontsize = 20, font = :bold,
+    #       align = (:left, :bottom), offset = (0, 4))
 
     xlims!(ax, 0, length(L_values) + 1)
 
@@ -408,7 +409,7 @@ function build_runtime_energy!(parent)
         xticksize = 8, yticksize = 8,
     )
 
-    df = CSV.read("../../data/main/runtime/mis/summary_all_methods.csv", DataFrame)
+    df = CSV.read("../data/main/runtime/mis/summary_all_methods.csv", DataFrame)
 
     graphs        = ["ksg60", "ksg70", "ksg80", "fact_structured", "fact_random"]
     methods       = ["BBTN", "TN_with_Slicing", "SCIP", "CPLEX"]
@@ -457,7 +458,7 @@ function build_runtime_energy!(parent)
         lines!(ax, [x_pos - cap_width, x_pos + cap_width], [y_max, y_max], color = :black, linewidth = 1)
     end
 
-    ylims!(ax, y_baseline, 7)
+    ylims!(ax, y_baseline, 6)
 
     one_hour = log10(3600)
     one_day  = log10(24 * 3600)
@@ -465,11 +466,11 @@ function build_runtime_energy!(parent)
 
     hlines!(ax, [one_hour], color = :black, linestyle = :dash, linewidth = 1)
     hlines!(ax, [one_day],  color = :black, linestyle = :dash, linewidth = 1)
-    hlines!(ax, [one_week], color = :black, linestyle = :dash, linewidth = 1)
+    hlines!(ax, [one_week], color = :red, linestyle = :dash, linewidth = 1)
 
-    text!(ax, 0.05, one_hour, text = L"$1$ hour", fontsize = 22, color = :black)
-    text!(ax, 0.05, one_day,  text = L"$1$ day",  fontsize = 22, color = :black)
-    text!(ax, 0.05, one_week, text = L"$1$ week", fontsize = 22, color = :black)
+    text!(ax, 0.05, one_hour - 0.4, text = L"$1$ hour", fontsize = 22, color = :black)
+    text!(ax, 0.05, one_day - 0.4,  text = L"$1$ day",  fontsize = 22, color = :black)
+    text!(ax, 0.05, one_week - 0.4, text = L"$1$ week", fontsize = 22, color = :red)
 
     xlims!(ax, 0, 6)
 
@@ -511,19 +512,18 @@ begin
 
     # Panel letters inside the plot viewport (relative coords) so they do not cover the y-axis label.
     for (ax, ch) in zip((ax_a, ax_b, ax_c, ax_d, ax_e), ('a', 'b', 'c', 'd', 'e'))
-        text!(ax, 0.02, 0.98, text = "($ch)", space = :relative,
+        text!(ax, 0.02, 0.1, text = "($ch)", space = :relative,
               fontsize = 28, font = :bold, align = (:left, :top))
     end
 
-    # Make the 3 columns in row 1 roughly proportional to the originals (800:800:600)
-    colsize!(row1, 1, Auto(8))
-    colsize!(row1, 2, Auto(8))
-    colsize!(row1, 3, Auto(6))
+    # Use relative widths so both rows span the same total width.
+    colsize!(row1, 1, Relative(7 / 21))
+    colsize!(row1, 2, Relative(7 / 21))
+    colsize!(row1, 3, Relative(7 / 21))
 
-    # Row 2: spin_glass (900) vs runtime_energy (800)
-    colsize!(row2, 1, Auto(9))
-    colsize!(row2, 2, Auto(8))
+    colsize!(row2, 1, Relative(8 / 16))
+    colsize!(row2, 2, Relative(8 / 16))
 
-    save("../../figs/combined_main.pdf", fig)
+    save("../figs/combined_main.pdf", fig)
     fig
 end
